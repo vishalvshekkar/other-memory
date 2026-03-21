@@ -1,0 +1,244 @@
+# All Dune novels — used for source attribution and book filtering
+#
+# series key:
+#   original    — Frank Herbert's six novels
+#   legends     — Legends of Dune trilogy (Brian Herbert & Kevin J. Anderson)
+#   prelude     — Prelude to Dune trilogy
+#   heroes      — Heroes of Dune duology
+#   schools     — Great Schools of Dune trilogy
+#   caladan     — The Caladan Trilogy
+#   hunters-sandworms — Sequels to Chapterhouse
+
+# === Frank Herbert's Original Series ===
+
+- id: dune-1965
+  title: "Dune"
+  author: "Frank Herbert"
+  publication_year: 1965
+  series: original
+  series_order: 1
+  timeline_start: 10175   # Backstory references
+  timeline_end: 10193
+  color: "#c4841d"
+
+- id: dune-messiah-1969
+  title: "Dune Messiah"
+  author: "Frank Herbert"
+  publication_year: 1969
+  series: original
+  series_order: 2
+  timeline_start: 10193
+  timeline_end: 10209
+  color: "#d4a43d"
+
+- id: children-of-dune-1976
+  title: "Children of Dune"
+  author: "Frank Herbert"
+  publication_year: 1976
+  series: original
+  series_order: 3
+  timeline_start: 10209
+  timeline_end: 10219
+  color: "#b4942d"
+
+- id: god-emperor-of-dune-1981
+  title: "God Emperor of Dune"
+  author: "Frank Herbert"
+  publication_year: 1981
+  series: original
+  series_order: 4
+  timeline_start: 10219
+  timeline_end: 13728
+  color: "#a4843d"
+
+- id: heretics-of-dune-1984
+  title: "Heretics of Dune"
+  author: "Frank Herbert"
+  publication_year: 1984
+  series: original
+  series_order: 5
+  timeline_start: 15228
+  timeline_end: 15270
+  color: "#94741d"
+
+- id: chapterhouse-dune-1985
+  title: "Chapterhouse: Dune"
+  author: "Frank Herbert"
+  publication_year: 1985
+  series: original
+  series_order: 6
+  timeline_start: 15270
+  timeline_end: 15280
+  color: "#84641d"
+
+# === Legends of Dune (Butlerian Jihad era) ===
+
+- id: butlerian-jihad-2002
+  title: "Dune: The Butlerian Jihad"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2002
+  series: legends
+  series_order: 1
+  timeline_start: -200
+  timeline_end: -164
+  color: "#b83a3a"
+
+- id: machine-crusade-2003
+  title: "Dune: The Machine Crusade"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2003
+  series: legends
+  series_order: 2
+  timeline_start: -164
+  timeline_end: -108
+  color: "#c84a4a"
+
+- id: battle-of-corrin-2004
+  title: "Dune: The Battle of Corrin"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2004
+  series: legends
+  series_order: 3
+  timeline_start: -108
+  timeline_end: -88
+  color: "#d85a5a"
+
+# === Prelude to Dune ===
+
+- id: house-atreides-1999
+  title: "Dune: House Atreides"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 1999
+  series: prelude
+  series_order: 1
+  timeline_start: 10140
+  timeline_end: 10156
+  color: "#1a6b8a"
+
+- id: house-harkonnen-2000
+  title: "Dune: House Harkonnen"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2000
+  series: prelude
+  series_order: 2
+  timeline_start: 10156
+  timeline_end: 10175
+  color: "#2a7b9a"
+
+- id: house-corrino-2001
+  title: "Dune: House Corrino"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2001
+  series: prelude
+  series_order: 3
+  timeline_start: 10175
+  timeline_end: 10191
+  color: "#3a8baa"
+
+# === Great Schools of Dune ===
+
+- id: sisterhood-of-dune-2012
+  title: "Sisterhood of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2012
+  series: schools
+  series_order: 1
+  timeline_start: -10
+  timeline_end: 50
+  color: "#7b4db5"
+
+- id: mentats-of-dune-2014
+  title: "Mentats of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2014
+  series: schools
+  series_order: 2
+  timeline_start: 50
+  timeline_end: 100
+  color: "#8b5dc5"
+
+- id: navigators-of-dune-2016
+  title: "Navigators of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2016
+  series: schools
+  series_order: 3
+  timeline_start: 100
+  timeline_end: 200
+  color: "#9b6dd5"
+
+# === Heroes of Dune ===
+
+- id: paul-of-dune-2008
+  title: "Paul of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2008
+  series: heroes
+  series_order: 1
+  timeline_start: 10191
+  timeline_end: 10208
+  color: "#c4841d"
+
+- id: winds-of-dune-2009
+  title: "The Winds of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2009
+  series: heroes
+  series_order: 2
+  timeline_start: 10208
+  timeline_end: 10218
+  color: "#d4943d"
+
+# === The Caladan Trilogy ===
+
+- id: duke-of-caladan-2020
+  title: "Dune: The Duke of Caladan"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2020
+  series: caladan
+  series_order: 1
+  timeline_start: 10187
+  timeline_end: 10189
+  color: "#2a9d6e"
+
+- id: lady-of-caladan-2021
+  title: "Dune: The Lady of Caladan"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2021
+  series: caladan
+  series_order: 2
+  timeline_start: 10189
+  timeline_end: 10190
+  color: "#3aad7e"
+
+- id: heir-of-caladan-2022
+  title: "Dune: The Heir of Caladan"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2022
+  series: caladan
+  series_order: 3
+  timeline_start: 10190
+  timeline_end: 10191
+  color: "#4abd8e"
+
+# === Sequels to Chapterhouse ===
+
+- id: hunters-of-dune-2006
+  title: "Hunters of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2006
+  series: hunters-sandworms
+  series_order: 1
+  timeline_start: 15280
+  timeline_end: 15320
+  color: "#8b7d2f"
+
+- id: sandworms-of-dune-2007
+  title: "Sandworms of Dune"
+  author: "Brian Herbert & Kevin J. Anderson"
+  publication_year: 2007
+  series: hunters-sandworms
+  series_order: 2
+  timeline_start: 15320
+  timeline_end: 15350
+  color: "#9b8d3f"

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+:root {
+  --color-bg-primary: #0a0a0f;
+  --color-bg-secondary: #12121a;
+  --color-bg-tertiary: #1a1a25;
+  --color-accent-spice: #c4841d;
+  --color-accent-water: #1a6b8a;
+  --color-accent-danger: #8b1a1a;
+  --color-accent-power: #8b7d2f;
+  --color-text-primary: #e8e0d0;
+  --color-text-secondary: #8a8070;
+  --color-text-muted: #5a5548;
+  --color-era-band: rgba(255, 255, 255, 0.03);
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  /* Category colors */
+  --color-cat-political: #c4a435;
+  --color-cat-military: #b83a3a;
+  --color-cat-ecological: #2a9d6e;
+  --color-cat-religious: #7b4db5;
+  --color-cat-technological: #4a8db5;
+  --color-cat-personal: #d4c5a9;
+  --color-cat-cultural: #c47a35;
+}
+
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-text-muted);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-secondary);
+}

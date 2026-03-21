@@ -1,0 +1,156 @@
+# Events spanning the 10,000-year Corrino Empire
+# Covers the long imperial era between the Battle of Corrin and the events of Dune
+# Timeline: ~0–10156 AG
+
+- id: faufreluches-system-established
+  type: point
+  title: "Faufreluches Caste System Established"
+  description: "The rigid feudal caste system of the Imperium is formalized, defining the social hierarchy: 'A place for every man and every man in his place.'"
+  date_start: 10
+  date_precision: estimated
+  significance: 4
+  category: political
+  tags: ["faufreluches", "caste-system", "feudal-order", "social-hierarchy"]
+  factions: ["corrino"]
+  characters: []
+  books:
+    - book_id: sisterhood-of-dune-2012
+      notes: "Post-Jihad institution building"
+    - book_id: dune-1965
+      notes: "Referenced as foundational structure"
+
+- id: choam-founded
+  type: milestone
+  title: "CHOAM Corporation Founded"
+  subtitle: "Commerce rules the Imperium"
+  description: "The Combine Honnete Ober Advancer Mercantiles is established as the commercial engine of the Imperium, giving all Great Houses a stake in interstellar trade."
+  date_start: 30
+  date_precision: estimated
+  significance: 4
+  category: political
+  tags: ["choam", "commerce", "trade-monopoly", "great-houses"]
+  factions: ["choam", "corrino"]
+  characters: []
+  books:
+    - book_id: sisterhood-of-dune-2012
+      notes: "Early formation period"
+    - book_id: dune-1965
+      notes: "Referenced as key institution"
+
+- id: sardaukar-salusa-secundus
+  type: point
+  title: "Sardaukar Established on Salusa Secundus"
+  subtitle: "Forged by a prison planet"
+  description: "House Corrino begins using the brutal conditions of the prison planet Salusa Secundus to train the Sardaukar, creating the most feared military force in the Imperium."
+  date_start: 200
+  date_precision: estimated
+  significance: 4
+  category: military
+  tags: ["sardaukar", "salusa-secundus", "prison-planet", "elite-troops"]
+  factions: ["corrino", "sardaukar"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "Sardaukar origin referenced"
+
+- id: arrakis-spice-discovery
+  type: milestone
+  title: "Discovery of Melange on Arrakis"
+  subtitle: "The spice that controls the universe"
+  description: "Melange spice is discovered on the desert planet Arrakis, eventually becoming the most valuable substance in the universe due to its geriatric and prescient properties."
+  date_start: 500
+  date_precision: estimated
+  significance: 5
+  category: ecological
+  tags: ["melange", "arrakis", "spice-discovery", "desert-planet"]
+  factions: ["spacing-guild", "choam"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "Historical references to spice discovery"
+
+- id: guild-navigators-adopt-spice
+  type: point
+  title: "Guild Navigators Become Dependent on Spice"
+  subtitle: "Prescience through melange"
+  description: "Spacing Guild Navigators discover that melange consumption grants prescient abilities essential for safe interstellar travel, binding the Guild permanently to Arrakis."
+  date_start: 600
+  date_precision: estimated
+  significance: 4
+  category: technological
+  tags: ["navigators", "prescience", "spice-dependence", "foldspace"]
+  factions: ["spacing-guild"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "Guild-spice relationship referenced"
+    - book_id: navigators-of-dune-2016
+      notes: "Navigator origins explored"
+
+- id: corrino-imperial-seat-kaitain
+  type: point
+  title: "Imperial Court Moves to Kaitain"
+  subtitle: "A new capital for the Imperium"
+  description: "After the devastation of Salusa Secundus, House Corrino relocates the Imperial court to the paradise world of Kaitain, which becomes the center of galactic politics."
+  date_start: 1500
+  date_precision: estimated
+  significance: 3
+  category: political
+  tags: ["kaitain", "imperial-court", "capital-relocation"]
+  factions: ["corrino"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "Kaitain referenced as Imperial seat"
+
+- id: atreides-harkonnen-feud-deepens
+  type: span
+  title: "Atreides-Harkonnen Blood Feud Intensifies"
+  description: "The ancient blood feud between House Atreides and House Harkonnen, originating at the Battle of Corrin, deepens across millennia of political rivalry and assassination attempts."
+  date_start: 2000
+  date_end: 10191
+  date_precision: estimated
+  significance: 3
+  category: political
+  tags: ["blood-feud", "kanly", "great-houses", "rivalry"]
+  factions: ["atreides", "harkonnen"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "Feud is central backdrop"
+    - book_id: house-atreides-1999
+      notes: "Feud depicted in detail"
+
+- id: bene-gesserit-breeding-program-matures
+  type: point
+  title: "Bene Gesserit Breeding Program Nears Fruition"
+  subtitle: "Millennia of genetic planning"
+  description: "After thousands of years of selective breeding across the Great Houses, the Bene Gesserit approach the culmination of their program to produce the Kwisatz Haderach."
+  date_start: 10100
+  date_precision: estimated
+  significance: 4
+  category: religious
+  tags: ["breeding-program", "kwisatz-haderach", "genetics", "bene-gesserit-plan"]
+  factions: ["bene-gesserit"]
+  characters: ["gaius-helen-mohiam"]
+  books:
+    - book_id: dune-1965
+      notes: "Program's culmination drives the plot"
+    - book_id: house-atreides-1999
+      notes: "Jessica's role in the program"
+
+- id: elrood-ix-reign
+  type: span
+  title: "Reign of Emperor Elrood Corrino IX"
+  description: "The long and increasingly decadent reign of Emperor Elrood IX, marked by court intrigue and the weakening of central Imperial authority."
+  date_start: 10090
+  date_end: 10156
+  date_precision: approximate
+  significance: 3
+  category: political
+  tags: ["elrood-ix", "corrino-reign", "imperial-court", "decadence"]
+  factions: ["corrino"]
+  characters: ["elrood-ix"]
+  books:
+    - book_id: house-atreides-1999
+      notes: "Elrood's final years depicted"

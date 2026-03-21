@@ -1,0 +1,134 @@
+# Events from God Emperor of Dune
+# Covers Leto II's 3,500-year reign as the God Emperor
+# Timeline: ~10219–13728 AG
+
+- id: leto-ii-begins-golden-path
+  type: milestone
+  title: "Leto II Begins the Golden Path"
+  subtitle: "Three millennia of enforced peace"
+  description: "Leto II formally establishes his absolute rule over the Known Universe, beginning 3,500 years of enforced peace and stagnation to serve the Golden Path."
+  date_start: 10219
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["golden-path", "tyranny", "absolute-rule"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+      notes: "Historical backdrop"
+    - book_id: children-of-dune-1976
+      notes: "Transition into the reign"
+
+- id: fish-speakers-created
+  type: point
+  title: "Creation of the Fish Speakers"
+  subtitle: "An all-female army for the God Emperor"
+  description: "Leto II establishes the Fish Speakers, an all-female military force that replaces the Sardaukar and serves as his loyal enforcers throughout his reign."
+  date_start: 10250
+  date_precision: estimated
+  significance: 4
+  category: military
+  tags: ["fish-speakers", "military-reform", "female-army"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+
+- id: leto-ii-suppresses-ixian-technology
+  type: span
+  title: "Suppression of Ixian Technology"
+  subtitle: "Technology held in check by divine command"
+  description: "Leto II maintains strict control over Ixian technological development, allowing only limited innovation while preventing anything that could challenge his prescient control."
+  date_start: 10300
+  date_end: 13700
+  date_precision: estimated
+  significance: 3
+  category: technological
+  tags: ["ix", "technology-suppression", "butlerian-legacy"]
+  factions: ["atreides", "ixians"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+
+- id: duncan-idaho-ghola-series
+  type: span
+  title: "Endless Duncan Idaho Ghola Line"
+  subtitle: "Thousands of years of resurrections"
+  description: "Leto II orders a continuous series of Duncan Idaho gholas from the Tleilaxu, using each incarnation as companion, advisor, and test subject across millennia."
+  date_start: 10300
+  date_end: 13728
+  date_precision: estimated
+  significance: 4
+  category: personal
+  tags: ["ghola", "duncan-idaho", "tleilaxu", "resurrection"]
+  factions: ["atreides", "tleilaxu"]
+  characters: ["leto-ii", "duncan-idaho"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+      notes: "Central character dynamic"
+
+- id: stolen-journals-written
+  type: span
+  title: "Leto II Writes the Stolen Journals"
+  subtitle: "A secret history for the future"
+  description: "Throughout his reign, Leto II composes his secret journals, containing his reflections on humanity, prescience, and the Golden Path. They are hidden for future discovery."
+  date_start: 10500
+  date_end: 13700
+  date_precision: estimated
+  significance: 3
+  category: cultural
+  tags: ["stolen-journals", "writings", "prophecy", "legacy"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+    - book_id: heretics-of-dune-1984
+      notes: "Journals discovered and studied"
+
+- id: siona-breeding-program
+  type: point
+  title: "Siona Atreides Emerges from the Breeding Program"
+  subtitle: "Invisible to prescience"
+  description: "Siona Atreides, a descendant of Leto II's breeding program, proves to be invisible to prescient vision — the crucial genetic trait Leto II has been cultivating for millennia."
+  date_start: 13720
+  date_precision: approximate
+  significance: 5
+  category: religious
+  tags: ["siona", "prescience-immunity", "breeding-program", "golden-path"]
+  factions: ["atreides"]
+  characters: ["siona-atreides", "leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+      notes: "Central plot element"
+
+- id: ixian-no-room-invention
+  type: point
+  title: "Ixians Develop the No-Room"
+  description: "Ixian engineers create the no-room, a chamber invisible to prescient observation. This technology becomes crucial for those seeking to hide from prescient powers."
+  date_start: 13700
+  date_precision: estimated
+  significance: 3
+  category: technological
+  tags: ["no-room", "ix", "prescience-shield", "innovation"]
+  factions: ["ixians"]
+  characters: []
+  books:
+    - book_id: god-emperor-of-dune-1981
+      notes: "Technology first appears"
+
+- id: arrakis-desertification-reversed
+  type: span
+  title: "Arrakis Becomes a Green World"
+  subtitle: "The desert planet transformed"
+  description: "Under Leto II's reign, Arrakis is gradually transformed into a lush green world as the sandworm cycle is disrupted, with Leto's body harboring the last sandtrout."
+  date_start: 10300
+  date_end: 13728
+  date_precision: estimated
+  significance: 4
+  category: ecological
+  tags: ["arrakis", "terraforming", "green-arrakis", "sandworm-cycle"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981

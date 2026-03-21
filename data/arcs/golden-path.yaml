@@ -1,0 +1,31 @@
+# The Golden Path — the central narrative arc of the Dune saga
+# This arc connects the events that form Leto II's plan for humanity's survival
+
+- id: arc-golden-path
+  type: arc
+  title: "The Golden Path"
+  subtitle: "Leto II's plan for humanity's survival"
+  description: "A prescient vision of the only path that ensures humanity's long-term survival, requiring millennia of tyrannical rule followed by enforced diaspora."
+  date_start: 10193
+  date_end: 15350
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["golden-path", "prescience", "survival"]
+  factions: ["atreides"]
+  characters: ["paul-atreides", "leto-ii", "siona-atreides"]
+  books:
+    - book_id: dune-1965
+      notes: "Paul first glimpses the Golden Path"
+    - book_id: children-of-dune-1976
+      notes: "Leto II commits to the path"
+    - book_id: god-emperor-of-dune-1981
+      notes: "Central theme"
+    - book_id: heretics-of-dune-1984
+      notes: "Consequences unfold"
+  arc_events:
+    - paul-fremen-acceptance
+    - battle-of-arrakeen
+    - paul-walks-into-desert
+    - leto-ii-sandtrout-skin
+    - leto-ii-death

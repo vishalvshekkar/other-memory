@@ -1,0 +1,85 @@
+# Major factions in the Dune universe
+
+- id: atreides
+  name: "House Atreides"
+  color: "#2a7b9a"
+  description: "Noble house known for honor and justice, rulers of Caladan then Arrakis"
+  active_start: -88
+  active_end: 13728
+
+- id: harkonnen
+  name: "House Harkonnen"
+  color: "#8b1a1a"
+  description: "Ruthless noble house, longtime rivals of the Atreides, rulers of Giedi Prime"
+  active_start: -88
+  active_end: 10193
+
+- id: corrino
+  name: "House Corrino"
+  color: "#c4a435"
+  description: "Imperial house, rulers of the Known Universe from the Golden Lion Throne"
+  active_start: -88
+  active_end: 10196
+
+- id: bene-gesserit
+  name: "Bene Gesserit"
+  color: "#7b4db5"
+  description: "Ancient sisterhood with mental and physical training, pursuing genetic programs"
+  active_start: -88
+  active_end: 15350
+
+- id: spacing-guild
+  name: "Spacing Guild"
+  color: "#4a8db5"
+  description: "Organization holding monopoly on space travel via prescient Navigators"
+  active_start: 0
+  active_end: 15350
+
+- id: fremen
+  name: "Fremen"
+  color: "#c4841d"
+  description: "Desert-dwelling people of Arrakis, fierce warriors and spice harvesters"
+  active_start: -500
+  active_end: 13728
+
+- id: tleilaxu
+  name: "Bene Tleilax"
+  color: "#5a9d3e"
+  description: "Secretive society of genetic manipulators, creators of gholas and Face Dancers"
+  active_start: -88
+  active_end: 15350
+
+- id: ixians
+  name: "Ixians"
+  color: "#6a8db5"
+  description: "Technologists who push the boundaries of the Butlerian prohibition"
+  active_start: -88
+  active_end: 15350
+
+- id: thinking-machines
+  name: "Thinking Machines"
+  color: "#8a8a8a"
+  description: "Network of sentient machines led by Omnius and Erasmus"
+  active_start: -1500
+  active_end: -88
+
+- id: honored-matres
+  name: "Honored Matres"
+  color: "#d4443a"
+  description: "Violent sisterhood returning from the Scattering, rivals of the Bene Gesserit"
+  active_start: 15200
+  active_end: 15350
+
+- id: sardaukar
+  name: "Sardaukar"
+  color: "#a4943d"
+  description: "Elite imperial military force of House Corrino, feared across the Known Universe"
+  active_start: 200
+  active_end: 10196
+
+- id: choam
+  name: "CHOAM"
+  color: "#b49d5a"
+  description: "Commercial conglomerate controlling interstellar trade and spice economics"
+  active_start: 0
+  active_end: 13728

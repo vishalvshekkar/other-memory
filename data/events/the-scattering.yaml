@@ -1,0 +1,113 @@
+# Events from Heretics of Dune and Chapterhouse: Dune
+# Covers the return from the Scattering and the Honored Matres conflict
+# Timeline: ~15228–15280 AG
+
+- id: scattered-populations-return
+  type: point
+  title: "Populations Begin Returning from the Scattering"
+  description: "After 1,500 years, humans who scattered across the unknown universe begin returning to the Old Empire, bringing strange new cultures and dangerous abilities."
+  date_start: 15228
+  date_precision: approximate
+  significance: 4
+  category: cultural
+  tags: ["scattering", "return", "diaspora", "old-empire"]
+  factions: ["honored-matres"]
+  characters: []
+  books:
+    - book_id: heretics-of-dune-1984
+      notes: "Opening context"
+
+- id: honored-matres-invasion
+  type: milestone
+  title: "Honored Matres Assault the Old Empire"
+  subtitle: "Violent sisterhood returns from the void"
+  description: "The Honored Matres, a violent offshoot of the Bene Gesserit from the Scattering, launch devastating attacks on multiple worlds in the Old Empire, seeking total dominance."
+  date_start: 15230
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["honored-matres", "invasion", "old-empire-assault"]
+  factions: ["honored-matres", "bene-gesserit"]
+  characters: []
+  books:
+    - book_id: heretics-of-dune-1984
+      notes: "Honored Matres introduced"
+
+- id: sheeana-controls-sandworms
+  type: point
+  title: "Sheeana Demonstrates Control Over Sandworms"
+  subtitle: "A girl who commands the makers"
+  description: "Young Sheeana Brugh on Rakis demonstrates the unprecedented ability to command sandworms, making her invaluable to the Bene Gesserit's plans."
+  date_start: 15235
+  date_precision: approximate
+  significance: 4
+  category: religious
+  tags: ["sheeana", "sandworms", "rakis", "worm-control"]
+  factions: ["bene-gesserit", "fremen"]
+  characters: ["sheeana"]
+  books:
+    - book_id: heretics-of-dune-1984
+      notes: "Major plot thread"
+
+- id: miles-teg-superhuman-awakening
+  type: point
+  title: "Miles Teg Awakens Superhuman Abilities"
+  subtitle: "The Bashar transcends human limits"
+  description: "Bashar Miles Teg, under extreme duress, manifests superhuman speed and combat abilities far beyond normal human capacity, at the cost of enormous caloric requirements."
+  date_start: 15238
+  date_precision: approximate
+  significance: 3
+  category: personal
+  tags: ["miles-teg", "superhuman", "bashar", "genetic-potential"]
+  factions: ["bene-gesserit"]
+  characters: ["miles-teg"]
+  books:
+    - book_id: heretics-of-dune-1984
+
+- id: destruction-of-rakis
+  type: milestone
+  title: "Honored Matres Destroy Rakis"
+  subtitle: "The desert planet obliterated"
+  description: "The Honored Matres use obliterators to destroy the surface of Rakis (Arrakis), annihilating the sandworm ecosystem. Only a single worm is saved by the Bene Gesserit."
+  date_start: 15240
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["rakis", "destruction", "obliterators", "sandworm-extinction"]
+  factions: ["honored-matres", "bene-gesserit"]
+  characters: ["sheeana", "darwi-odrade"]
+  books:
+    - book_id: heretics-of-dune-1984
+      notes: "Climactic event"
+
+- id: bene-gesserit-chapterhouse-retreat
+  type: point
+  title: "Bene Gesserit Retreat to Chapterhouse"
+  subtitle: "Last stronghold of the sisterhood"
+  description: "The Bene Gesserit consolidate their remaining forces on Chapterhouse planet, beginning a desperate effort to seed sandworms and rebuild their power against the Honored Matres."
+  date_start: 15270
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["chapterhouse", "bene-gesserit-retreat", "sandworm-seeding"]
+  factions: ["bene-gesserit"]
+  characters: ["darwi-odrade", "murbella"]
+  books:
+    - book_id: chapterhouse-dune-1985
+      notes: "Primary setting"
+
+- id: murbella-unites-sisterhoods
+  type: milestone
+  title: "Murbella Begins Uniting Bene Gesserit and Honored Matres"
+  subtitle: "Two sisterhoods become one"
+  description: "Murbella, both Honored Matre and Bene Gesserit, begins the process of merging the two rival sisterhoods into a single New Sisterhood, combining their strengths."
+  date_start: 15275
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["murbella", "new-sisterhood", "unification", "merger"]
+  factions: ["bene-gesserit", "honored-matres"]
+  characters: ["murbella", "darwi-odrade"]
+  books:
+    - book_id: chapterhouse-dune-1985
+      notes: "Major plot resolution"

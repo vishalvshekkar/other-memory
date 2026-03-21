@@ -1,0 +1,132 @@
+# Events from Hunters of Dune and Sandworms of Dune
+# Covers the final conflict and Kralizec
+# Timeline: ~15280–15350 AG
+
+- id: no-ship-escape-chapterhouse
+  type: milestone
+  title: "No-Ship Escapes Chapterhouse"
+  subtitle: "Fleeing into the unknown"
+  description: "A no-ship carrying Sheeana, Duncan Idaho, Miles Teg ghola, and a sandworm escapes Chapterhouse, fleeing both the Honored Matres and a mysterious Enemy pulling them with a net."
+  date_start: 15280
+  date_precision: approximate
+  significance: 4
+  category: technological
+  tags: ["no-ship", "escape", "chapterhouse", "ithaca"]
+  factions: ["bene-gesserit"]
+  characters: ["sheeana", "duncan-idaho", "miles-teg"]
+  books:
+    - book_id: chapterhouse-dune-1985
+      notes: "Closing scene"
+    - book_id: hunters-of-dune-2006
+      notes: "Opening premise"
+
+- id: ghola-resurrections-on-ithaca
+  type: span
+  title: "Ghola Resurrections Aboard the Ithaca"
+  subtitle: "Legends reborn from Tleilaxu tanks"
+  description: "Using Tleilaxu axlotl technology aboard the no-ship Ithaca, the passengers grow gholas of Paul Atreides, Lady Jessica, Stilgar, Yueh, and other legendary figures."
+  date_start: 15285
+  date_end: 15320
+  date_precision: approximate
+  significance: 4
+  category: technological
+  tags: ["ghola", "axlotl-tanks", "ithaca", "resurrection"]
+  factions: ["bene-gesserit", "tleilaxu"]
+  characters: ["sheeana", "paul-atreides", "duncan-idaho"]
+  books:
+    - book_id: hunters-of-dune-2006
+      notes: "Major plot thread"
+
+- id: enemy-revealed-as-thinking-machines
+  type: milestone
+  title: "The Enemy Revealed"
+  subtitle: "Omnius and Erasmus return"
+  description: "The mysterious Enemy hunting the no-ship is revealed to be a resurgent thinking machine network led by the evermind Omnius and the independent robot Erasmus, who survived the Butlerian Jihad."
+  date_start: 15320
+  date_precision: approximate
+  significance: 5
+  category: technological
+  tags: ["omnius", "erasmus", "thinking-machines", "enemy-revealed"]
+  factions: ["thinking-machines"]
+  characters: ["omnius", "erasmus"]
+  books:
+    - book_id: hunters-of-dune-2006
+      notes: "Major revelation"
+    - book_id: sandworms-of-dune-2007
+
+- id: new-sisterhood-consolidates
+  type: point
+  title: "New Sisterhood Consolidates Power"
+  description: "Under Murbella's leadership, the merged Bene Gesserit and Honored Matres form the New Sisterhood, becoming the dominant political force in the Old Empire."
+  date_start: 15300
+  date_precision: approximate
+  significance: 3
+  category: political
+  tags: ["new-sisterhood", "murbella", "consolidation"]
+  factions: ["bene-gesserit", "honored-matres"]
+  characters: ["murbella"]
+  books:
+    - book_id: hunters-of-dune-2006
+    - book_id: sandworms-of-dune-2007
+
+- id: sandworms-of-dune-new-cycle
+  type: point
+  title: "Sandworms Planted on New Worlds"
+  subtitle: "The spice cycle reborn"
+  description: "Sandworms from the Ithaca's hold are seeded on new planets, ensuring the survival of the melange cycle and the ecological legacy of old Arrakis beyond any single world."
+  date_start: 15330
+  date_precision: approximate
+  significance: 3
+  category: ecological
+  tags: ["sandworms", "spice-cycle", "ecological-seeding"]
+  factions: ["bene-gesserit"]
+  characters: ["sheeana"]
+  books:
+    - book_id: sandworms-of-dune-2007
+
+- id: kralizec-final-battle
+  type: milestone
+  title: "Kralizec — The Final Battle"
+  subtitle: "The battle at the end of the universe"
+  description: "The prophesied Kralizec occurs as humanity and thinking machines clash in a final apocalyptic confrontation that determines the fate of all sentient life in the universe."
+  date_start: 15340
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["kralizec", "final-battle", "apocalypse", "prophecy"]
+  factions: ["bene-gesserit", "thinking-machines"]
+  characters: ["duncan-idaho", "omnius", "erasmus"]
+  books:
+    - book_id: sandworms-of-dune-2007
+      notes: "Climactic event"
+
+- id: duncan-idaho-ultimate-kwisatz-haderach
+  type: milestone
+  title: "Duncan Idaho Becomes the Ultimate Kwisatz Haderach"
+  subtitle: "The culmination of all genetic lines"
+  description: "Through millennia of ghola lives, Duncan Idaho achieves a transcendent state, becoming the ultimate Kwisatz Haderach who brokers peace between humans and machines."
+  date_start: 15340
+  date_precision: approximate
+  significance: 5
+  category: personal
+  tags: ["kwisatz-haderach", "transcendence", "human-machine-peace"]
+  factions: ["bene-gesserit"]
+  characters: ["duncan-idaho", "erasmus"]
+  books:
+    - book_id: sandworms-of-dune-2007
+      notes: "Series conclusion"
+
+- id: new-universe-begins
+  type: point
+  title: "A New Era Begins for Humanity and Machines"
+  description: "Following Kralizec, a new order emerges where humans and thinking machines coexist, fulfilling the ultimate purpose of the Golden Path and the Kwisatz Haderach."
+  date_start: 15350
+  date_precision: approximate
+  significance: 4
+  category: cultural
+  tags: ["new-era", "coexistence", "golden-path-fulfilled"]
+  factions: ["bene-gesserit", "thinking-machines"]
+  characters: ["duncan-idaho"]
+  books:
+    - book_id: sandworms-of-dune-2007
+      notes: "Epilogue"

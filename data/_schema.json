@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Dune Timeline Event",
+  "description": "Schema for timeline event data files",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "type", "title", "description", "date_start", "date_precision", "significance", "category", "books"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9][a-z0-9-]*[a-z0-9]$",
+        "description": "Unique kebab-case identifier"
+      },
+      "type": {
+        "type": "string",
+        "enum": ["point", "span", "milestone", "era", "arc"]
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100
+      },
+      "subtitle": {
+        "type": "string",
+        "maxLength": 150
+      },
+      "description": {
+        "type": "string",
+        "minLength": 10,
+        "maxLength": 500
+      },
+      "detailed": {
+        "type": "string"
+      },
+      "date_start": {
+        "type": "integer",
+        "description": "AG year (negative for BG)"
+      },
+      "date_end": {
+        "type": "integer",
+        "description": "AG year — required for span/era types"
+      },
+      "date_precision": {
+        "type": "string",
+        "enum": ["exact", "approximate", "estimated", "unknown"]
+      },
+      "significance": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 5
+      },
+      "category": {
+        "type": "string",
+        "enum": ["political", "military", "ecological", "religious", "technological", "personal", "cultural"]
+      },
+      "tags": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "factions": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "characters": {
+        "type": "array",
+        "items": { "type": "string" },
+        "default": []
+      },
+      "books": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["book_id"],
+          "properties": {
+            "book_id": { "type": "string" },
+            "chapters": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "notes": { "type": "string" }
+          },
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "color": { "type": "string", "pattern": "^#[0-9a-fA-F]{6}$" },
+      "icon": { "type": "string" },
+      "lane": { "type": "string" },
+      "nesting_level": { "type": "integer", "minimum": 0 },
+      "parent_era": { "type": ["string", "null"] },
+      "arc_events": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "additionalProperties": false,
+    "allOf": [
+      {
+        "if": {
+          "properties": { "type": { "enum": ["span", "era"] } }
+        },
+        "then": {
+          "required": ["date_end"]
+        }
+      },
+      {
+        "if": {
+          "properties": { "type": { "const": "era" } }
+        },
+        "then": {
+          "required": ["nesting_level", "parent_era"]
+        }
+      },
+      {
+        "if": {
+          "properties": { "type": { "const": "arc" } }
+        },
+        "then": {
+          "required": ["arc_events"]
+        }
+      }
+    ]
+  }
+}

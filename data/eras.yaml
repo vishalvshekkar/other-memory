@@ -1,0 +1,241 @@
+# Major eras/epochs of the Dune universe
+# These render as background bands on the timeline
+#
+# Nesting: level 0 = top-level era, level 1 = sub-era within a parent, etc.
+# Events with date_precision "unknown" are placed within their parent era.
+
+# --- Pre-Guild History ---
+
+- id: time-of-titans
+  type: era
+  title: "Time of Titans"
+  description: "The era when cymek Titans seized control of the Old Empire, paving the way for thinking machine dominance."
+  date_start: -1500
+  date_end: -500
+  date_precision: estimated
+  significance: 4
+  category: technological
+  tags: ["cymeks", "titans", "old-empire"]
+  factions: ["thinking-machines"]
+  characters: []
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Historical backdrop"
+  nesting_level: 0
+  parent_era: null
+
+- id: synchronized-empire
+  type: era
+  title: "Synchronized Empire"
+  description: "Period of thinking machine rule under Omnius across the Synchronized Worlds."
+  date_start: -500
+  date_end: -200
+  date_precision: estimated
+  significance: 4
+  category: technological
+  tags: ["omnius", "synchronized-worlds", "machine-rule"]
+  factions: ["thinking-machines"]
+  characters: []
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Primary setting backdrop"
+  nesting_level: 0
+  parent_era: null
+
+- id: butlerian-jihad-era
+  type: era
+  title: "Butlerian Jihad"
+  description: "The great crusade of humanity against the thinking machines, lasting over a century. Defined the future prohibition against machine intelligence."
+  date_start: -200
+  date_end: -88
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["jihad", "crusade", "great-revolt"]
+  factions: ["thinking-machines"]
+  characters: []
+  books:
+    - book_id: butlerian-jihad-2002
+    - book_id: machine-crusade-2003
+    - book_id: battle-of-corrin-2004
+  nesting_level: 0
+  parent_era: null
+
+# --- Post-Jihad / Formation Period ---
+
+- id: great-convention-era
+  type: era
+  title: "Era of the Great Convention"
+  description: "The period following the Butlerian Jihad when the major institutions of the Imperium were established — the Spacing Guild, CHOAM, the Landsraad, and the Great Houses."
+  date_start: -88
+  date_end: 500
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["great-convention", "formation", "faufreluches"]
+  factions: ["corrino", "spacing-guild", "bene-gesserit", "choam"]
+  characters: []
+  books:
+    - book_id: battle-of-corrin-2004
+      notes: "Conclusion covers the founding"
+    - book_id: sisterhood-of-dune-2012
+    - book_id: mentats-of-dune-2014
+    - book_id: navigators-of-dune-2016
+  nesting_level: 0
+  parent_era: null
+
+# --- Corrino Empire ---
+
+- id: corrino-empire
+  type: era
+  title: "Corrino Empire"
+  description: "Ten millennia of Imperial rule by House Corrino from the Golden Lion Throne on Kaitain. The longest stable political period in the Imperium."
+  date_start: -88
+  date_end: 10196
+  date_precision: approximate
+  significance: 5
+  category: political
+  tags: ["imperium", "golden-lion-throne", "kaitain"]
+  factions: ["corrino", "sardaukar"]
+  characters: []
+  books:
+    - book_id: dune-1965
+      notes: "End of the Corrino Empire"
+  nesting_level: 0
+  parent_era: null
+
+- id: reign-of-shaddam-iv
+  type: era
+  title: "Reign of Shaddam IV"
+  description: "The final Corrino emperor, whose machinations against House Atreides led to the fall of his dynasty."
+  date_start: 10156
+  date_end: 10196
+  date_precision: exact
+  significance: 4
+  category: political
+  tags: ["shaddam-iv", "last-emperor"]
+  factions: ["corrino", "sardaukar"]
+  characters: ["shaddam-iv"]
+  books:
+    - book_id: dune-1965
+    - book_id: house-harkonnen-2000
+    - book_id: house-corrino-2001
+  nesting_level: 1
+  parent_era: corrino-empire
+
+# --- Atreides Era ---
+
+- id: atreides-empire
+  type: era
+  title: "Atreides Empire"
+  description: "The period of Atreides rule over the Known Universe, beginning with Paul's ascension and ending with Leto II's death."
+  date_start: 10193
+  date_end: 13728
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["atreides-rule", "arrakis-throne"]
+  factions: ["atreides", "fremen"]
+  characters: ["paul-atreides", "leto-ii"]
+  books:
+    - book_id: dune-1965
+    - book_id: dune-messiah-1969
+    - book_id: children-of-dune-1976
+    - book_id: god-emperor-of-dune-1981
+  nesting_level: 0
+  parent_era: null
+
+- id: muad-dib-reign
+  type: era
+  title: "Reign of Muad'Dib"
+  description: "Paul Atreides' rule as Emperor, including his jihad across the universe."
+  date_start: 10193
+  date_end: 10209
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["muad-dib", "paul-emperor", "fremen-jihad"]
+  factions: ["atreides", "fremen"]
+  characters: ["paul-atreides"]
+  books:
+    - book_id: dune-1965
+    - book_id: dune-messiah-1969
+    - book_id: paul-of-dune-2008
+  nesting_level: 1
+  parent_era: atreides-empire
+
+- id: regency-of-alia
+  type: era
+  title: "Regency of Alia"
+  description: "Alia Atreides serves as regent after Paul walks into the desert, before Leto II and Ghanima come of age."
+  date_start: 10209
+  date_end: 10219
+  date_precision: exact
+  significance: 3
+  category: political
+  tags: ["alia", "regency", "abomination"]
+  factions: ["atreides"]
+  characters: ["alia-atreides", "leto-ii", "ghanima-atreides"]
+  books:
+    - book_id: children-of-dune-1976
+  nesting_level: 1
+  parent_era: atreides-empire
+
+- id: god-emperor-era
+  type: era
+  title: "God Emperor's Reign"
+  description: "Leto II's 3,500-year tyrannical rule as the God Emperor, enforcing the Golden Path to ensure humanity's survival."
+  date_start: 10219
+  date_end: 13728
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["god-emperor", "golden-path", "leto-tyranny", "sandtrout"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+  nesting_level: 1
+  parent_era: atreides-empire
+
+# --- The Scattering ---
+
+- id: the-scattering
+  type: era
+  title: "The Scattering"
+  description: "After Leto II's death, humanity explodes outward into the unknown universe. A diaspora lasting 1,500+ years."
+  date_start: 13728
+  date_end: 15228
+  date_precision: approximate
+  significance: 5
+  category: cultural
+  tags: ["famine-times", "diaspora", "expansion"]
+  factions: []
+  characters: []
+  books:
+    - book_id: heretics-of-dune-1984
+      notes: "Aftermath/consequences"
+  nesting_level: 0
+  parent_era: null
+
+# --- Return & Kralizec ---
+
+- id: return-from-scattering
+  type: era
+  title: "Return from the Scattering"
+  description: "People and factions begin returning from the Scattering, including the Honored Matres, leading to conflict and eventually Kralizec."
+  date_start: 15228
+  date_end: 15350
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["return", "honored-matres", "kralizec"]
+  factions: ["bene-gesserit", "honored-matres", "tleilaxu"]
+  characters: []
+  books:
+    - book_id: heretics-of-dune-1984
+    - book_id: chapterhouse-dune-1985
+    - book_id: hunters-of-dune-2006
+    - book_id: sandworms-of-dune-2007
+  nesting_level: 0
+  parent_era: null

@@ -1,0 +1,36 @@
+# Event categories — control visual theming and lane grouping
+
+- id: political
+  label: Political
+  color: "#c4a435"
+  description: Governance, dynasties, power shifts, treaties, succession
+
+- id: military
+  label: Military
+  color: "#b83a3a"
+  description: Battles, wars, conquests, military campaigns
+
+- id: ecological
+  label: Ecological
+  color: "#2a9d6e"
+  description: Planetary changes, spice cycle, sandworm activity, terraforming
+
+- id: religious
+  label: Religious
+  color: "#7b4db5"
+  description: Bene Gesserit, Zensunni, Orange Catholic Bible, prophecy, Missionaria Protectiva
+
+- id: technological
+  label: Technological
+  color: "#4a8db5"
+  description: Thinking machines, inventions, the Butlerian prohibition, navigation
+
+- id: personal
+  label: Personal
+  color: "#d4c5a9"
+  description: Births, deaths, marriages, personal milestones, character moments
+
+- id: cultural
+  label: Cultural
+  color: "#c47a35"
+  description: Social changes, traditions, Fremen customs, artistic works

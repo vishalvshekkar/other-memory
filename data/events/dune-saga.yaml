@@ -1,0 +1,206 @@
+# Events from Frank Herbert's original Dune hexalogy
+# This file covers the core saga: Dune through Chapterhouse: Dune
+#
+# Note: This is a starter set. Many more events should be added.
+# See CONTRIBUTING.md for guidelines.
+
+# === Dune (10,191 AG) ===
+
+- id: leto-i-death
+  type: milestone
+  title: "Death of Duke Leto Atreides"
+  subtitle: "The Harkonnen trap on Arrakis"
+  description: "Duke Leto Atreides is killed in the Harkonnen-Sardaukar attack on Arrakeen, betrayed by Dr. Wellington Yueh."
+  detailed: |
+    The attack on House Atreides was orchestrated by Baron Vladimir Harkonnen with
+    the secret backing of Emperor Shaddam IV's Sardaukar troops. Dr. Yueh, the Atreides
+    Suk doctor, disabled the house shields in exchange for the promise of his wife's
+    release. Leto died attempting to assassinate the Baron with a poison tooth.
+  date_start: 10191
+  date_precision: exact
+  significance: 5
+  category: military
+  tags: ["arrakeen", "betrayal", "harkonnen-attack"]
+  factions: ["atreides", "harkonnen", "corrino", "sardaukar"]
+  characters: ["leto-i-atreides", "baron-harkonnen", "wellington-yueh"]
+  books:
+    - book_id: dune-1965
+      chapters: ["Book One"]
+      notes: "Central event"
+
+- id: paul-fremen-acceptance
+  type: point
+  title: "Paul Accepted by Fremen"
+  subtitle: "Muad'Dib is born"
+  description: "Paul Atreides and Jessica are accepted into Sietch Tabr. Paul takes the name Muad'Dib."
+  date_start: 10191
+  date_precision: exact
+  significance: 4
+  category: cultural
+  tags: ["sietch-tabr", "muad-dib", "fremen-ways"]
+  factions: ["atreides", "fremen"]
+  characters: ["paul-atreides", "jessica-atreides", "stilgar"]
+  books:
+    - book_id: dune-1965
+      chapters: ["Book Two"]
+
+- id: paul-rides-sandworm
+  type: point
+  title: "Paul Rides the Sandworm"
+  subtitle: "Proving himself to the Fremen"
+  description: "Paul successfully rides a sandworm for the first time, cementing his status among the Fremen."
+  date_start: 10192
+  date_precision: approximate
+  significance: 3
+  category: personal
+  tags: ["sandworm", "maker", "fremen-rite"]
+  factions: ["fremen"]
+  characters: ["paul-atreides"]
+  books:
+    - book_id: dune-1965
+      chapters: ["Book Two"]
+
+- id: battle-of-arrakeen
+  type: milestone
+  title: "Battle of Arrakeen"
+  subtitle: "Paul seizes the Imperial throne"
+  description: "Paul Atreides leads the Fremen against the Harkonnen and Sardaukar forces, defeats Emperor Shaddam IV, and claims the Imperial throne."
+  detailed: |
+    The battle was decided when Paul threatened to destroy all spice production on
+    Arrakis using the Water of Death. With Alia having killed Baron Harkonnen and the
+    Sardaukar routed by Fremen warriors, Shaddam IV was forced to abdicate. Paul
+    ascended as Emperor by right of combat and marriage to Princess Irulan.
+  date_start: 10193
+  date_precision: exact
+  significance: 5
+  category: military
+  tags: ["arrakeen", "fremen-assault", "imperial-succession"]
+  factions: ["atreides", "fremen", "harkonnen", "corrino", "sardaukar"]
+  characters: ["paul-atreides", "alia-atreides", "shaddam-iv", "baron-harkonnen", "stilgar"]
+  books:
+    - book_id: dune-1965
+      chapters: ["Book Three"]
+      notes: "Climactic battle"
+
+# === Dune Messiah (10,193-10,209 AG) ===
+
+- id: muad-dib-jihad
+  type: span
+  title: "Muad'Dib's Jihad"
+  subtitle: "The holy war that conquered the universe"
+  description: "Paul's Fremen armies wage a devastating jihad across the Known Universe, killing billions and bringing all worlds under Atreides rule."
+  date_start: 10193
+  date_end: 10198
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["jihad", "fremen-armies", "galactic-conquest"]
+  factions: ["atreides", "fremen"]
+  characters: ["paul-atreides", "stilgar"]
+  books:
+    - book_id: dune-messiah-1969
+      notes: "Referenced as recent history"
+    - book_id: paul-of-dune-2008
+      notes: "Depicted in detail"
+
+- id: paul-blinded
+  type: point
+  title: "Paul Blinded by Stone Burner"
+  description: "A stone burner detonation blinds Paul physically, though he continues to 'see' through prescient vision."
+  date_start: 10208
+  date_precision: exact
+  significance: 4
+  category: personal
+  tags: ["stone-burner", "blindness", "prescience"]
+  factions: ["atreides", "tleilaxu"]
+  characters: ["paul-atreides"]
+  books:
+    - book_id: dune-messiah-1969
+
+- id: paul-walks-into-desert
+  type: milestone
+  title: "Paul Walks into the Desert"
+  subtitle: "The blind Fremen custom"
+  description: "After the death of Chani in childbirth, Paul follows the blind Fremen tradition and walks into the desert, leaving his twin children Leto and Ghanima."
+  date_start: 10209
+  date_precision: exact
+  significance: 5
+  category: personal
+  tags: ["desert-walk", "fremen-tradition", "abdication"]
+  factions: ["atreides", "fremen"]
+  characters: ["paul-atreides", "chani"]
+  books:
+    - book_id: dune-messiah-1969
+      chapters: ["Final chapters"]
+
+# === Children of Dune (10,209-10,219 AG) ===
+
+- id: leto-ii-sandtrout-skin
+  type: milestone
+  title: "Leto II Takes the Sandtrout Skin"
+  subtitle: "Beginning of the transformation"
+  description: "Young Leto II allows sandtrout to cover his body, beginning his transformation into a human-sandworm hybrid and setting himself on the Golden Path."
+  date_start: 10219
+  date_precision: exact
+  significance: 5
+  category: personal
+  tags: ["sandtrout", "golden-path", "transformation"]
+  factions: ["atreides"]
+  characters: ["leto-ii"]
+  books:
+    - book_id: children-of-dune-1976
+
+# === God Emperor of Dune (13,728 AG) ===
+
+- id: leto-ii-death
+  type: milestone
+  title: "Death of the God Emperor"
+  subtitle: "Leto II's 3,500-year reign ends"
+  description: "Leto II is assassinated, plunging into the Idaho River. His death triggers the Scattering — humanity's diaspora into the unknown universe, as he planned."
+  detailed: |
+    Leto II orchestrated his own assassination as the final act of the Golden Path.
+    His death released the sandtrout from his body, beginning the restoration of
+    Arrakis' desert ecosystem. The Famine Times that followed drove humanity to
+    scatter across the universe, ensuring the species could never be trapped or
+    destroyed by a single prescient predator.
+  date_start: 13728
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["golden-path", "assassination", "famine-times"]
+  factions: ["atreides"]
+  characters: ["leto-ii", "siona-atreides", "duncan-idaho"]
+  books:
+    - book_id: god-emperor-of-dune-1981
+
+# === Heretics of Dune (15,228+ AG) ===
+
+- id: teg-gammu-battle
+  type: point
+  title: "Miles Teg's Stand on Gammu"
+  description: "Bashar Miles Teg uses his extraordinary abilities to defeat Honored Matre forces on Gammu, sacrificing himself."
+  date_start: 15240
+  date_precision: approximate
+  significance: 3
+  category: military
+  tags: ["gammu", "honored-matres", "bashar"]
+  factions: ["bene-gesserit", "honored-matres"]
+  characters: ["miles-teg"]
+  books:
+    - book_id: heretics-of-dune-1984
+
+# === Chapterhouse: Dune (15,270+ AG) ===
+
+- id: honored-matres-attack-chapterhouse
+  type: point
+  title: "Honored Matres Threaten Chapterhouse"
+  description: "The Honored Matres escalate their war against the Bene Gesserit, threatening the Chapterhouse planet itself."
+  date_start: 15275
+  date_precision: approximate
+  significance: 4
+  category: military
+  tags: ["chapterhouse", "honored-matres", "bene-gesserit-war"]
+  factions: ["bene-gesserit", "honored-matres"]
+  characters: ["darwi-odrade", "murbella"]
+  books:
+    - book_id: chapterhouse-dune-1985

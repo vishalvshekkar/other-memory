@@ -1,0 +1,18 @@
+# Calendar configuration for the Dune Timeline
+#
+# The Dune universe uses AG (After Guild) as its primary calendar.
+# AG 0 = the founding of the Spacing Guild.
+# The exact mapping to CE (Common Era) is debated in Dune scholarship.
+# We use 11,200 CE as the approximate mapping (adjustable).
+
+calendar:
+  ag_zero_ce_year: 11200
+
+  display_calendars:
+    - id: ag
+      label: "AG (After Guild)"
+      primary: true
+
+    - id: ce
+      label: "CE (Common Era)"
+      primary: false

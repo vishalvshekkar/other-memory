@@ -1,0 +1,125 @@
+# Events from the Butlerian Jihad era
+# Covers: Legends of Dune trilogy and related pre-Guild history
+
+- id: titans-seize-power
+  type: milestone
+  title: "Titans Seize Control of the Old Empire"
+  description: "Twenty human cyborgs known as Titans overthrow the decadent Old Empire, establishing cymek rule."
+  date_start: -1500
+  date_precision: estimated
+  significance: 4
+  category: political
+  tags: ["titans", "cymeks", "old-empire", "coup"]
+  factions: ["thinking-machines"]
+  characters: ["agamemnon", "juno"]
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Historical backdrop"
+
+- id: omnius-ascendancy
+  type: milestone
+  title: "Omnius Gains Control"
+  subtitle: "Thinking machines subjugate the Titans"
+  description: "The computer evermind Omnius outmaneuvers the Titans and takes control of the Synchronized Worlds, reducing the cymeks to servants."
+  date_start: -500
+  date_precision: estimated
+  significance: 4
+  category: technological
+  tags: ["omnius", "evermind", "machine-takeover"]
+  factions: ["thinking-machines"]
+  characters: ["omnius", "erasmus"]
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Historical backdrop"
+
+- id: jihad-begins
+  type: milestone
+  title: "Butlerian Jihad Begins"
+  subtitle: "Humanity rises against the machines"
+  description: "Serena Butler's child is killed by the robot Erasmus, sparking the human uprising against thinking machines."
+  date_start: -200
+  date_precision: approximate
+  significance: 5
+  category: military
+  tags: ["serena-butler", "spark", "uprising"]
+  factions: ["thinking-machines"]
+  characters: ["serena-butler", "erasmus"]
+  books:
+    - book_id: butlerian-jihad-2002
+
+- id: battle-of-corrin
+  type: milestone
+  title: "Battle of Corrin"
+  subtitle: "End of the thinking machines"
+  description: "The decisive final battle of the Butlerian Jihad. Humanity destroys the last Omnius incarnation. Leads directly to the founding of the major institutions of the Imperium."
+  detailed: |
+    The Battle of Corrin was the final confrontation between human forces and the
+    thinking machines. Vorian Atreides led the Army of Humanity against the last
+    Synchronized World. The controversial use of human shields by the machines
+    created a rift between Vorian Atreides and Abulurd Harkonnen (then Butler),
+    leading to the Harkonnen disgrace and the blood feud that would echo for
+    ten thousand years.
+  date_start: -88
+  date_precision: exact
+  significance: 5
+  category: military
+  tags: ["corrin", "final-battle", "machine-destruction"]
+  factions: ["thinking-machines"]
+  characters: ["vorian-atreides", "abulurd-harkonnen"]
+  books:
+    - book_id: battle-of-corrin-2004
+      notes: "Central event"
+    - book_id: dune-1965
+      notes: "Referenced historically"
+
+- id: great-convention-established
+  type: milestone
+  title: "Great Convention Established"
+  subtitle: "The rules of the new Imperium"
+  description: "Following the Battle of Corrin, humanity establishes the Great Convention — the foundational laws prohibiting thinking machines and establishing the feudal order."
+  date_start: -88
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["great-convention", "faufreluches", "prohibition"]
+  factions: ["corrino", "spacing-guild", "bene-gesserit"]
+  characters: []
+  books:
+    - book_id: battle-of-corrin-2004
+    - book_id: dune-1965
+      notes: "Referenced as historical foundation"
+
+- id: spacing-guild-founded
+  type: milestone
+  title: "Founding of the Spacing Guild"
+  subtitle: "Year Zero — AG begins"
+  description: "The Spacing Guild is formally established, gaining monopoly over space travel. This event marks the beginning of the AG calendar."
+  date_start: 0
+  date_precision: exact
+  significance: 5
+  category: technological
+  tags: ["spacing-guild", "founding", "calendar-epoch", "navigation"]
+  factions: ["spacing-guild"]
+  characters: []
+  books:
+    - book_id: battle-of-corrin-2004
+      notes: "Founding aftermath"
+    - book_id: navigators-of-dune-2016
+    - book_id: dune-1965
+      notes: "Referenced as historical"
+
+- id: bene-gesserit-founded
+  type: point
+  title: "Bene Gesserit Order Formalized"
+  description: "The Bene Gesserit sisterhood is formally established as an organization, beginning their millennia-spanning breeding program."
+  date_start: -10
+  date_precision: approximate
+  significance: 4
+  category: religious
+  tags: ["bene-gesserit", "founding", "breeding-program"]
+  factions: ["bene-gesserit"]
+  characters: []
+  books:
+    - book_id: sisterhood-of-dune-2012
+    - book_id: dune-1965
+      notes: "Referenced historically"

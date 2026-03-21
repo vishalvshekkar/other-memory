@@ -1,0 +1,185 @@
+# Events from the Prelude to Dune trilogy
+# Covers: House Atreides, House Harkonnen, House Corrino
+# Timeline: ~10140–10191 AG
+
+# === House Atreides (10,140–10,156 AG) ===
+
+- id: paulus-atreides-bullfight-death
+  type: milestone
+  title: "Death of Old Duke Paulus Atreides"
+  subtitle: "The bull that killed a duke"
+  description: "Old Duke Paulus Atreides is killed by a Salusan bull during a corrida on Caladan, an event secretly arranged by the Harkonnens. Young Leto inherits the ducal ring."
+  date_start: 10140
+  date_precision: approximate
+  significance: 4
+  category: personal
+  tags: ["caladan", "salusan-bull", "assassination", "ducal-succession"]
+  factions: ["atreides", "harkonnen"]
+  characters: ["paulus-atreides", "leto-i-atreides"]
+  books:
+    - book_id: house-atreides-1999
+      notes: "Opening events"
+
+- id: leto-becomes-duke
+  type: milestone
+  title: "Leto Atreides Becomes Duke"
+  subtitle: "A young duke inherits Caladan"
+  description: "Leto Atreides assumes leadership of House Atreides as Duke of Caladan following his father's death, beginning his rise as a respected leader in the Landsraad."
+  date_start: 10140
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["caladan", "ducal-succession", "landsraad"]
+  factions: ["atreides"]
+  characters: ["leto-i-atreides"]
+  books:
+    - book_id: house-atreides-1999
+
+- id: shaddam-fenring-conspiracy
+  type: point
+  title: "Shaddam and Fenring Plot Against Elrood IX"
+  description: "Crown Prince Shaddam Corrino and Count Hasimir Fenring conspire to slowly poison Emperor Elrood IX, accelerating Shaddam's path to the Golden Lion Throne."
+  date_start: 10143
+  date_precision: approximate
+  significance: 3
+  category: political
+  tags: ["corrino-succession", "poison", "conspiracy"]
+  factions: ["corrino"]
+  characters: ["shaddam-iv", "hasimir-fenring", "elrood-ix"]
+  books:
+    - book_id: house-atreides-1999
+      notes: "Major subplot"
+
+- id: tleilaxu-master-amal
+  type: point
+  title: "Tleilaxu Develop Synthetic Spice (Amal)"
+  description: "The Bene Tleilax secretly develop a synthetic melange substitute called amal, threatening the economic foundation of the Imperium and Arrakis's importance."
+  date_start: 10145
+  date_precision: approximate
+  significance: 3
+  category: technological
+  tags: ["amal", "synthetic-spice", "melange"]
+  factions: ["tleilaxu"]
+  characters: []
+  books:
+    - book_id: house-atreides-1999
+      notes: "Key technological subplot"
+
+- id: leto-visits-ix
+  type: point
+  title: "Leto Visits Ix During Tleilaxu Takeover"
+  description: "Young Duke Leto witnesses the Tleilaxu invasion and takeover of the technology planet Ix, forging a lifelong bond with Prince Rhombur Vernius."
+  date_start: 10144
+  date_precision: approximate
+  significance: 3
+  category: political
+  tags: ["ix", "tleilaxu-invasion", "vernius"]
+  factions: ["atreides", "tleilaxu", "ixians"]
+  characters: ["leto-i-atreides", "rhombur-vernius"]
+  books:
+    - book_id: house-atreides-1999
+
+# === House Harkonnen (10,156–10,175 AG) ===
+
+- id: shaddam-iv-coronation
+  type: milestone
+  title: "Coronation of Emperor Shaddam IV"
+  description: "Shaddam Corrino IV ascends to the Golden Lion Throne after the death of his father Elrood IX, beginning the final era of Corrino rule."
+  date_start: 10156
+  date_precision: exact
+  significance: 4
+  category: political
+  tags: ["coronation", "golden-lion-throne", "kaitain"]
+  factions: ["corrino"]
+  characters: ["shaddam-iv"]
+  books:
+    - book_id: house-atreides-1999
+      notes: "Culminating event"
+    - book_id: house-harkonnen-2000
+      notes: "Opening backdrop"
+
+- id: harkonnen-arrakis-brutality
+  type: span
+  title: "Harkonnen Oppression of Arrakis"
+  subtitle: "Decades of brutality on the desert planet"
+  description: "Baron Vladimir Harkonnen rules Arrakis with extreme cruelty, maximizing spice production through slave labor and brutal suppression of the Fremen."
+  date_start: 10140
+  date_end: 10175
+  date_precision: approximate
+  significance: 3
+  category: political
+  tags: ["arrakis", "oppression", "spice-production", "fremen-persecution"]
+  factions: ["harkonnen", "fremen"]
+  characters: ["baron-harkonnen", "glossu-rabban"]
+  books:
+    - book_id: house-harkonnen-2000
+      notes: "Primary depiction"
+
+- id: jessica-bene-gesserit-training
+  type: span
+  title: "Jessica's Bene Gesserit Training"
+  subtitle: "A sister with a secret lineage"
+  description: "Jessica undergoes rigorous Bene Gesserit training on Wallach IX, unaware that she is the secret daughter of Baron Harkonnen. She is assigned as concubine to Duke Leto."
+  date_start: 10154
+  date_end: 10165
+  date_precision: approximate
+  significance: 3
+  category: personal
+  tags: ["wallach-ix", "bene-gesserit-training", "concubine"]
+  factions: ["bene-gesserit", "atreides"]
+  characters: ["jessica-atreides", "gaius-helen-mohiam"]
+  books:
+    - book_id: house-harkonnen-2000
+    - book_id: house-atreides-1999
+      notes: "Early training referenced"
+
+- id: duncan-idaho-escapes-harkonnens
+  type: point
+  title: "Duncan Idaho Escapes Giedi Prime"
+  subtitle: "A future swordmaster finds his house"
+  description: "Young Duncan Idaho escapes Harkonnen captivity on Giedi Prime and is taken in by House Atreides on Caladan, beginning his legendary service to the Atreides."
+  date_start: 10153
+  date_precision: approximate
+  significance: 3
+  category: personal
+  tags: ["giedi-prime", "caladan", "escape", "loyalty"]
+  factions: ["atreides", "harkonnen"]
+  characters: ["duncan-idaho", "leto-i-atreides"]
+  books:
+    - book_id: house-harkonnen-2000
+
+# === House Corrino (10,175–10,191 AG) ===
+
+- id: baron-harkonnen-plots-atreides-destruction
+  type: point
+  title: "Baron Harkonnen's Plot Against House Atreides"
+  subtitle: "Seeds of the Arrakis trap"
+  description: "Baron Vladimir Harkonnen finalizes his elaborate scheme with Emperor Shaddam IV to destroy House Atreides by luring them to Arrakis with a fief change."
+  date_start: 10185
+  date_precision: approximate
+  significance: 4
+  category: political
+  tags: ["conspiracy", "arrakis-trap", "fief-change"]
+  factions: ["harkonnen", "corrino"]
+  characters: ["baron-harkonnen", "shaddam-iv", "piter-de-vries"]
+  books:
+    - book_id: house-corrino-2001
+      notes: "Central plot"
+
+- id: atreides-move-to-arrakis
+  type: milestone
+  title: "House Atreides Moves to Arrakis"
+  subtitle: "The fief change that changed everything"
+  description: "Emperor Shaddam IV orders the transfer of the Arrakis fief from House Harkonnen to House Atreides. The Atreides depart Caladan for the desert planet."
+  date_start: 10191
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["fief-change", "arrakis", "caladan", "imperial-decree"]
+  factions: ["atreides", "corrino", "harkonnen"]
+  characters: ["leto-i-atreides", "jessica-atreides", "paul-atreides", "shaddam-iv"]
+  books:
+    - book_id: house-corrino-2001
+      notes: "Culminating event"
+    - book_id: dune-1965
+      notes: "Opening event"

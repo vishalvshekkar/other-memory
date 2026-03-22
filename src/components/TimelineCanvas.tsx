@@ -34,6 +34,7 @@ interface TimelineCanvasProps {
   ceAnchorExpanded?: number;
   ceAnchorEncyclopedia?: number;
   showMediaBands?: boolean;
+  interactionDisabled?: boolean;
 }
 
 export function TimelineCanvas({
@@ -51,6 +52,7 @@ export function TimelineCanvas({
   ceAnchorExpanded = 13160,
   ceAnchorEncyclopedia = 16200,
   showMediaBands = true,
+  interactionDisabled = false,
 }: TimelineCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -65,6 +67,10 @@ export function TimelineCanvas({
   cameraRef.current = camera;
   const onCameraChangeRef = useRef(onCameraChange);
   onCameraChangeRef.current = onCameraChange;
+
+  // ─── Pinch-to-zoom state ───
+  const activePointers = useRef(new Map<number, { x: number; y: number }>());
+  const lastPinchDist = useRef<number | null>(null);
 
   // ─── Render Loop ───
 
@@ -172,6 +178,7 @@ export function TimelineCanvas({
     if (!canvas) return;
 
     const handleWheel = (e: WheelEvent) => {
+      if (interactionDisabled || isDragging.current) return;
       e.preventDefault();
 
       const rect = canvas.getBoundingClientRect();
@@ -211,25 +218,63 @@ export function TimelineCanvas({
 
     canvas.addEventListener("wheel", handleWheel, { passive: false });
     return () => canvas.removeEventListener("wheel", handleWheel);
-  }, []);
+  }, [interactionDisabled]);
 
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
+      if (interactionDisabled) return;
+
       // Cancel any active momentum
       cancelMomentumRef.current?.();
       cancelMomentumRef.current = null;
       momentumRef.current.cancel();
 
-      isDragging.current = true;
-      hasDragged.current = false;
-      dragStart.current = { x: e.clientX, y: e.clientY };
+      // Track this pointer
+      activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
       (e.target as HTMLElement).setPointerCapture(e.pointerId);
+
+      if (activePointers.current.size === 1) {
+        // Single pointer — start drag
+        isDragging.current = true;
+        hasDragged.current = false;
+        dragStart.current = { x: e.clientX, y: e.clientY };
+      } else if (activePointers.current.size >= 2) {
+        // Second pointer — switch to pinch mode, cancel drag
+        isDragging.current = false;
+        const pts = [...activePointers.current.values()];
+        lastPinchDist.current = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+      }
     },
-    [],
+    [interactionDisabled],
   );
 
   const handlePointerMove = useCallback(
     (e: React.PointerEvent) => {
+      if (interactionDisabled) return;
+
+      // Update tracked pointer position
+      if (activePointers.current.has(e.pointerId)) {
+        activePointers.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+      }
+
+      // ─── Pinch-to-zoom (two pointers active) ───
+      if (activePointers.current.size >= 2 && lastPinchDist.current !== null) {
+        const pts = [...activePointers.current.values()];
+        const dist = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+        const factor = dist / lastPinchDist.current;
+
+        if (factor !== 1) {
+          const rect = canvasRef.current?.getBoundingClientRect();
+          if (rect) {
+            const midX = (pts[0].x + pts[1].x) / 2 - rect.left;
+            onCameraChange(zoomAtPoint(camera, midX, factor, rect.width));
+          }
+          lastPinchDist.current = dist;
+        }
+        return;
+      }
+
+      // ─── Single-pointer drag ───
       const { x, y } = getCanvasCoords(e as unknown as React.MouseEvent);
 
       if (isDragging.current) {
@@ -237,7 +282,7 @@ export function TimelineCanvas({
         if (Math.abs(dx) > 2) hasDragged.current = true;
         dragStart.current = { x: e.clientX, y: e.clientY };
         momentumRef.current.push(dx);
-        onCameraChange(cameraPan(camera, -dx));
+        onCameraChange(cameraPan(camera, dx));
         return;
       }
 
@@ -250,11 +295,30 @@ export function TimelineCanvas({
         onHoverPosition(null);
       }
     },
-    [camera, onCameraChange, hitTest, onHoverEvent, onHoverPosition, getCanvasCoords],
+    [camera, onCameraChange, hitTest, onHoverEvent, onHoverPosition, getCanvasCoords, interactionDisabled],
   );
 
   const handlePointerUp = useCallback(
     (e: React.PointerEvent) => {
+      activePointers.current.delete(e.pointerId);
+
+      // If we still have pointers, recalculate pinch baseline
+      if (activePointers.current.size >= 2) {
+        const pts = [...activePointers.current.values()];
+        lastPinchDist.current = Math.hypot(pts[1].x - pts[0].x, pts[1].y - pts[0].y);
+        return;
+      }
+
+      // Reset pinch state when fewer than 2 pointers
+      if (activePointers.current.size < 2) {
+        lastPinchDist.current = null;
+      }
+
+      // Last pointer lifted — was a pinch gesture, skip click/momentum
+      if (activePointers.current.size === 0 && !isDragging.current && hasDragged.current) {
+        return;
+      }
+
       isDragging.current = false;
 
       // If it was a click (not a drag), do hit test for selection
@@ -266,22 +330,36 @@ export function TimelineCanvas({
         // Start momentum panning
         cancelMomentumRef.current = momentumRef.current.startMomentum(
           (deltaPixels) => {
-            onCameraChange(cameraPan(camera, deltaPixels));
+            onCameraChangeRef.current(cameraPan(cameraRef.current, deltaPixels));
           },
         );
       }
     },
-    [hitTest, onSelectEvent, getCanvasCoords, camera, onCameraChange],
+    [hitTest, onSelectEvent, getCanvasCoords],
   );
 
+  const handlePointerCancel = useCallback((e: React.PointerEvent) => {
+    activePointers.current.delete(e.pointerId);
+    if (activePointers.current.size < 2) {
+      lastPinchDist.current = null;
+    }
+    if (activePointers.current.size === 0) {
+      isDragging.current = false;
+    }
+  }, []);
+
   return (
-    <div ref={containerRef} className="flex-1 relative overflow-hidden cursor-grab active:cursor-grabbing">
+    <div
+      ref={containerRef}
+      className={`flex-1 relative overflow-hidden ${interactionDisabled ? "pointer-events-none" : "cursor-grab active:cursor-grabbing"}`}
+    >
       <canvas
         ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full touch-none"
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}
+        onPointerCancel={handlePointerCancel}
       />
     </div>
   );

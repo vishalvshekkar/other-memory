@@ -103,7 +103,7 @@ export class MomentumTracker {
 
       if (Math.abs(currentVelocity) < 0.01) return;
 
-      onPan(-dx);
+      onPan(dx);
       this.rafId = requestAnimationFrame(tick);
     };
 

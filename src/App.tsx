@@ -215,15 +215,15 @@ function TimelineApp() {
   // ─── Render ───
 
   return (
-    <div className="h-screen w-screen flex flex-col bg-[#0a0a0f]">
+    <div className="h-dvh w-screen flex flex-col bg-[#0a0a0f]">
       {/* Header */}
-      <header className="h-11 flex items-center px-4 border-b border-white/[0.08] shrink-0 gap-2">
+      <header className="flex flex-wrap items-center px-3 py-1.5 border-b border-white/[0.08] shrink-0 gap-x-1 gap-y-1">
         <h1 className="font-['Cinzel'] text-[11px] tracking-[0.2em] text-[#8a8070] uppercase">
           Other Memory
         </h1>
         <span className="text-[9px] text-[#3a3530] hidden sm:inline">The Complete Dune Timeline</span>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="ml-auto flex flex-wrap items-center gap-1">
           {/* GitHub link */}
           <a
             href="https://github.com/vishalvshekkar/other-memory"
@@ -326,6 +326,7 @@ function TimelineApp() {
         ceAnchorExpanded={data.config.ce_anchor_expanded}
         ceAnchorEncyclopedia={data.config.ce_anchor_encyclopedia}
         showMediaBands={showMedia}
+        interactionDisabled={activePanel === "filter" || activePanel === "book"}
       />
 
       {/* Footer */}

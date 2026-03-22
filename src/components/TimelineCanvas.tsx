@@ -95,13 +95,13 @@ export function TimelineCanvas({
 
     const rc: RenderContext = {
       ctx,
-      camera,
+      camera: cameraRef.current,
       viewport: { width, height },
-      zoomTier: getZoomTier(camera.pixels_per_year),
+      zoomTier: getZoomTier(cameraRef.current.pixels_per_year),
       theme: DEFAULT_THEME,
       orientation: "horizontal",
       data,
-      minSignificance: getMinSignificance(camera.pixels_per_year),
+      minSignificance: getMinSignificance(cameraRef.current.pixels_per_year),
       visibleEventIds: visibleEventIds ?? new Set(),
       contextualEventIds: contextualEventIds ?? new Set(),
       selectedEventId,
@@ -118,12 +118,15 @@ export function TimelineCanvas({
     };
 
     renderTimeline(rc);
-  }, [camera, data, selectedEventId, hoveredEventId, visibleEventIds, contextualEventIds, showCEAxis, ceAnchorExpanded, ceAnchorEncyclopedia, showMediaBands]);
+  }, [data, selectedEventId, hoveredEventId, visibleEventIds, contextualEventIds, showCEAxis, ceAnchorExpanded, ceAnchorEncyclopedia, showMediaBands]);
+
+  const drawRef = useRef(draw);
+  drawRef.current = draw;
 
   useEffect(() => {
     rafRef.current = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(rafRef.current);
-  }, [draw]);
+  }, [draw, camera]);
 
   // ─── Resize Observer ───
 
@@ -267,7 +270,11 @@ export function TimelineCanvas({
           const rect = canvasRef.current?.getBoundingClientRect();
           if (rect) {
             const midX = (pts[0].x + pts[1].x) / 2 - rect.left;
-            onCameraChange(zoomAtPoint(camera, midX, factor, rect.width));
+            const newCam = zoomAtPoint(cameraRef.current, midX, factor, rect.width);
+            cameraRef.current = newCam;
+            cancelAnimationFrame(rafRef.current);
+            rafRef.current = requestAnimationFrame(() => drawRef.current());
+            onCameraChangeRef.current(newCam);
           }
           lastPinchDist.current = dist;
         }
@@ -282,7 +289,11 @@ export function TimelineCanvas({
         if (Math.abs(dx) > 2) hasDragged.current = true;
         dragStart.current = { x: e.clientX, y: e.clientY };
         momentumRef.current.push(dx);
-        onCameraChange(cameraPan(camera, dx));
+        const newCam = cameraPan(cameraRef.current, dx);
+        cameraRef.current = newCam;
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = requestAnimationFrame(() => drawRef.current());
+        onCameraChangeRef.current(newCam);
         return;
       }
 
@@ -295,7 +306,7 @@ export function TimelineCanvas({
         onHoverPosition(null);
       }
     },
-    [camera, onCameraChange, hitTest, onHoverEvent, onHoverPosition, getCanvasCoords, interactionDisabled],
+    [hitTest, onHoverEvent, onHoverPosition, getCanvasCoords, interactionDisabled],
   );
 
   const handlePointerUp = useCallback(

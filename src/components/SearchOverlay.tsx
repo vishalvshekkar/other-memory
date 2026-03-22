@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from "react";
+import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import type { TimelineEvent } from "@/types";
 import type { TimelineDataWithMaps } from "@/data/loader";
 import { formatAGYear } from "@/utils/calendar";
@@ -20,7 +20,10 @@ export function SearchOverlay({ data, onSelectEvent, onClose }: SearchOverlayPro
   }, []);
 
   // Search results
-  const results = query.length >= 1 ? searchEvents(data, query) : [];
+  const results = useMemo(
+    () => (query.length >= 1 ? searchEvents(data, query) : []),
+    [data, query],
+  );
 
   // Clamp selected index
   useEffect(() => {

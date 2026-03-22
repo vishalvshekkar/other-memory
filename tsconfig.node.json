@@ -7,6 +7,9 @@
     "strict": true,
     "skipLibCheck": true,
     "composite": true,
+    "emitDeclarationOnly": true,
+    "declaration": true,
+    "declarationDir": "./dist-types",
     "isolatedModules": true,
     "allowImportingTsExtensions": true
   },

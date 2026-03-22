@@ -20,6 +20,6 @@
     "isolatedModules": true,
     "esModuleInterop": true
   },
-  "include": ["src", "scripts"],
+  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

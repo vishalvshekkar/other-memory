@@ -1,13 +1,14 @@
 # Events from Hunters of Dune and Sandworms of Dune
 # Covers the final conflict and Kralizec
-# Timeline: ~15280–15350 AG
+# Timeline: ~15240–15264 AG
+# Sources: dune.fandom.com/wiki/15264_AG, dune.fandom.com/wiki/Sandworms_of_Dune
 
 - id: no-ship-escape-chapterhouse
   type: milestone
   title: "No-Ship Escapes Chapterhouse"
   subtitle: "Fleeing into the unknown"
-  description: "A no-ship carrying Sheeana, Duncan Idaho, Miles Teg ghola, and a sandworm escapes Chapterhouse, fleeing both the Honored Matres and a mysterious Enemy pulling them with a net."
-  date_start: 15280
+  description: "A no-ship carrying Sheeana, Duncan Idaho, Miles Teg ghola, and a sandworm escapes Chapterhouse, fleeing both the Honored Matres and a mysterious Enemy pulling them with a tachyon net."
+  date_start: 15240
   date_precision: approximate
   significance: 4
   category: technological
@@ -25,8 +26,8 @@
   title: "Ghola Resurrections Aboard the Ithaca"
   subtitle: "Legends reborn from Tleilaxu tanks"
   description: "Using Tleilaxu axlotl technology aboard the no-ship Ithaca, the passengers grow gholas of Paul Atreides, Lady Jessica, Stilgar, Yueh, and other legendary figures."
-  date_start: 15285
-  date_end: 15320
+  date_start: 15242
+  date_end: 15260
   date_precision: approximate
   significance: 4
   category: technological
@@ -37,12 +38,26 @@
     - book_id: hunters-of-dune-2006
       notes: "Major plot thread"
 
+- id: baron-harkonnen-ghola-decanted
+  type: point
+  title: "Baron Harkonnen Ghola Decanted"
+  description: "A ghola of Baron Vladimir Harkonnen is grown on Tleilax as part of the Enemy's plan, later brought aboard the Ithaca."
+  date_start: 15244
+  date_precision: exact
+  significance: 3
+  category: technological
+  tags: ["ghola", "harkonnen", "enemy-plot"]
+  factions: ["tleilaxu"]
+  characters: ["baron-harkonnen"]
+  books:
+    - book_id: hunters-of-dune-2006
+
 - id: enemy-revealed-as-thinking-machines
   type: milestone
   title: "The Enemy Revealed"
   subtitle: "Omnius and Erasmus return"
   description: "The mysterious Enemy hunting the no-ship is revealed to be a resurgent thinking machine network led by the evermind Omnius and the independent robot Erasmus, who survived the Butlerian Jihad."
-  date_start: 15320
+  date_start: 15260
   date_precision: approximate
   significance: 5
   category: technological
@@ -58,7 +73,7 @@
   type: point
   title: "New Sisterhood Consolidates Power"
   description: "Under Murbella's leadership, the merged Bene Gesserit and Honored Matres form the New Sisterhood, becoming the dominant political force in the Old Empire."
-  date_start: 15300
+  date_start: 15255
   date_precision: approximate
   significance: 3
   category: political
@@ -69,33 +84,28 @@
     - book_id: hunters-of-dune-2006
     - book_id: sandworms-of-dune-2007
 
-- id: sandworms-of-dune-new-cycle
-  type: point
-  title: "Sandworms Planted on New Worlds"
-  subtitle: "The spice cycle reborn"
-  description: "Sandworms from the Ithaca's hold are seeded on new planets, ensuring the survival of the melange cycle and the ecological legacy of old Arrakis beyond any single world."
-  date_start: 15330
-  date_precision: approximate
-  significance: 3
-  category: ecological
-  tags: ["sandworms", "spice-cycle", "ecological-seeding"]
-  factions: ["bene-gesserit"]
-  characters: ["sheeana"]
-  books:
-    - book_id: sandworms-of-dune-2007
-
 - id: kralizec-final-battle
   type: milestone
   title: "Kralizec — The Final Battle"
   subtitle: "The battle at the end of the universe"
-  description: "The prophesied Kralizec occurs as humanity and thinking machines clash in a final apocalyptic confrontation that determines the fate of all sentient life in the universe."
-  date_start: 15340
-  date_precision: approximate
+  description: "The prophesied Kralizec occurs as humanity and thinking machines clash in a final apocalyptic confrontation. The Ithaca is captured and brought to Synchrony."
+  detailed: |
+    In 15,264 AG — twenty-four years after leaving Chapterhouse — the no-ship
+    Ithaca was captured by Omnius and brought to the planet Synchrony. The
+    final battle featured a duel between Paul gholas, Murbella leading the
+    New Sisterhood's fleet with Obliterator weapons, and the Oracle of Time
+    (Norma Cenva) transporting Omnius to another dimension. Erasmus activated
+    a kill-switch on all Enhanced Face Dancers.
+
+    Source: dune.fandom.com/wiki/15264_AG
+    Source: Sandworms of Dune (2007)
+  date_start: 15264
+  date_precision: exact
   significance: 5
   category: military
-  tags: ["kralizec", "final-battle", "apocalypse", "prophecy"]
+  tags: ["kralizec", "final-battle", "apocalypse", "prophecy", "synchrony"]
   factions: ["bene-gesserit", "thinking-machines"]
-  characters: ["duncan-idaho", "omnius", "erasmus"]
+  characters: ["duncan-idaho", "omnius", "erasmus", "murbella", "norma-cenva"]
   books:
     - book_id: sandworms-of-dune-2007
       notes: "Climactic event"
@@ -104,9 +114,17 @@
   type: milestone
   title: "Duncan Idaho Becomes the Ultimate Kwisatz Haderach"
   subtitle: "The culmination of all genetic lines"
-  description: "Through millennia of ghola lives, Duncan Idaho achieves a transcendent state, becoming the ultimate Kwisatz Haderach who brokers peace between humans and machines."
-  date_start: 15340
-  date_precision: approximate
+  description: "Through millennia of ghola lives, Duncan Idaho achieves a transcendent state, becoming the ultimate Kwisatz Haderach and the new Evermind who brokers peace between humans and machines."
+  detailed: |
+    Duncan Idaho is revealed as the Ultimate and final Kwisatz Haderach.
+    He becomes the new Evermind, replacing Omnius, establishing a new peace
+    between humans and robots. Sheeana Brugh establishes the second Orthodox
+    Sisterhood on Synchrony.
+
+    Source: dune.fandom.com/wiki/Kralizec/XD
+    Source: Sandworms of Dune (2007)
+  date_start: 15264
+  date_precision: exact
   significance: 5
   category: personal
   tags: ["kwisatz-haderach", "transcendence", "human-machine-peace"]
@@ -115,18 +133,3 @@
   books:
     - book_id: sandworms-of-dune-2007
       notes: "Series conclusion"
-
-- id: new-universe-begins
-  type: point
-  title: "A New Era Begins for Humanity and Machines"
-  description: "Following Kralizec, a new order emerges where humans and thinking machines coexist, fulfilling the ultimate purpose of the Golden Path and the Kwisatz Haderach."
-  date_start: 15350
-  date_precision: approximate
-  significance: 4
-  category: cultural
-  tags: ["new-era", "coexistence", "golden-path-fulfilled"]
-  factions: ["bene-gesserit", "thinking-machines"]
-  characters: ["duncan-idaho"]
-  books:
-    - book_id: sandworms-of-dune-2007
-      notes: "Epilogue"

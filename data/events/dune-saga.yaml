@@ -82,7 +82,37 @@
       chapters: ["Book Three"]
       notes: "Climactic battle"
 
-# === Dune Messiah (10,193-10,209 AG) ===
+# === Post-Dune events ===
+
+- id: shaddam-iv-exiled
+  type: point
+  title: "Shaddam IV Exiled to Salusa Secundus"
+  description: "Emperor Shaddam IV is permanently exiled to the prison planet Salusa Secundus with his younger daughters and Count Fenring, ending the Corrino dynasty."
+  date_start: 10196
+  date_precision: exact
+  significance: 4
+  category: political
+  tags: ["shaddam-iv", "exile", "salusa-secundus", "corrino-fall"]
+  factions: ["corrino", "atreides"]
+  characters: ["shaddam-iv"]
+  books:
+    - book_id: paul-of-dune-2008
+
+- id: great-surrender-ceremony
+  type: point
+  title: "The Great Surrender Ceremony"
+  description: "Emperor Paul orders the Great Surrender Ceremony, formally ending Landsraad resistance. The five-year noble rebellion led by Memnon Thorvald is crushed."
+  date_start: 10198
+  date_precision: exact
+  significance: 3
+  category: political
+  tags: ["surrender", "landsraad", "rebellion-ended"]
+  factions: ["atreides"]
+  characters: ["paul-atreides"]
+  books:
+    - book_id: paul-of-dune-2008
+
+# === Dune Messiah (10,205-10,210 AG) ===
 
 - id: muad-dib-jihad
   type: span
@@ -107,8 +137,22 @@
   type: point
   title: "Paul Blinded by Stone Burner"
   description: "A stone burner detonation blinds Paul physically, though he continues to 'see' through prescient vision."
-  date_start: 10208
-  date_precision: exact
+  detailed: |
+    The exact year of this event is debated in Dune scholarship. Different wiki
+    sources cite 10,207, 10,208, or 10,209 AG. We use 10,209 AG as the most
+    book-consistent date, derived from: Children of Dune is set "nine years"
+    after Paul's departure, and Children of Dune takes place in 10,219 AG.
+    Working backward: 10,219 - 9 = 10,210 for Paul's departure, with the
+    stone burner attack occurring shortly before.
+
+    The Dune Messiah novel states it is set "twelve years" after Paul's
+    coronation (10,193 AG), placing its beginning around 10,205 AG with
+    events spanning several years to the conclusion.
+
+    Sources consulted: dune.fandom.com/wiki/Paul_Atreides,
+    dune.fandom.com/wiki/Chani_Kynes, dune.fandom.com/wiki/Last_conspiracy_against_Muad'Dib
+  date_start: 10209
+  date_precision: approximate
   significance: 4
   category: personal
   tags: ["stone-burner", "blindness", "prescience"]
@@ -122,8 +166,19 @@
   title: "Paul Walks into the Desert"
   subtitle: "The blind Fremen custom"
   description: "After the death of Chani in childbirth, Paul follows the blind Fremen tradition and walks into the desert, leaving his twin children Leto and Ghanima."
-  date_start: 10209
-  date_precision: exact
+  detailed: |
+    Chani died giving birth to the twins Leto II and Ghanima. Paul, now blind
+    from the stone burner attack, chose to follow the Fremen custom for the
+    blind and walked alone into the desert.
+
+    Date note: We place this at 10,210 AG based on the most internally
+    consistent book math — Children of Dune states it is set "nine years"
+    after Paul's departure, and Children of Dune takes place in 10,219 AG
+    (10,219 - 9 = 10,210). Other sources cite 10,207, 10,208, or 10,209.
+    The Chani Kynes wiki page (dune.fandom.com) gives her death as 10,210 AG,
+    which aligns with this calculation.
+  date_start: 10210
+  date_precision: approximate
   significance: 5
   category: personal
   tags: ["desert-walk", "fremen-tradition", "abdication"]

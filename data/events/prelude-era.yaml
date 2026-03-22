@@ -183,3 +183,60 @@
       notes: "Culminating event"
     - book_id: dune-1965
       notes: "Opening event"
+
+# === Key births and events ===
+
+- id: paul-atreides-born
+  type: milestone
+  title: "Birth of Paul Atreides"
+  subtitle: "The Kwisatz Haderach arrives one generation early"
+  description: "Paul Atreides is born on Caladan to Duke Leto and Lady Jessica. Jessica defied the Bene Gesserit breeding program by bearing a son instead of the daughter they demanded."
+  detailed: |
+    Paul's birth in 10,175 AG was a pivotal moment — the Bene Gesserit had
+    ordered Jessica to produce a daughter who would be married to a Harkonnen
+    heir, producing the Kwisatz Haderach. Jessica's love for Leto led her to
+    bear a son instead, producing the superbeing one generation early and
+    outside the Sisterhood's control.
+
+    Source: House Corrino (2001), Dune (1965)
+  date_start: 10175
+  date_precision: exact
+  significance: 5
+  category: personal
+  tags: ["paul-atreides", "birth", "kwisatz-haderach", "caladan"]
+  factions: ["atreides", "bene-gesserit"]
+  characters: ["paul-atreides", "jessica-atreides", "leto-i-atreides"]
+  books:
+    - book_id: house-corrino-2001
+      notes: "Birth depicted"
+    - book_id: dune-1965
+      notes: "Backstory"
+
+- id: great-spice-war
+  type: span
+  title: "The Great Spice War"
+  description: "Shaddam IV launches the Great Spice War, attempting to use synthetic spice (Project Amal) to break the dependency on Arrakis. Fourteen million are killed on Zanovar. The project ultimately fails."
+  date_start: 10175
+  date_end: 10175
+  date_precision: exact
+  significance: 3
+  category: military
+  tags: ["spice-war", "project-amal", "shaddam-iv", "zanovar"]
+  factions: ["corrino", "tleilaxu"]
+  characters: ["shaddam-iv"]
+  books:
+    - book_id: house-corrino-2001
+
+- id: war-of-assassins
+  type: point
+  title: "War of Assassins of 10,187 AG"
+  description: "House Atreides allies with House Ecaz against House Moritani and House Harkonnen in a devastating kanly conflict. House Moritani is decimated in the Battle of Grumman."
+  date_start: 10187
+  date_precision: exact
+  significance: 3
+  category: military
+  tags: ["war-of-assassins", "kanly", "grumman", "house-moritani"]
+  factions: ["atreides", "harkonnen"]
+  characters: ["leto-i-atreides"]
+  books:
+    - book_id: duke-of-caladan-2020

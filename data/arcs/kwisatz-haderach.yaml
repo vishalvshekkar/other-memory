@@ -6,8 +6,8 @@
   title: "The Kwisatz Haderach"
   subtitle: "The Bene Gesserit's millennia-long breeding program"
   description: "The Bene Gesserit's ten-thousand-year genetic program to produce a male who can bridge space and time, see where they cannot look, and ultimately shape humanity's destiny."
-  date_start: -10
-  date_end: 15340
+  date_start: -400
+  date_end: 15264
   date_precision: approximate
   significance: 5
   category: religious
@@ -19,18 +19,16 @@
       notes: "Paul revealed as the Kwisatz Haderach"
     - book_id: house-atreides-1999
       notes: "Jessica's role in the program"
-    - book_id: house-harkonnen-2000
-      notes: "Bene Gesserit machinations"
     - book_id: god-emperor-of-dune-1981
       notes: "Leto II's continuation of genetic destiny"
     - book_id: sandworms-of-dune-2007
       notes: "Duncan Idaho as the ultimate Kwisatz Haderach"
   arc_events:
-    - bene-gesserit-founded
+    - sorceresses-breeding-records
+    - raquella-first-reverend-mother
+    - bene-gesserit-formalized
     - bene-gesserit-breeding-program-matures
-    - jessica-bene-gesserit-training
-    - paul-fremen-acceptance
+    - paul-atreides-born
     - battle-of-arrakeen
     - leto-ii-sandtrout-skin
-    - siona-breeding-program
     - duncan-idaho-ultimate-kwisatz-haderach

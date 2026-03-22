@@ -3,16 +3,18 @@
 #
 # Nesting: level 0 = top-level era, level 1 = sub-era within a parent, etc.
 # Events with date_precision "unknown" are placed within their parent era.
+#
+# Date sources: Dune Wiki (dune.fandom.com), Brian Herbert/KJA novels
 
 # --- Pre-Guild History ---
 
 - id: time-of-titans
   type: era
   title: "Time of Titans"
-  description: "The era when cymek Titans seized control of the Old Empire, paving the way for thinking machine dominance."
-  date_start: -1500
-  date_end: -500
-  date_precision: estimated
+  description: "Twenty cymek Titans seized control of the Old Empire and ruled for approximately a century before Omnius wrested control from them."
+  date_start: -1287
+  date_end: -1182
+  date_precision: exact
   significance: 4
   category: technological
   tags: ["cymeks", "titans", "old-empire"]
@@ -27,10 +29,10 @@
 - id: synchronized-empire
   type: era
   title: "Synchronized Empire"
-  description: "Period of thinking machine rule under Omnius across the Synchronized Worlds."
-  date_start: -500
-  date_end: -200
-  date_precision: estimated
+  description: "Nearly a millennium of thinking machine rule under Omnius across the Synchronized Worlds, after the AI wrested control from the Titan cymeks."
+  date_start: -1182
+  date_end: -201
+  date_precision: exact
   significance: 4
   category: technological
   tags: ["omnius", "synchronized-worlds", "machine-rule"]
@@ -38,7 +40,7 @@
   characters: []
   books:
     - book_id: butlerian-jihad-2002
-      notes: "Primary setting backdrop"
+      notes: "Primary setting"
   nesting_level: 0
   parent_era: null
 
@@ -46,9 +48,9 @@
   type: era
   title: "Butlerian Jihad"
   description: "The great crusade of humanity against the thinking machines, lasting over a century. Defined the future prohibition against machine intelligence."
-  date_start: -200
+  date_start: -201
   date_end: -88
-  date_precision: approximate
+  date_precision: exact
   significance: 5
   category: military
   tags: ["jihad", "crusade", "great-revolt"]
@@ -150,7 +152,7 @@
   title: "Reign of Muad'Dib"
   description: "Paul Atreides' rule as Emperor, including his jihad across the universe."
   date_start: 10193
-  date_end: 10209
+  date_end: 10210
   date_precision: exact
   significance: 5
   category: political
@@ -168,7 +170,7 @@
   type: era
   title: "Regency of Alia"
   description: "Alia Atreides serves as regent after Paul walks into the desert, before Leto II and Ghanima come of age."
-  date_start: 10209
+  date_start: 10210
   date_end: 10219
   date_precision: exact
   significance: 3
@@ -225,7 +227,7 @@
   title: "Return from the Scattering"
   description: "People and factions begin returning from the Scattering, including the Honored Matres, leading to conflict and eventually Kralizec."
   date_start: 15228
-  date_end: 15350
+  date_end: 15264
   date_precision: approximate
   significance: 4
   category: political

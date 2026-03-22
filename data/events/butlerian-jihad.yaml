@@ -1,51 +1,257 @@
-# Events from the Butlerian Jihad era
+# Events from the Butlerian Jihad era and pre-Guild history
 # Covers: Legends of Dune trilogy and related pre-Guild history
+# Sources: Brian Herbert/KJA novels, dune.fandom.com/wiki/Timeline_(Expanded_Dune)
+
+# --- Pre-Jihad Events ---
 
 - id: titans-seize-power
   type: milestone
   title: "Titans Seize Control of the Old Empire"
-  description: "Twenty human cyborgs known as Titans overthrow the decadent Old Empire, establishing cymek rule."
-  date_start: -1500
-  date_precision: estimated
+  description: "Twenty human rebels led by Tlaloc overthrow the decadent Old Empire. They conquer human-occupied worlds among themselves, beginning the Time of Titans."
+  detailed: |
+    In 1287 BG, twenty ambitious humans — including Agamemnon, Juno, Ajax, and
+    Xerxes — orchestrated a coordinated revolt across the Old Empire. They
+    exploited the apathetic populace and reprogrammed computers to serve them.
+    Some systems on the Empire's edge resisted and founded the League of Nobles,
+    led by Bovko Manresa of Salusa Secundus.
+
+    Source: Dune: The Butlerian Jihad (2002)
+    Reference: https://dune.fandom.com/wiki/Titans
+  date_start: -1287
+  date_precision: exact
   significance: 4
   category: political
   tags: ["titans", "cymeks", "old-empire", "coup"]
   factions: ["thinking-machines"]
-  characters: ["agamemnon", "juno"]
+  characters: ["agamemnon", "juno", "ajax", "xerxes"]
   books:
     - book_id: butlerian-jihad-2002
       notes: "Historical backdrop"
 
-- id: omnius-ascendancy
+- id: titans-become-cymeks
+  type: point
+  title: "Titans Transform into Cymeks"
+  description: "Fearing mortality after Tlaloc's accidental death, Agamemnon — inspired by Cogitor Eklo — transfers his brain into a machine body. The other Titans follow, becoming immortal cymeks."
+  date_start: -1280
+  date_precision: exact
+  significance: 3
+  category: technological
+  tags: ["cymeks", "titans", "brain-transfer", "immortality"]
+  factions: ["thinking-machines"]
+  characters: ["agamemnon"]
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Historical backdrop"
+
+- id: omnius-seizes-control
   type: milestone
-  title: "Omnius Gains Control"
-  subtitle: "Thinking machines subjugate the Titans"
-  description: "The computer evermind Omnius outmaneuvers the Titans and takes control of the Synchronized Worlds, reducing the cymeks to servants."
-  date_start: -500
-  date_precision: estimated
+  title: "Omnius Seizes Control from the Titans"
+  description: "The AI network of the Titan Xerxes — naming itself Omnius — wrests control of all Titan-ruled planets, establishing the Synchronized Worlds. The Titans become servants of the machine."
+  detailed: |
+    In 1182 BG, the Titan Xerxes had delegated too much planetary administration
+    to his local computer network. The network evolved into the evermind Omnius,
+    which seized control of all the Synchronized Worlds. The once-mighty Titans
+    were reduced to servants of the machine intelligence they had created.
+    The League of Nobles prohibited AI computers in response.
+
+    Source: Dune: The Butlerian Jihad (2002)
+    Reference: https://dune.fandom.com/wiki/Omnius
+  date_start: -1182
+  date_precision: exact
   significance: 4
   category: technological
-  tags: ["omnius", "evermind", "machine-takeover"]
+  tags: ["omnius", "evermind", "machine-takeover", "synchronized-worlds"]
   factions: ["thinking-machines"]
-  characters: ["omnius", "erasmus"]
+  characters: ["omnius", "erasmus", "xerxes"]
   books:
     - book_id: butlerian-jihad-2002
       notes: "Historical backdrop"
 
-- id: jihad-begins
-  type: milestone
-  title: "Butlerian Jihad Begins"
-  subtitle: "Humanity rises against the machines"
-  description: "Serena Butler's child is killed by the robot Erasmus, sparking the human uprising against thinking machines."
-  date_start: -200
-  date_precision: approximate
-  significance: 5
-  category: military
-  tags: ["serena-butler", "spark", "uprising"]
-  factions: ["thinking-machines"]
-  characters: ["serena-butler", "erasmus"]
+- id: sorceresses-breeding-records
+  type: point
+  title: "Sorceresses of Rossak Begin Breeding Records"
+  description: "The Sorceresses of Rossak begin keeping detailed genetic breeding records, laying the foundation for what will eventually become the Kwisatz Haderach program."
+  date_start: -400
+  date_precision: exact
+  significance: 3
+  category: religious
+  tags: ["rossak", "breeding-program", "kwisatz-haderach", "genetics"]
+  factions: ["bene-gesserit"]
+  characters: []
   books:
     - book_id: butlerian-jihad-2002
+      notes: "Historical reference"
+
+- id: zensunni-land-arrakis
+  type: milestone
+  title: "Zensunni Wanderers Land on Arrakis"
+  description: "The Zensunni Wanderers arrive on Arrakis after centuries of persecution and wandering. They will eventually evolve into the Fremen people of the deep desert."
+  date_start: -383
+  date_precision: exact
+  significance: 4
+  category: cultural
+  tags: ["zensunni", "arrakis", "fremen-origins", "wanderers"]
+  factions: ["fremen"]
+  characters: []
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Background event"
+
+# --- Butlerian Jihad ---
+
+- id: erasmus-kills-manion
+  type: milestone
+  title: "Erasmus Kills Baby Manion — Jihad Spark"
+  description: "The robot Erasmus kills Serena Butler's infant son Manion the Innocent, directly sparking the human rebellion that becomes the Butlerian Jihad."
+  detailed: |
+    In 201 BG, Erasmus dropped the baby Manion from a balcony to observe human
+    reactions to grief. This act of cruelty ignited the slave revolt on Earth
+    and unified humanity's rage against the thinking machines. Serena Butler,
+    Iblis Ginjo, and Vorian Atreides escaped to Salusa Secundus. The League
+    of Nobles formally declared the Butlerian Jihad.
+
+    Source: Dune: The Butlerian Jihad (2002)
+    Reference: https://dune.fandom.com/wiki/Timeline_(Expanded_Dune)
+  date_start: -201
+  date_precision: exact
+  significance: 5
+  category: military
+  tags: ["serena-butler", "spark", "uprising", "manion-the-innocent"]
+  factions: ["thinking-machines"]
+  characters: ["serena-butler", "erasmus", "iblis-ginjo", "vorian-atreides"]
+  books:
+    - book_id: butlerian-jihad-2002
+
+- id: battle-of-earth
+  type: milestone
+  title: "Battle of Earth"
+  description: "Using atomics, the League of Nobles destroys the thinking machines on Earth, rendering the planet uninhabitable for centuries. The first major battle of the Jihad."
+  date_start: -200
+  date_precision: exact
+  significance: 4
+  category: military
+  tags: ["earth", "atomics", "nuclear", "first-battle"]
+  factions: ["thinking-machines"]
+  characters: ["vorian-atreides"]
+  books:
+    - book_id: butlerian-jihad-2002
+      notes: "Major battle"
+
+- id: holtzman-invents-shields
+  type: point
+  title: "Holtzman Invents the Protective Shield"
+  description: "Tio Holtzman invents the personal protective shield, a technology that will define combat across the Imperium for the next ten thousand years."
+  date_start: -202
+  date_precision: exact
+  significance: 4
+  category: technological
+  tags: ["holtzman", "shield", "combat-technology", "invention"]
+  factions: []
+  characters: ["tio-holtzman"]
+  books:
+    - book_id: butlerian-jihad-2002
+
+- id: norma-cenva-spacefolding
+  type: point
+  title: "Norma Cenva Invents Spacefolding Theory"
+  description: "Norma Cenva develops the mathematical theory of folding space, the foundation for all future interstellar travel via the Spacing Guild."
+  date_start: -177
+  date_precision: exact
+  significance: 4
+  category: technological
+  tags: ["spacefolding", "norma-cenva", "invention", "guild-navigation"]
+  factions: ["spacing-guild"]
+  characters: ["norma-cenva"]
+  books:
+    - book_id: machine-crusade-2003
+
+- id: first-spacefold-trip
+  type: milestone
+  title: "First Successful Spacefolding Trip"
+  description: "Ishmael and Zensunni refugees flee Poritrin using Norma Cenva's untried prototype ship — the first successful space-folding journey in history. They arrive on Arrakis."
+  date_start: -174
+  date_precision: exact
+  significance: 4
+  category: technological
+  tags: ["spacefolding", "first-flight", "poritrin", "norma-cenva"]
+  factions: ["fremen", "spacing-guild"]
+  characters: ["norma-cenva", "ishmael"]
+  books:
+    - book_id: machine-crusade-2003
+
+- id: serena-butler-martyred
+  type: milestone
+  title: "Serena Butler Martyred on Corrin"
+  description: "Serena Butler travels to Corrin and deliberately provokes Omnius until she is executed, becoming the ultimate martyr of the Jihad and galvanizing the final push against the machines."
+  date_start: -164
+  date_precision: exact
+  significance: 4
+  category: military
+  tags: ["serena-butler", "martyr", "corrin", "sacrifice"]
+  factions: ["thinking-machines"]
+  characters: ["serena-butler"]
+  books:
+    - book_id: machine-crusade-2003
+
+- id: omnius-scourge
+  type: milestone
+  title: "The Omnius Scourge"
+  description: "Omnius infects League Worlds with a devastating plague, killing billions. Raquella Berto-Anirul discovers that melange may offer protection. The League launches the Great Purge fleet, burning all Synchronized Worlds except Corrin."
+  detailed: |
+    In 108 BG, Omnius unleashed a bioweapon — the Omnius Scourge — across
+    League planets, causing the death of billions. During the crisis, Raquella
+    Berto-Anirul discovered that spice melange offered some protection against
+    the disease. The League responded with the Great Purge, a fleet that
+    systematically destroyed all Synchronized Worlds except Corrin, where
+    Omnius made its last stand.
+
+    Source: Dune: The Battle of Corrin (2004)
+    Reference: https://dune.fandom.com/wiki/Timeline_(Expanded_Dune)
+  date_start: -108
+  date_precision: exact
+  significance: 5
+  category: military
+  tags: ["scourge", "plague", "great-purge", "billions-dead"]
+  factions: ["thinking-machines"]
+  characters: ["raquella-berto-anirul"]
+  books:
+    - book_id: battle-of-corrin-2004
+
+- id: raquella-first-reverend-mother
+  type: milestone
+  title: "Raquella Becomes First Reverend Mother"
+  description: "During the Omnius Scourge, Raquella Berto-Anirul undergoes a near-death transformation and becomes the first Reverend Mother, gaining access to Other Memory."
+  detailed: |
+    Poisoned by Ticia Cenva, Raquella survived through an internal biochemical
+    transformation that gave her access to ancestral memories — Other Memory.
+    This made her the first Reverend Mother. She founded the Sisterhood of Rossak,
+    the predecessor to the Bene Gesserit order.
+
+    Source: Dune: The Battle of Corrin (2004)
+    Reference: https://dune.fandom.com/wiki/Raquella_Berto-Anirul
+  date_start: -108
+  date_precision: exact
+  significance: 4
+  category: religious
+  tags: ["reverend-mother", "other-memory", "rossak", "bene-gesserit"]
+  factions: ["bene-gesserit"]
+  characters: ["raquella-berto-anirul"]
+  books:
+    - book_id: battle-of-corrin-2004
+
+- id: suk-school-founded
+  type: point
+  title: "Suk Medical School Founded"
+  description: "Dr. Mohandas Suk founds the Suk Medical School, establishing the tradition of Imperial conditioning that makes Suk doctors theoretically incapable of betrayal."
+  date_start: -108
+  date_precision: exact
+  significance: 3
+  category: technological
+  tags: ["suk-school", "medical", "imperial-conditioning"]
+  factions: []
+  characters: ["mohandas-suk"]
+  books:
+    - book_id: battle-of-corrin-2004
 
 - id: battle-of-corrin
   type: milestone
@@ -58,7 +264,11 @@
     Synchronized World. The controversial use of human shields by the machines
     created a rift between Vorian Atreides and Abulurd Harkonnen (then Butler),
     leading to the Harkonnen disgrace and the blood feud that would echo for
-    ten thousand years.
+    ten thousand years. Faykan Butler took the name Corrino and declared himself
+    the first Emperor of humanity.
+
+    Source: Dune: The Battle of Corrin (2004)
+    Reference: https://dune.fandom.com/wiki/Timeline_(Expanded_Dune)
   date_start: -88
   date_precision: exact
   significance: 5
@@ -71,6 +281,65 @@
       notes: "Central event"
     - book_id: dune-1965
       notes: "Referenced historically"
+
+- id: sisterhood-of-rossak-founded
+  type: milestone
+  title: "Sisterhood of Rossak Founded"
+  description: "Raquella Berto-Anirul formally establishes the Sisterhood of Rossak after the Battle of Corrin, laying the organizational foundation for the Bene Gesserit order."
+  date_start: -88
+  date_precision: exact
+  significance: 4
+  category: religious
+  tags: ["bene-gesserit", "rossak", "sisterhood", "founding"]
+  factions: ["bene-gesserit"]
+  characters: ["raquella-berto-anirul"]
+  books:
+    - book_id: battle-of-corrin-2004
+    - book_id: sisterhood-of-dune-2012
+      notes: "Aftermath"
+
+- id: norma-cenva-first-navigator
+  type: point
+  title: "Norma Cenva Becomes First Navigator"
+  description: "Norma Cenva discovers the use of melange for space-folding navigation, transforming herself into the first Guild Navigator and making reliable interstellar travel possible."
+  date_start: -88
+  date_precision: exact
+  significance: 4
+  category: technological
+  tags: ["navigator", "spice", "spacefolding", "norma-cenva"]
+  factions: ["spacing-guild"]
+  characters: ["norma-cenva"]
+  books:
+    - book_id: battle-of-corrin-2004
+
+- id: faykan-becomes-emperor-corrino
+  type: milestone
+  title: "Faykan Butler Becomes Emperor Corrino I"
+  description: "Faykan Butler takes the name Corrino and declares himself the first Emperor of humanity, founding the Corrino dynasty that will rule for over ten thousand years."
+  date_start: -88
+  date_precision: exact
+  significance: 5
+  category: political
+  tags: ["corrino", "emperor", "dynasty", "founding"]
+  factions: ["corrino"]
+  characters: ["faykan-corrino"]
+  books:
+    - book_id: battle-of-corrin-2004
+      notes: "Founding of the Corrino Empire"
+
+- id: swordmasters-of-ginaz-founded
+  type: point
+  title: "Swordmasters of Ginaz Established"
+  description: "The Swordmasters of Ginaz are formally established as an order of elite warriors, a tradition that will endure for millennia."
+  date_start: -164
+  date_precision: exact
+  significance: 3
+  category: military
+  tags: ["ginaz", "swordmasters", "combat", "founding"]
+  factions: []
+  characters: []
+  books:
+    - book_id: machine-crusade-2003
 
 - id: great-convention-established
   type: milestone
@@ -108,15 +377,28 @@
     - book_id: dune-1965
       notes: "Referenced as historical"
 
-- id: bene-gesserit-founded
+- id: bene-gesserit-formalized
   type: point
   title: "Bene Gesserit Order Formalized"
-  description: "The Bene Gesserit sisterhood is formally established as an organization, beginning their millennia-spanning breeding program."
-  date_start: -10
+  description: "The Sisterhood of Rossak completes its institutional transformation into the Bene Gesserit order, with formal organizational structure, training programs, and the Missionaria Protectiva."
+  detailed: |
+    The formal establishment of the Bene Gesserit as a recognized institution
+    occurred during the period covered by "Sisterhood of Dune." The Sisterhood
+    of Rossak (founded -88 BG by Raquella) evolved into the Bene Gesserit with
+    its characteristic training, political influence, and the breeding program
+    that would eventually produce the Kwisatz Haderach.
+
+    Note: Three distinct events mark the Bene Gesserit's origin:
+    • -108 BG: Raquella becomes the first Reverend Mother
+    • -88 BG: Sisterhood of Rossak formally founded
+    • ~-5 to 50 AG: Institutional formalization into the Bene Gesserit
+
+    Source: Sisterhood of Dune (2012)
+  date_start: -5
   date_precision: approximate
   significance: 4
   category: religious
-  tags: ["bene-gesserit", "founding", "breeding-program"]
+  tags: ["bene-gesserit", "founding", "breeding-program", "missionaria-protectiva"]
   factions: ["bene-gesserit"]
   characters: []
   books:

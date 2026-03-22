@@ -139,6 +139,23 @@
     - book_id: house-atreides-1999
       notes: "Jessica's role in the program"
 
+- id: harkonnen-gains-arrakis
+  type: milestone
+  title: "House Harkonnen Gains Stewardship of Arrakis"
+  description: "House Harkonnen is granted stewardship of Arrakis under a CHOAM company contract to mine melange, beginning their brutal exploitation of the desert planet and its people."
+  date_start: 10111
+  date_precision: exact
+  significance: 4
+  category: political
+  tags: ["harkonnen", "arrakis", "spice-mining", "choam-contract"]
+  factions: ["harkonnen", "choam"]
+  characters: []
+  books:
+    - book_id: house-atreides-1999
+      notes: "Historical context"
+    - book_id: dune-1965
+      notes: "Foundational backstory"
+
 - id: elrood-ix-reign
   type: span
   title: "Reign of Emperor Elrood Corrino IX"

@@ -40,11 +40,11 @@ console.log("\n🔍 Validating Dune Timeline data...\n");
 
 // Config
 console.log("📋 Config:");
-const config = loadYaml<{ calendar: { ag_zero_ce_year: number } }>(
+const config = loadYaml<{ calendar: { ce_anchor_expanded: number; ce_anchor_encyclopedia: number } }>(
   join(DATA_DIR, "config.yaml"),
 );
-if (config?.calendar?.ag_zero_ce_year) {
-  ok(`Calendar anchor: AG 0 = ${config.calendar.ag_zero_ce_year} CE`);
+if (config?.calendar?.ce_anchor_expanded && config?.calendar?.ce_anchor_encyclopedia) {
+  ok(`Calendar anchors: Expanded=${config.calendar.ce_anchor_expanded} CE, Encyclopedia=${config.calendar.ce_anchor_encyclopedia} CE`);
 } else {
   error("Missing or invalid calendar config");
 }

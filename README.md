@@ -1,6 +1,6 @@
-# Other Memory
+# Other Memory: The Complete Dune Timeline
 
-[![Other Memory — The Complete Dune Timeline](public/og-image.png)](https://othermemory.nihil.codes)
+[![Other Memory: The Complete Dune Timeline](public/og-image.png)](https://othermemory.nihil.codes)
 
 An interactive timeline of the entire Dune universe. 35,000 years of history across all 22 novels by Frank Herbert, Brian Herbert, and Kevin J. Anderson, in one zoomable view.
 

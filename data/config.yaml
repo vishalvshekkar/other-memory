@@ -3,21 +3,31 @@
 # The Dune universe uses AG (After Guild) as its primary calendar.
 # AG 0 = the founding of the Spacing Guild.
 #
-# The CE anchor is derived from the Expanded Dune timeline (Brian Herbert/KJA):
-#   11,200 BG = 1960 CE (beginning of space travel — Pioneer 5 launch)
-#   Therefore: AG 0 = 1960 + 11,200 = 13,160 CE
+# Two CE (Common Era) anchors exist in Dune scholarship:
 #
-# Alternative: The Dune Encyclopedia (1984) uses 16,200 BG = 0 CE,
-# giving AG 0 = 16,200 CE. We follow the Expanded Dune canon here.
+# 1. Expanded Dune (Brian Herbert / Kevin J. Anderson):
+#    11,200 BG = 1960 CE (beginning of space travel — Pioneer 5 launch)
+#    → AG 0 = 13,160 CE
+#
+# 2. Dune Encyclopedia (1984, Willis McNelly / Frank Herbert):
+#    16,200 BG = 0 CE (Birth of Christ)
+#    → AG 0 = 16,200 CE
+#
+# Both are shown simultaneously when the CE toggle is enabled.
 
 calendar:
-  ag_zero_ce_year: 13160
+  ce_anchor_expanded: 13160     # AG 0 = 13,160 CE (Expanded Dune)
+  ce_anchor_encyclopedia: 16200 # AG 0 = 16,200 CE (Dune Encyclopedia)
 
   display_calendars:
     - id: ag
       label: "AG (After Guild)"
       primary: true
 
-    - id: ce
-      label: "CE (Common Era)"
+    - id: ce-expanded
+      label: "CE — Expanded Dune"
+      primary: false
+
+    - id: ce-encyclopedia
+      label: "CE — Dune Encyclopedia"
       primary: false

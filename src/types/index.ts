@@ -8,13 +8,15 @@ export type AGYear = number;
 export type DatePrecision = "exact" | "approximate" | "estimated" | "unknown";
 
 export interface CalendarConfig {
-  /** The CE year that corresponds to AG 0 */
-  ag_zero_ce_year: number;
+  /** Expanded Dune anchor: AG 0 = this CE year (13,160) */
+  ce_anchor_expanded: number;
+  /** Dune Encyclopedia anchor: AG 0 = this CE year (16,200) */
+  ce_anchor_encyclopedia: number;
   display_calendars: CalendarDisplay[];
 }
 
 export interface CalendarDisplay {
-  id: "ag" | "ce";
+  id: "ag" | "ce-expanded" | "ce-encyclopedia";
   label: string;
   primary: boolean;
 }

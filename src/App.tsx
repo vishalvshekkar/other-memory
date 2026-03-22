@@ -249,7 +249,8 @@ function TimelineApp() {
         onViewportResize={handleViewportResize}
         contextualEventIds={contextualEventIds}
         showCEAxis={showCE}
-        agZeroCEYear={data.config.ag_zero_ce_year}
+        ceAnchorExpanded={data.config.ce_anchor_expanded}
+        ceAnchorEncyclopedia={data.config.ce_anchor_encyclopedia}
       />
 
       {/* Footer */}

@@ -1,13 +1,13 @@
 import type { AGYear, CalendarConfig } from "@/types";
 
-/** Convert an AG year to Common Era year */
-export function agToCE(ag: AGYear, config: CalendarConfig): number {
-  return ag + config.ag_zero_ce_year;
+/** Convert AG year to CE using the Expanded Dune anchor */
+export function agToCEExpanded(ag: AGYear, config: CalendarConfig): number {
+  return ag + config.ce_anchor_expanded;
 }
 
-/** Convert a Common Era year to AG */
-export function ceToAG(ce: number, config: CalendarConfig): AGYear {
-  return ce - config.ag_zero_ce_year;
+/** Convert AG year to CE using the Dune Encyclopedia anchor */
+export function agToCEEncyclopedia(ag: AGYear, config: CalendarConfig): number {
+  return ag + config.ce_anchor_encyclopedia;
 }
 
 /** Format an AG year for display: "10,191 AG" or "88 BG" */
@@ -24,31 +24,4 @@ export function formatCEYear(ce: number): string {
     return `${Math.abs(ce).toLocaleString()} BCE`;
   }
   return `${ce.toLocaleString()} CE`;
-}
-
-/** Format a year in the user's chosen calendar */
-export function formatYear(
-  ag: AGYear,
-  config: CalendarConfig,
-  calendarMode: "ag" | "ce",
-): string {
-  if (calendarMode === "ce") {
-    return formatCEYear(agToCE(ag, config));
-  }
-  return formatAGYear(ag);
-}
-
-/** Format a date range */
-export function formatDateRange(
-  start: AGYear,
-  end: AGYear | undefined,
-  config: CalendarConfig,
-  calendarMode: "ag" | "ce",
-): string {
-  const startStr = formatYear(start, config, calendarMode);
-  if (end === undefined || end === start) {
-    return startStr;
-  }
-  const endStr = formatYear(end, config, calendarMode);
-  return `${startStr} – ${endStr}`;
 }

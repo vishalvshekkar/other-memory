@@ -43,10 +43,12 @@ export interface RenderContext {
   hoveredEventId: string | null;
   /** Device pixel ratio for crisp rendering */
   dpr: number;
-  /** Whether to show the CE (real-world) calendar axis */
+  /** Whether to show the CE (real-world) calendar axes */
   showCEAxis: boolean;
-  /** AG 0 mapped to this CE year (from config) */
-  agZeroCEYear: number;
+  /** Expanded Dune anchor: AG 0 = this CE year (11,200 BG = 1960 CE → 13,160) */
+  ceAnchorExpanded: number;
+  /** Dune Encyclopedia anchor: AG 0 = this CE year (16,200 BG = 0 CE → 16,200) */
+  ceAnchorEncyclopedia: number;
 }
 
 /** A render layer draws one visual concern onto the canvas */

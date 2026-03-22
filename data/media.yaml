@@ -9,7 +9,7 @@
   type: film
   release_year: 1984
   director: "David Lynch"
-  timeline_start: 10191
+  timeline_start: 10190
   timeline_end: 10193
   adapts: "Dune (1965)"
   color: "#8b6b2f"
@@ -20,11 +20,11 @@
   type: film
   release_year: 2021
   director: "Denis Villeneuve"
-  timeline_start: 10191
+  timeline_start: 10190
   timeline_end: 10191
   adapts: "Dune (1965) — first half"
   color: "#c4841d"
-  description: "Denis Villeneuve's critically acclaimed adaptation covering the first half of Frank Herbert's Dune, starring Timothee Chalamet as Paul Atreides."
+  description: "Denis Villeneuve's critically acclaimed adaptation covering the first half of Frank Herbert's Dune, from the Atreides departure from Caladan through Paul and Jessica's escape into the desert. Starring Timothee Chalamet as Paul Atreides."
 
 - id: dune-villeneuve-2024
   title: "Dune: Part Two"
@@ -56,7 +56,7 @@
   release_year: 2000
   director: "John Harrison"
   network: "Sci Fi Channel"
-  timeline_start: 10191
+  timeline_start: 10190
   timeline_end: 10193
   adapts: "Dune (1965)"
   color: "#4a8db5"

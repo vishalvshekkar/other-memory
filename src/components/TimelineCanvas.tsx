@@ -59,6 +59,10 @@ export function TimelineCanvas({
   const hasDragged = useRef(false);
   const momentumRef = useRef(new MomentumTracker());
   const cancelMomentumRef = useRef<(() => void) | null>(null);
+  const cameraRef = useRef(camera);
+  cameraRef.current = camera;
+  const onCameraChangeRef = useRef(onCameraChange);
+  onCameraChangeRef.current = onCameraChange;
 
   // ─── Render Loop ───
 
@@ -152,26 +156,59 @@ export function TimelineCanvas({
 
   // ─── Mouse Interaction ───
 
-  const getCanvasCoords = useCallback((e: React.MouseEvent | React.WheelEvent) => {
+  const getCanvasCoords = useCallback((e: React.MouseEvent) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect) return { x: 0, y: 0 };
     return { x: e.clientX - rect.left, y: e.clientY - rect.top };
   }, []);
 
-  const handleWheel = useCallback(
-    (e: React.WheelEvent) => {
-      e.preventDefault();
-      const { x } = getCanvasCoords(e);
-      const rect = canvasRef.current?.getBoundingClientRect();
-      if (!rect) return;
+  // ─── Wheel → Zoom/Pan (native listener for reliable preventDefault) ───
 
-      // Zoom factor: scroll up = zoom in, scroll down = zoom out
-      const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
-      const newCamera = zoomAtPoint(camera, x, factor, rect.width);
-      onCameraChange(newCamera);
-    },
-    [camera, onCameraChange, getCanvasCoords],
-  );
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const cam = cameraRef.current;
+      const setCam = onCameraChangeRef.current;
+
+      // Normalize delta for deltaMode (Firefox uses line-based scrolling)
+      let deltaY = e.deltaY;
+      let deltaX = e.deltaX;
+      if (e.deltaMode === 1) { deltaY *= 30; deltaX *= 30; }
+      if (e.deltaMode === 2) { deltaY *= 800; deltaX *= 800; }
+
+      // Pinch-to-zoom gesture (macOS trackpad reports ctrlKey for pinch)
+      if (e.ctrlKey) {
+        const factor = Math.pow(2, -deltaY * 0.01);
+        setCam(zoomAtPoint(cam, x, factor, rect.width));
+        return;
+      }
+
+      // Shift + scroll → horizontal pan (Windows/Linux; macOS converts automatically)
+      if (e.shiftKey) {
+        setCam(cameraPan(cam, -deltaY));
+        return;
+      }
+
+      // Dominant horizontal scroll (trackpad two-finger swipe) → pan
+      if (Math.abs(deltaX) > Math.abs(deltaY)) {
+        setCam(cameraPan(cam, -deltaX));
+        return;
+      }
+
+      // Vertical scroll → zoom (proportional to delta for smooth trackpad & mouse)
+      const factor = Math.pow(2, -deltaY * 0.002);
+      setCam(zoomAtPoint(cam, x, factor, rect.width));
+    };
+
+    canvas.addEventListener("wheel", handleWheel, { passive: false });
+    return () => canvas.removeEventListener("wheel", handleWheel);
+  }, []);
 
   const handlePointerDown = useCallback(
     (e: React.PointerEvent) => {
@@ -239,7 +276,6 @@ export function TimelineCanvas({
       <canvas
         ref={canvasRef}
         className="absolute inset-0 w-full h-full"
-        onWheel={handleWheel}
         onPointerDown={handlePointerDown}
         onPointerMove={handlePointerMove}
         onPointerUp={handlePointerUp}

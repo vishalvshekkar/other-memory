@@ -9,7 +9,7 @@
 import type { RenderLayer, RenderContext } from "../types";
 import type { TimelineEvent } from "@/types";
 import { yearToPixel } from "../../camera";
-import { getMinSignificance } from "../../zoom";
+import { getMinSignificance, shouldShowEvent } from "../../zoom";
 
 /** Bounding box for label collision detection */
 interface LabelBox {
@@ -41,7 +41,7 @@ export const labelsLayer: RenderLayer = {
       .filter(
         (e) =>
           (e.type === "point" || e.type === "milestone") &&
-          e.significance >= minSig,
+          shouldShowEvent(e, camera.pixels_per_year),
       )
       .sort((a, b) => b.significance - a.significance);
 

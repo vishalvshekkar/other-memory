@@ -8,7 +8,7 @@
 import type { RenderLayer, RenderContext, HitBox } from "../types";
 import type { TimelineEvent } from "@/types";
 import { yearToPixel } from "../../camera";
-import { getMinSignificance } from "../../zoom";
+import { shouldShowEvent } from "../../zoom";
 
 /** Lane assignment state for overlap prevention */
 interface LaneEnd {
@@ -23,6 +23,7 @@ const BAR_HEIGHT = 20;
 const BAR_GAP = 4;
 const BAR_Y_OFFSET = 100; // vertical offset from top (below era labels)
 const BAR_RADIUS = 3;
+const MIN_VISUAL_SPAN_PX = 40; // show long spans regardless of significance if this wide
 
 export const spanBarsLayer: RenderLayer = {
   id: "span-bars",
@@ -30,15 +31,14 @@ export const spanBarsLayer: RenderLayer = {
   render(rc: RenderContext) {
     const { ctx, camera, viewport, data, theme, contextualEventIds } = rc;
     const { width } = viewport;
-    const minSig = getMinSignificance(camera.pixels_per_year);
     const hitBoxes: HitBox[] = [];
 
-    // Filter to visible span events
+    // Filter to visible span events — significance threshold OR visually substantial
     const spans = data.events.filter(
       (e): e is TimelineEvent & { date_end: number } =>
         e.type === "span" &&
         e.date_end !== undefined &&
-        e.significance >= minSig,
+        shouldShowEvent(e, camera.pixels_per_year, MIN_VISUAL_SPAN_PX),
     );
 
     // Sort by start date for sweep-line

@@ -46,6 +46,28 @@ export function getTierPixelsPerYear(tier: ZoomTier): number {
   return Math.sqrt(min * max); // geometric mean
 }
 
+/**
+ * Check if an event should be visible at the current zoom level.
+ *
+ * Uses the standard significance threshold, with an escape hatch for
+ * duration events: if a span would render wider than `minVisualPx`,
+ * it stays visible regardless of significance.
+ */
+export function shouldShowEvent(
+  event: { significance: number; date_start: number; date_end?: number },
+  ppy: number,
+  minVisualPx: number = 40,
+): boolean {
+  const minSig = getMinSignificance(ppy);
+  if (event.significance >= minSig) return true;
+  // Duration events stay visible if they'd occupy meaningful screen space
+  if (event.date_end !== undefined) {
+    const pixelWidth = (event.date_end - event.date_start) * ppy;
+    return pixelWidth >= minVisualPx;
+  }
+  return false;
+}
+
 /** Zoom limits to prevent zooming too far in or out */
 export const MIN_PPY = 0.005; // ~384,000 years on 1920px
 export const MAX_PPY = 5000;  // ~0.38 years on 1920px

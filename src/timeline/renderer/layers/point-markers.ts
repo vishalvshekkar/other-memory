@@ -7,7 +7,7 @@
 
 import type { RenderLayer, RenderContext, HitBox } from "../types";
 import { yearToPixel } from "../../camera";
-import { getMinSignificance } from "../../zoom";
+import { shouldShowEvent } from "../../zoom";
 
 /** Exported hit boxes for click/hover detection */
 export let pointHitBoxes: HitBox[] = [];
@@ -30,14 +30,13 @@ export const pointMarkersLayer: RenderLayer = {
   render(rc: RenderContext) {
     const { ctx, camera, viewport, data, theme, contextualEventIds, selectedEventId, hoveredEventId } = rc;
     const { width } = viewport;
-    const minSig = getMinSignificance(camera.pixels_per_year);
     const hitBoxes: HitBox[] = [];
 
     // Filter to visible point and milestone events
     const points = data.events.filter(
       (e) =>
         (e.type === "point" || e.type === "milestone") &&
-        e.significance >= minSig,
+        shouldShowEvent(e, camera.pixels_per_year),
     );
 
     for (const event of points) {

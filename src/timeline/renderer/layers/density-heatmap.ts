@@ -32,7 +32,7 @@ export const densityHeatmapLayer: RenderLayer = {
     if (cachedBuckets.length === 0) return;
 
     const stripHeight = 4;
-    const stripY = height - 36; // just above the time axis
+    const stripY = height - rc.bottomAreaHeight - 6; // sits above the entire bottom area
 
     for (const bucket of cachedBuckets) {
       if (bucket.normalized === 0) continue;

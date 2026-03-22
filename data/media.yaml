@@ -1,0 +1,90 @@
+# Dune screen adaptations — movies and TV shows
+# These render as colored bands at the bottom of the timeline
+# showing which periods of the Dune saga each adaptation covers.
+
+# --- Films ---
+
+- id: dune-lynch-1984
+  title: "Dune (David Lynch)"
+  type: film
+  release_year: 1984
+  director: "David Lynch"
+  timeline_start: 10191
+  timeline_end: 10193
+  adapts: "Dune (1965)"
+  color: "#8b6b2f"
+  description: "David Lynch's adaptation of Frank Herbert's Dune, starring Kyle MacLachlan as Paul Atreides. A controversial but visually distinctive interpretation of the novel."
+
+- id: dune-villeneuve-2021
+  title: "Dune: Part One"
+  type: film
+  release_year: 2021
+  director: "Denis Villeneuve"
+  timeline_start: 10191
+  timeline_end: 10191
+  adapts: "Dune (1965) — first half"
+  color: "#c4841d"
+  description: "Denis Villeneuve's critically acclaimed adaptation covering the first half of Frank Herbert's Dune, starring Timothee Chalamet as Paul Atreides."
+
+- id: dune-villeneuve-2024
+  title: "Dune: Part Two"
+  type: film
+  release_year: 2024
+  director: "Denis Villeneuve"
+  timeline_start: 10191
+  timeline_end: 10193
+  adapts: "Dune (1965) — second half"
+  color: "#d4943d"
+  description: "The second film in Denis Villeneuve's adaptation, covering Paul's rise among the Fremen and the fall of the Harkonnens, through to the Battle of Arrakeen."
+
+- id: dune-villeneuve-2026
+  title: "Dune: Part Three (Messiah)"
+  type: film
+  release_year: 2026
+  director: "Denis Villeneuve"
+  timeline_start: 10193
+  timeline_end: 10210
+  adapts: "Dune Messiah (1969)"
+  color: "#e4a44d"
+  description: "The anticipated conclusion to Denis Villeneuve's trilogy, adapting Dune Messiah. Expected to cover Paul's reign as Emperor through his walk into the desert."
+
+# --- TV Miniseries ---
+
+- id: dune-miniseries-2000
+  title: "Frank Herbert's Dune"
+  type: tv-miniseries
+  release_year: 2000
+  director: "John Harrison"
+  network: "Sci Fi Channel"
+  timeline_start: 10191
+  timeline_end: 10193
+  adapts: "Dune (1965)"
+  color: "#4a8db5"
+  description: "Three-part television miniseries adapting the original Dune novel. Won two Primetime Emmy Awards for cinematography and visual effects."
+
+- id: children-of-dune-miniseries-2003
+  title: "Frank Herbert's Children of Dune"
+  type: tv-miniseries
+  release_year: 2003
+  director: "Greg Yaitanes"
+  network: "Sci Fi Channel"
+  timeline_start: 10193
+  timeline_end: 10219
+  adapts: "Dune Messiah (1969) + Children of Dune (1976)"
+  color: "#5a9dc5"
+  description: "Three-part television miniseries adapting both Dune Messiah and Children of Dune. Starring James McAvoy as Leto II."
+
+# --- TV Series ---
+
+- id: dune-prophecy-2024
+  title: "Dune: Prophecy"
+  type: tv-series
+  release_year: 2024
+  end_year: 2026
+  creator: "Alison Schapker"
+  network: "HBO / Max"
+  timeline_start: 10
+  timeline_end: 191
+  adapts: "Sisterhood of Dune era (loosely)"
+  color: "#7b4db5"
+  description: "HBO series set approximately 10,000 years before the events of Dune. Follows the founding of the Bene Gesserit sisterhood, centered on Valya and Tula Harkonnen. Renewed for a second season."

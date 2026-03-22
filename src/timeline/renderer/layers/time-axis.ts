@@ -45,9 +45,8 @@ export const timeAxisLayer: RenderLayer = {
     const { ctx, camera, viewport, theme, showCEAxis, ceAnchorExpanded, ceAnchorEncyclopedia } = rc;
     const { width, height } = viewport;
 
-    // Layout: make room for CE rows when shown
-    const ceRowsHeight = showCEAxis ? 32 : 0; // two rows of ~16px each
-    const axisY = height - 30 - ceRowsHeight;
+    // Layout: AG axis positioned using precomputed bottomAreaHeight
+    const axisY = height - rc.bottomAreaHeight;
 
     // ─── AG Axis ───
 

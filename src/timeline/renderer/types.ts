@@ -8,6 +8,7 @@ import type {
   ZoomTier,
   Orientation,
   CategoryId,
+  MediaEntry,
 } from "@/types";
 import type { TimelineDataWithMaps } from "@/data/loader";
 
@@ -49,6 +50,12 @@ export interface RenderContext {
   ceAnchorExpanded: number;
   /** Dune Encyclopedia anchor: AG 0 = this CE year (16,200 BG = 0 CE → 16,200) */
   ceAnchorEncyclopedia: number;
+  /** Whether to show movie/TV show bands */
+  showMediaBands: boolean;
+  /** Media entries to render as bands */
+  mediaEntries: MediaEntry[];
+  /** Precomputed height of the bottom area (axis + CE + media) */
+  bottomAreaHeight: number;
 }
 
 /** A render layer draws one visual concern onto the canvas */

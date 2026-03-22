@@ -259,6 +259,28 @@ export interface URLState {
 }
 
 // ============================================================================
+// Media (Movies & TV Shows)
+// ============================================================================
+
+export type MediaType = "film" | "tv-series" | "tv-miniseries";
+
+export interface MediaEntry {
+  id: string;
+  title: string;
+  type: MediaType;
+  release_year: number;
+  end_year?: number;
+  director?: string;
+  creator?: string;
+  network?: string;
+  timeline_start: AGYear;
+  timeline_end: AGYear;
+  adapts: string;
+  color: string;
+  description: string;
+}
+
+// ============================================================================
 // Data Bundle (what gets loaded at runtime)
 // ============================================================================
 
@@ -270,4 +292,5 @@ export interface TimelineData {
   eras: EraEvent[];
   events: TimelineEvent[];
   arcs: ArcEvent[];
+  media: MediaEntry[];
 }

@@ -30,6 +30,7 @@ function TimelineApp() {
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
   const [showCE, setShowCE] = useState(false);
+  const [showMedia, setShowMedia] = useState(true);
 
   // ─── URL Sync ───
 
@@ -249,6 +250,12 @@ function TimelineApp() {
             title="Toggle real-world CE calendar axis">
             CE
           </button>
+          <button
+            onClick={() => setShowMedia((v) => !v)}
+            className={`px-2 h-7 flex items-center text-[10px] rounded transition-colors ${showMedia ? "bg-[#7b4db5]/20 text-[#7b4db5]" : "text-[#5a5548] hover:text-[#8a8070] hover:bg-white/[0.03]"}`}
+            title="Toggle movies & TV shows on timeline">
+            Media
+          </button>
 
           <span className="w-px h-4 bg-white/[0.06] mx-1" />
 
@@ -306,6 +313,7 @@ function TimelineApp() {
         showCEAxis={showCE}
         ceAnchorExpanded={data.config.ce_anchor_expanded}
         ceAnchorEncyclopedia={data.config.ce_anchor_encyclopedia}
+        showMediaBands={showMedia}
       />
 
       {/* Footer */}

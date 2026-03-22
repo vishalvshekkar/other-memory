@@ -13,6 +13,7 @@ import { pointMarkersLayer } from "./layers/point-markers";
 import { arcLinesLayer } from "./layers/arc-lines";
 import { labelsLayer } from "./layers/labels";
 import { timeAxisLayer } from "./layers/time-axis";
+import { mediaBandsLayer } from "./layers/media-bands";
 import { overlayLayer } from "./layers/overlay";
 
 /** The ordered layer stack — drawn bottom to top */
@@ -24,6 +25,7 @@ const layers: RenderLayer[] = [
   arcLinesLayer,        // Layer 5: Arc connection lines
   labelsLayer,          // Layer 6: Labels
   timeAxisLayer,        // Time axis (always present)
+  mediaBandsLayer,      // Media bands (movies/TV shows)
   overlayLayer,         // Layer 7: Hover/selection overlay
 ];
 

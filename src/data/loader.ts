@@ -13,6 +13,7 @@ import type {
   Book,
   Category,
   Faction,
+  MediaEntry,
   CalendarConfig,
   CategoryId,
 } from "@/types";
@@ -32,6 +33,9 @@ import eventsPrelude from "@data/events/prelude-era.yaml";
 import eventsGodEmperor from "@data/events/god-emperor.yaml";
 import eventsScattering from "@data/events/the-scattering.yaml";
 import eventsReturn from "@data/events/return-and-kralizec.yaml";
+
+// Media
+import mediaRaw from "@data/media.yaml";
 
 // Arc files
 import arcsGoldenPath from "@data/arcs/golden-path.yaml";
@@ -81,6 +85,9 @@ export function loadTimelineData(): TimelineDataWithMaps {
     ...(arcsKwisatz as ArcEvent[]),
   ];
 
+  // Media
+  const media: MediaEntry[] = mediaRaw as MediaEntry[];
+
   // Build lookup maps
   const eventsById: EventMap = new Map();
   for (const event of events) {
@@ -114,6 +121,7 @@ export function loadTimelineData(): TimelineDataWithMaps {
     eras,
     events,
     arcs,
+    media,
     eventsById,
     booksById,
     categoriesById,

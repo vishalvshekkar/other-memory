@@ -31,6 +31,7 @@ interface TimelineCanvasProps {
   showCEAxis?: boolean;
   ceAnchorExpanded?: number;
   ceAnchorEncyclopedia?: number;
+  showMediaBands?: boolean;
 }
 
 export function TimelineCanvas({
@@ -46,6 +47,7 @@ export function TimelineCanvas({
   showCEAxis = false,
   ceAnchorExpanded = 13160,
   ceAnchorEncyclopedia = 16200,
+  showMediaBands = true,
 }: TimelineCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -94,10 +96,15 @@ export function TimelineCanvas({
       showCEAxis,
       ceAnchorExpanded,
       ceAnchorEncyclopedia,
+      showMediaBands,
+      mediaEntries: data.media,
+      bottomAreaHeight: 30
+        + (showCEAxis ? 32 : 0)
+        + (showMediaBands ? data.media.length * 16 : 0),
     };
 
     renderTimeline(rc);
-  }, [camera, data, selectedEventId, hoveredEventId, contextualEventIds, showCEAxis, ceAnchorExpanded, ceAnchorEncyclopedia]);
+  }, [camera, data, selectedEventId, hoveredEventId, contextualEventIds, showCEAxis, ceAnchorExpanded, ceAnchorEncyclopedia, showMediaBands]);
 
   useEffect(() => {
     rafRef.current = requestAnimationFrame(draw);

@@ -1,5 +1,5 @@
 /**
- * HelpGuide — a full visual manual for the Other Memory.
+ * HelpGuide: a full visual manual for the Other Memory.
  * Opens as a full-screen overlay with detailed usage instructions,
  * visual legends, and information about the dual calendar systems.
  */
@@ -174,7 +174,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
         {/* ── Section: What You're Looking At ── */}
         <Section title="What You're Looking At">
           <p className="text-sm text-[#c0b8a8] leading-relaxed">
-            The timeline shows the complete history of the Dune universe — from the
+            The timeline shows the complete history of the Dune universe, from the
             Time of Titans through the return from the Scattering and Kralizec. Time flows
             left to right. You can zoom in from a 35,000-year overview down to individual
             years within a single book's events.
@@ -193,7 +193,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
           </LegendRow>
 
           <LegendRow icon={<Diamond color="#c4a435" />} label="Milestone (Diamond)">
-            Universe-altering pivot points — the most significant events. Larger
+            Universe-altering pivot points, the most significant events. Larger
             diamonds = higher significance. Color indicates the event category
             (see below).
           </LegendRow>
@@ -218,7 +218,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
 
           <LegendRow icon={<HeatmapBar />} label="Density Heatmap (Orange Strip)">
             A subtle gradient strip just above the time axis. Brighter orange = more
-            events clustered in that region. This is your "hotspot" indicator — even
+            events clustered in that region. This is your "hotspot" indicator: even
             when fully zoomed out and events aren't individually visible, you can
             see where the action concentrates.
           </LegendRow>
@@ -228,7 +228,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
         {/* ── Section: Movies & TV Shows ── */}
         <Section title="Movies & TV Shows">
           <p className="text-sm text-[#8a8070] mb-3">
-            Other Memory includes 7 screen adaptations — films, TV series, and miniseries —
+            Other Memory includes 7 screen adaptations (films, TV series, and miniseries)
             displayed as media bands on the timeline. These show which portions of the Dune
             chronology each adaptation covers.
           </p>
@@ -246,7 +246,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
               in the header toolbar to show or hide all media bands.
             </p>
             <p>
-              <strong>View details:</strong> Click any media band to see the full details —
+              <strong>View details:</strong> Click any media band to see the full details:
               title, director or creator, release year, network, source material, timeline
               coverage, and a description of the adaptation.
             </p>
@@ -269,7 +269,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
               <div key={cat.id} className="flex items-center gap-2">
                 <Diamond color={cat.color} size={10} />
                 <span className="text-xs text-[#e8e0d0]">{cat.label}</span>
-                <span className="text-[10px] text-[#5a5548]">— {cat.desc}</span>
+                <span className="text-[10px] text-[#5a5548]">{cat.desc}</span>
               </div>
             ))}
           </div>
@@ -280,11 +280,11 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
           <div className="space-y-3">
             <NavItem title="Zoom" keys="Scroll wheel, + / -, or 1-6 tier keys">
               Scroll your mouse wheel or trackpad to zoom in and out. Zoom is centered
-              on your cursor position — point at what you want to see closer. Press
+              on your cursor position. Point at what you want to see closer. Press
               number keys 1-6 to jump directly to a zoom tier, or 0 to fit everything.
             </NavItem>
             <NavItem title="Pan" keys="Click + drag, or arrow keys">
-              Click and drag the timeline to move through time. The timeline has momentum —
+              Click and drag the timeline to move through time. The timeline has momentum:
               flick and release for a smooth coast. Use arrow keys for precise nudges.
             </NavItem>
             <NavItem title="Select" keys="Click an event marker">
@@ -326,7 +326,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
                 </kbd>
                 <span className="text-[#e8e0d0] min-w-[80px]">{t.name}</span>
                 <span className="text-[#5a5548]">{t.range}</span>
-                <span className="text-[#3a3530]">—</span>
+                <span className="text-[#3a3530]">|</span>
                 <span className="text-[#8a8070]">{t.shows}</span>
               </div>
             ))}
@@ -347,20 +347,20 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
             <ul className="space-y-1 ml-4">
               <li className="flex items-center gap-2">
                 <span className="text-[#e8e0d0]">{"\u25CF"}</span>
-                <span><strong>Highlighted</strong> — full color, primary focus</span>
+                <span><strong>Highlighted</strong>: full color, primary focus</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-[#5a5548]">{"\u25CB"}</span>
-                <span><strong>Dimmed</strong> — visible but faded, for context</span>
+                <span><strong>Dimmed</strong>: visible but faded, for context</span>
               </li>
               <li className="flex items-center gap-2">
                 <span className="text-[#2a2520]">{"\u2013"}</span>
-                <span><strong>Hidden</strong> — removed from view</span>
+                <span><strong>Hidden</strong>: removed from view</span>
               </li>
             </ul>
             <p>
               <strong>Reading Mode</strong> is designed for people currently reading a book.
-              Select which book you're on — events from that book are highlighted, earlier
+              Select which book you're on. Events from that book are highlighted, earlier
               books are dimmed for context, and future books are hidden to prevent spoilers.
             </p>
           </div>
@@ -387,7 +387,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
                 </span>
               </div>
               <p className="text-xs text-[#8a8070]">
-                11,200 BG = 1960 CE (the beginning of space travel — Pioneer 5 launch).
+                11,200 BG = 1960 CE (the beginning of space travel, the Pioneer 5 launch).
                 This makes AG 0 = <strong>13,160 CE</strong> and the events of Dune (10,191 AG)
                 fall around <strong>23,351 CE</strong>.
               </p>
@@ -408,9 +408,9 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
 
             <p>
               The two systems disagree by <strong>3,040 years</strong>. When you toggle the
-              <Kbd>CE</Kbd> button in the header, both are shown simultaneously — the Expanded
+              <Kbd>CE</Kbd> button in the header, both are shown simultaneously: the Expanded
               Dune mapping in <span className="text-[#1a6b8a]">blue</span> and the Encyclopedia
-              mapping in <span className="text-[#2a9d6e]">green</span> — so fans of either
+              mapping in <span className="text-[#2a9d6e]">green</span>. Fans of either
               canon can see their preferred real-world anchor.
             </p>
             <p>
@@ -437,13 +437,31 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
 
         {/* ── Section: Contributing ── */}
         <Section title="Contributing">
-          <p className="text-sm text-[#c0b8a8] leading-relaxed">
-            This timeline is community-driven. All event data lives in YAML files
-            that anyone can edit. If you spot a missing event, an inaccuracy, or want to
-            add more detail — open a pull request on the GitHub repository. See the
-            CONTRIBUTING.md file for guidelines on adding events, choosing significance
-            levels, and citing sources.
-          </p>
+          <div className="space-y-3 text-sm text-[#c0b8a8] leading-relaxed">
+            <p>
+              This timeline is community-driven. All event data lives in YAML files
+              that anyone can edit. If you spot a missing event, an inaccuracy, or
+              want to add more detail, contributions are welcome.
+            </p>
+            <p>
+              Visit the project on GitHub:
+            </p>
+            <a
+              href="https://github.com/vishalvshekkar/other-memory"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 text-sm text-[#1a6b8a] hover:text-[#c4841d] transition-colors"
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fillRule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+              </svg>
+              github.com/vishalvshekkar/other-memory
+            </a>
+            <p>
+              The repository includes detailed guides for adding events, eras,
+              narrative arcs, and media entries. Open a pull request to contribute.
+            </p>
+          </div>
         </Section>
 
         <hr className="border-white/[0.06] my-8" />
@@ -479,8 +497,8 @@ function LegendRow({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex gap-3 mb-3">
-      <div className="mt-0.5">{icon}</div>
+    <div className="grid grid-cols-[72px_1fr] gap-3 mb-3 items-start">
+      <div className="flex items-center justify-center h-6">{icon}</div>
       <div>
         <div className="text-xs font-medium text-[#e8e0d0] mb-0.5">{label}</div>
         <div className="text-xs text-[#8a8070] leading-relaxed">{children}</div>

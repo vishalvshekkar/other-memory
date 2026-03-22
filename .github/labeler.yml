@@ -1,0 +1,27 @@
+data:
+  - changed-files:
+      - any-glob-to-any-file:
+          - data/**/*.yaml
+          - data/**/*.yml
+          - data/_schema.json
+
+code:
+  - changed-files:
+      - any-glob-to-any-file:
+          - src/**/*.ts
+          - src/**/*.tsx
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - docs/**
+          - "*.md"
+
+config:
+  - changed-files:
+      - any-glob-to-any-file:
+          - package.json
+          - tsconfig*.json
+          - vite.config.ts
+          - eslint.config.js
+          - .github/**

@@ -29,15 +29,17 @@ export const spanBarsLayer: RenderLayer = {
   id: "span-bars",
 
   render(rc: RenderContext) {
-    const { ctx, camera, viewport, data, theme, contextualEventIds } = rc;
+    const { ctx, camera, viewport, data, theme, visibleEventIds, contextualEventIds } = rc;
     const { width } = viewport;
     const hitBoxes: HitBox[] = [];
+    const hasFilters = visibleEventIds.size > 0;
 
     // Filter to visible span events — significance threshold OR visually substantial
     const spans = data.events.filter(
       (e): e is TimelineEvent & { date_end: number } =>
         e.type === "span" &&
         e.date_end !== undefined &&
+        (!hasFilters || visibleEventIds.has(e.id)) &&
         shouldShowEvent(e, camera.pixels_per_year, MIN_VISUAL_SPAN_PX),
     );
 

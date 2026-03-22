@@ -36,6 +36,8 @@ export interface RenderContext {
   orientation: Orientation;
   data: TimelineDataWithMaps;
   minSignificance: 1 | 2 | 3 | 4 | 5;
+  /** IDs of events that passed all filters (render these, skip the rest) */
+  visibleEventIds: Set<string>;
   /** IDs of events that should render dimmed (contextual book filter) */
   contextualEventIds: Set<string>;
   /** Currently selected event ID */

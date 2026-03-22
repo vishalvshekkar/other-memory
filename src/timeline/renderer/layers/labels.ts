@@ -27,9 +27,10 @@ export const labelsLayer: RenderLayer = {
   id: "labels",
 
   render(rc: RenderContext) {
-    const { ctx, camera, viewport, data, theme, contextualEventIds } = rc;
+    const { ctx, camera, viewport, data, theme, visibleEventIds, contextualEventIds } = rc;
     const { width } = viewport;
     const minSig = getMinSignificance(camera.pixels_per_year);
+    const hasFilters = visibleEventIds.size > 0;
 
     // Only show labels at zoom tier 3+ (significance 3 or lower = more zoomed in)
     if (minSig > 3) return;
@@ -41,6 +42,7 @@ export const labelsLayer: RenderLayer = {
       .filter(
         (e) =>
           (e.type === "point" || e.type === "milestone") &&
+          (!hasFilters || visibleEventIds.has(e.id)) &&
           shouldShowEvent(e, camera.pixels_per_year),
       )
       .sort((a, b) => b.significance - a.significance);

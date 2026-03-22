@@ -129,7 +129,9 @@ function getReadingModeState(
     if (!refBook) continue;
 
     if (ref.book_id === currentBookId) {
-      return "highlighted"; // current book = highlighted
+      // Primary reference (first listed book) → highlighted
+      // Secondary reference → contextual (provides context, not main source)
+      return event.books[0].book_id === currentBookId ? "highlighted" : "contextual";
     }
 
     // Compare by publication year to determine order
@@ -140,6 +142,17 @@ function getReadingModeState(
   }
 
   return bestState;
+}
+
+/** Get the set of all visible event IDs (passed all filters) */
+export function getVisibleEventIds(
+  filteredEvents: FilteredEvent[],
+): Set<string> {
+  const ids = new Set<string>();
+  for (const fe of filteredEvents) {
+    ids.add(fe.event.id);
+  }
+  return ids;
 }
 
 /** Get the set of contextual event IDs for rendering */

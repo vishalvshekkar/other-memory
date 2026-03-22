@@ -12,7 +12,7 @@ import { MediaDetailPanel } from "@/components/MediaDetailPanel";
 import { useCamera } from "@/hooks/useCamera";
 import { useFilters } from "@/hooks/useFilters";
 import { handleKeyDown } from "@/timeline/interaction/keyboard";
-import { filterEvents, getContextualEventIds } from "@/timeline/filter";
+import { filterEvents, getVisibleEventIds, getContextualEventIds } from "@/timeline/filter";
 import { useURLSync } from "@/hooks/useURLSync";
 import { formatAGYear } from "@/utils/calendar";
 import { getTierPixelsPerYear } from "@/timeline/zoom";
@@ -54,6 +54,11 @@ function TimelineApp() {
   const filteredEvents = useMemo(
     () => filterEvents(data.events, filters, data.books),
     [data.events, data.books, filters],
+  );
+
+  const visibleEventIds = useMemo(
+    () => getVisibleEventIds(filteredEvents),
+    [filteredEvents],
   );
 
   const contextualEventIds = useMemo(
@@ -315,6 +320,7 @@ function TimelineApp() {
         onHoverEvent={setHoveredEventId}
         onHoverPosition={setHoverPosition}
         onViewportResize={handleViewportResize}
+        visibleEventIds={visibleEventIds}
         contextualEventIds={contextualEventIds}
         showCEAxis={showCE}
         ceAnchorExpanded={data.config.ce_anchor_expanded}

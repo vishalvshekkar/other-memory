@@ -33,15 +33,17 @@ export const pointMarkersLayer: RenderLayer = {
   id: "point-markers",
 
   render(rc: RenderContext) {
-    const { ctx, camera, viewport, data, theme, contextualEventIds, selectedEventId, hoveredEventId } = rc;
+    const { ctx, camera, viewport, data, theme, visibleEventIds, contextualEventIds, selectedEventId, hoveredEventId } = rc;
     const { width } = viewport;
     const hitBoxes: HitBox[] = [];
     const yPositions = new Map<string, number>();
+    const hasFilters = visibleEventIds.size > 0;
 
     // Filter to visible point and milestone events
     const points = data.events.filter(
       (e) =>
         (e.type === "point" || e.type === "milestone") &&
+        (!hasFilters || visibleEventIds.has(e.id)) &&
         shouldShowEvent(e, camera.pixels_per_year),
     );
 

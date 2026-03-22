@@ -43,6 +43,10 @@ export interface RenderContext {
   hoveredEventId: string | null;
   /** Device pixel ratio for crisp rendering */
   dpr: number;
+  /** Whether to show the CE (real-world) calendar axis */
+  showCEAxis: boolean;
+  /** AG 0 mapped to this CE year (from config) */
+  agZeroCEYear: number;
 }
 
 /** A render layer draws one visual concern onto the canvas */

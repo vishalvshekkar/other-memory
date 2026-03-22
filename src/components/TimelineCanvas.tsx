@@ -28,6 +28,8 @@ interface TimelineCanvasProps {
   onHoverPosition: (pos: { x: number; y: number } | null) => void;
   onViewportResize: (width: number, height: number) => void;
   contextualEventIds?: Set<string>;
+  showCEAxis?: boolean;
+  agZeroCEYear?: number;
 }
 
 export function TimelineCanvas({
@@ -40,6 +42,8 @@ export function TimelineCanvas({
   onHoverPosition,
   onViewportResize,
   contextualEventIds,
+  showCEAxis = false,
+  agZeroCEYear = 11200,
 }: TimelineCanvasProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -85,10 +89,12 @@ export function TimelineCanvas({
       selectedEventId,
       hoveredEventId,
       dpr,
+      showCEAxis,
+      agZeroCEYear,
     };
 
     renderTimeline(rc);
-  }, [camera, data, selectedEventId, hoveredEventId, contextualEventIds]);
+  }, [camera, data, selectedEventId, hoveredEventId, contextualEventIds, showCEAxis, agZeroCEYear]);
 
   useEffect(() => {
     rafRef.current = requestAnimationFrame(draw);

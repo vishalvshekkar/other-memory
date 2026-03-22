@@ -28,6 +28,7 @@ function TimelineApp() {
   const [hoveredEventId, setHoveredEventId] = useState<string | null>(null);
   const [hoverPosition, setHoverPosition] = useState<{ x: number; y: number } | null>(null);
   const [activePanel, setActivePanel] = useState<PanelId>(null);
+  const [showCE, setShowCE] = useState(false);
 
   // ─── URL Sync ───
 
@@ -193,6 +194,12 @@ function TimelineApp() {
             title="Books (B)">
             Books
           </button>
+          <button
+            onClick={() => setShowCE((v) => !v)}
+            className={`px-2 h-7 flex items-center text-[10px] rounded transition-colors ${showCE ? "bg-[#1a6b8a]/20 text-[#1a6b8a]" : "text-[#5a5548] hover:text-[#8a8070] hover:bg-white/[0.03]"}`}
+            title="Toggle real-world CE calendar axis">
+            CE
+          </button>
 
           <span className="w-px h-4 bg-white/[0.06] mx-1" />
 
@@ -241,6 +248,8 @@ function TimelineApp() {
         onHoverPosition={setHoverPosition}
         onViewportResize={handleViewportResize}
         contextualEventIds={contextualEventIds}
+        showCEAxis={showCE}
+        agZeroCEYear={data.config.ag_zero_ce_year}
       />
 
       {/* Footer */}

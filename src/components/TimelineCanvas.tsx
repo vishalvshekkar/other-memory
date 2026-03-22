@@ -16,6 +16,7 @@ import { zoomAtPoint, pan as cameraPan } from "@/timeline/camera";
 import { MomentumTracker } from "@/timeline/animation";
 import { spanHitBoxes } from "@/timeline/renderer/layers/span-bars";
 import { pointHitBoxes } from "@/timeline/renderer/layers/point-markers";
+import { mediaHitBoxes } from "@/timeline/renderer/layers/media-bands";
 import type { HitBox } from "@/timeline/renderer/types";
 
 interface TimelineCanvasProps {
@@ -98,9 +99,7 @@ export function TimelineCanvas({
       ceAnchorEncyclopedia,
       showMediaBands,
       mediaEntries: data.media,
-      bottomAreaHeight: 30
-        + (showCEAxis ? 32 : 0)
-        + (showMediaBands ? data.media.length * 16 : 0),
+      bottomAreaHeight: 30 + (showCEAxis ? 32 : 0),
     };
 
     renderTimeline(rc);
@@ -133,7 +132,7 @@ export function TimelineCanvas({
   const hitTest = useCallback(
     (x: number, y: number): string | null => {
       // Check point/milestone hit boxes first (on top)
-      const allHitBoxes: HitBox[] = [...pointHitBoxes, ...spanHitBoxes];
+      const allHitBoxes: HitBox[] = [...mediaHitBoxes, ...pointHitBoxes, ...spanHitBoxes];
       for (const box of allHitBoxes) {
         if (
           x >= box.x &&

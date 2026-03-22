@@ -8,6 +8,7 @@ import { BookSelector } from "@/components/BookSelector";
 import { SearchOverlay } from "@/components/SearchOverlay";
 import { ShortcutOverlay } from "@/components/ShortcutOverlay";
 import { HelpGuide } from "@/components/HelpGuide";
+import { MediaDetailPanel } from "@/components/MediaDetailPanel";
 import { useCamera } from "@/hooks/useCamera";
 import { useFilters } from "@/hooks/useFilters";
 import { handleKeyDown } from "@/timeline/interaction/keyboard";
@@ -63,6 +64,11 @@ function TimelineApp() {
   // Resolve hovered/selected events
   const hoveredEvent = hoveredEventId ? data.eventsById.get(hoveredEventId) ?? null : null;
   const selectedEvent = selectedEventId ? data.eventsById.get(selectedEventId) ?? null : null;
+
+  // Resolve selected media (if ID starts with "media:")
+  const selectedMedia = selectedEventId?.startsWith("media:")
+    ? data.media.find((m) => `media:${m.id}` === selectedEventId) ?? null
+    : null;
 
   // ─── Camera ───
 
@@ -329,14 +335,22 @@ function TimelineApp() {
       {/* Tooltip */}
       <Tooltip event={hoveredEvent} position={hoverPosition} />
 
-      {/* Detail Panel */}
-      {selectedEvent && (
+      {/* Detail Panel — events */}
+      {selectedEvent && !selectedMedia && (
         <DetailPanel
           event={selectedEvent}
           data={data}
           onClose={() => setSelectedEventId(null)}
           onNavigate={handleNavigateToEvent}
           onZoomToEvent={handleZoomToEvent}
+        />
+      )}
+
+      {/* Detail Panel — media */}
+      {selectedMedia && (
+        <MediaDetailPanel
+          media={selectedMedia}
+          onClose={() => setSelectedEventId(null)}
         />
       )}
 

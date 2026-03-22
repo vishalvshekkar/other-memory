@@ -1,7 +1,8 @@
 /**
  * Media bands layer — renders colored horizontal bands for movies and TV shows.
- * Positioned at the very bottom of the canvas, below CE rows.
+ * Positioned at the TOP of the canvas, just below the header area.
  * Each band spans the AG date range that the adaptation covers.
+ * Bands are strictly clipped to their AG range — if out of view, they disappear.
  */
 
 import type { RenderLayer, RenderContext, HitBox } from "../types";
@@ -12,13 +13,15 @@ export let mediaHitBoxes: HitBox[] = [];
 const BAND_HEIGHT = 14;
 const BAND_GAP = 2;
 const BAND_RADIUS = 2;
+const TOP_OFFSET = 4; // gap below the top of the canvas
+const LABEL_HEIGHT = 12; // "SCREEN ADAPTATIONS" label
 
 export const mediaBandsLayer: RenderLayer = {
   id: "media-bands",
 
   render(rc: RenderContext) {
-    const { ctx, camera, viewport, showMediaBands, mediaEntries, showCEAxis } = rc;
-    const { width, height } = viewport;
+    const { ctx, camera, viewport, showMediaBands, mediaEntries } = rc;
+    const { width } = viewport;
 
     if (!showMediaBands || mediaEntries.length === 0) {
       mediaHitBoxes = [];
@@ -27,9 +30,12 @@ export const mediaBandsLayer: RenderLayer = {
 
     const hitBoxes: HitBox[] = [];
 
-    // Position: below CE rows (or AG axis if CE off)
-    const ceRowsHeight = showCEAxis ? 32 : 0;
-    const baseY = height - 30 - ceRowsHeight - mediaEntries.length * (BAND_HEIGHT + BAND_GAP);
+    // Section label
+    ctx.font = "7px Inter, system-ui, sans-serif";
+    ctx.fillStyle = "rgba(138, 128, 112, 0.4)";
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
+    ctx.fillText("SCREEN ADAPTATIONS", 4, TOP_OFFSET);
 
     // Sort media by timeline_start for consistent ordering
     const sorted = [...mediaEntries].sort((a, b) => a.timeline_start - b.timeline_start);
@@ -39,43 +45,71 @@ export const mediaBandsLayer: RenderLayer = {
       const x1 = yearToPixel(media.timeline_start, camera, width);
       const x2 = yearToPixel(media.timeline_end, camera, width);
 
-      // Ensure minimum width for point-like films
-      const minWidth = 6;
-      const bandX = Math.max(-5, Math.min(x1, x2));
-      const rawWidth = Math.max(minWidth, Math.abs(x2 - x1));
-      const bandW = Math.min(width + 10, rawWidth);
+      // Strict culling — if the band's AG range is entirely off-screen, skip it
+      const leftEdge = Math.min(x1, x2);
+      const rightEdge = Math.max(x1, x2);
+      if (rightEdge < 0 || leftEdge > width) continue;
 
-      // Cull
-      if (bandX + bandW < 0 || bandX > width) continue;
+      // Clip to viewport
+      const bandX = Math.max(0, leftEdge);
+      const bandRight = Math.min(width, rightEdge);
+      let bandW = bandRight - bandX;
 
-      const y = baseY + i * (BAND_HEIGHT + BAND_GAP) + ceRowsHeight + 30;
+      // For point-like entries (film covering a single year), use a small
+      // but proportional width — only if the point is actually on screen
+      if (bandW < 3) bandW = 3;
+
+      const y = TOP_OFFSET + LABEL_HEIGHT + i * (BAND_HEIGHT + BAND_GAP);
 
       // Draw band
-      ctx.fillStyle = hexToRgba(media.color, 0.6);
+      ctx.fillStyle = hexToRgba(media.color, 0.5);
       ctx.beginPath();
       roundRect(ctx, bandX, y, bandW, BAND_HEIGHT, BAND_RADIUS);
       ctx.fill();
 
-      // Left accent border
-      ctx.fillStyle = media.color;
-      ctx.fillRect(bandX, y, 2, BAND_HEIGHT);
+      // Left accent border (only if left edge is visible)
+      if (leftEdge >= 0 && leftEdge <= width) {
+        ctx.fillStyle = media.color;
+        ctx.fillRect(leftEdge, y, 2, BAND_HEIGHT);
+      }
 
-      // Label
-      if (bandW > 30) {
+      // Visual distinction: film gets sprocket-hole dots, TV gets dashed top border
+      if (media.type === "film") {
+        // Sprocket holes along top edge
+        ctx.fillStyle = hexToRgba("#0a0a0f", 0.5);
+        const spacing = 8;
+        for (let sx = bandX + 4; sx < bandX + bandW - 2; sx += spacing) {
+          ctx.fillRect(sx, y + 1, 2, 2);
+          ctx.fillRect(sx, y + BAND_HEIGHT - 3, 2, 2);
+        }
+      } else {
+        // TV: thin dashed top line
+        ctx.strokeStyle = hexToRgba(media.color, 0.8);
+        ctx.lineWidth = 0.5;
+        ctx.setLineDash([2, 2]);
+        ctx.beginPath();
+        ctx.moveTo(bandX, y);
+        ctx.lineTo(bandX + bandW, y);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      }
+
+      // Label (only if band is wide enough to show text)
+      if (bandW > 40) {
         ctx.font = "9px Inter, system-ui, sans-serif";
-        ctx.fillStyle = "rgba(232, 224, 208, 0.8)";
+        ctx.fillStyle = "rgba(232, 224, 208, 0.85)";
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
-        const label = bandW > 120
+        const label = bandW > 140
           ? `${media.title} (${media.release_year})`
           : media.title;
         ctx.fillText(label, bandX + 6, y + BAND_HEIGHT / 2, bandW - 10);
       }
 
-      // Type icon at right
-      if (bandW > 80) {
+      // Type badge at right (only if plenty of space)
+      if (bandW > 100) {
         ctx.font = "7px Inter, system-ui, sans-serif";
-        ctx.fillStyle = hexToRgba(media.color, 0.6);
+        ctx.fillStyle = hexToRgba(media.color, 0.5);
         ctx.textAlign = "right";
         ctx.textBaseline = "middle";
         const typeLabel = media.type === "film" ? "FILM"

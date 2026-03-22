@@ -334,8 +334,14 @@ function TimelineApp() {
         <span>{formatAGYear(Math.round(camera.center))}</span>
         <span>Tier {zoomTier}: {zoomTierConfig.label}</span>
         <span>{camera.pixels_per_year.toFixed(2)} px/yr</span>
-        <span className="ml-auto">
-          {filteredEvents.length}/{data.events.length} events
+        <span className="ml-auto flex items-center gap-3">
+          <span>{filteredEvents.length}/{data.events.length} events</span>
+          <span>
+            Made by{" "}
+            <a href="https://vishalvshekkar.com" target="_blank" rel="noopener noreferrer" className="text-[#5a5548] hover:text-[#8a8070] transition-colors">Vishal</a>
+            {" "}at{" "}
+            <a href="https://nihil.codes" target="_blank" rel="noopener noreferrer" className="text-[#5a5548] hover:text-[#8a8070] transition-colors">Nihil.codes</a>
+          </span>
         </span>
       </footer>
 

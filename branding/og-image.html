@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    background: #0a0a0f;
+    font-family: 'Inter', sans-serif;
+    color: #e8e0d0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 56px 32px;
+    position: relative;
+  }
+
+  .bg-texture {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 50%, rgba(160, 176, 208, 0.03) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 30%, rgba(74, 141, 181, 0.03) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  /* Header: logo + text */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo-container {
+    width: 88px;
+    height: 88px;
+    flex-shrink: 0;
+  }
+
+  .logo-container img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .text-content { flex: 1; }
+
+  .title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  .title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 38px;
+    letter-spacing: 0.12em;
+    color: #e8e0d0;
+    text-transform: uppercase;
+    line-height: 1.1;
+    flex-shrink: 0;
+  }
+
+  .title-tagline {
+    font-family: 'Cinzel', serif;
+    font-weight: 400;
+    font-size: 19px;
+    letter-spacing: 0.06em;
+    color: #c4841d;
+    line-height: 1.1;
+    opacity: 0.85;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    font-weight: 300;
+    color: #8a8070;
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .subtitle strong {
+    color: #c4841d;
+    font-weight: 500;
+  }
+
+  /* Timeline section — takes remaining vertical space */
+  .timeline-section {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .timeline-track {
+    position: relative;
+    height: 340px;
+    margin: 0 10px;
+  }
+
+  /* ─── Era background bands (full-height colored regions) ─── */
+  .era-band {
+    position: absolute;
+    border-radius: 3px;
+    opacity: 0.10;
+  }
+
+  /* ─── Main horizontal axis line ─── */
+  .timeline-line {
+    position: absolute;
+    top: 170px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      #3a3530 3%,
+      #5a5548 50%,
+      #3a3530 97%,
+      transparent 100%
+    );
+  }
+
+  /* ─── Span bars (horizontal duration bars) ─── */
+  .span-bar {
+    position: absolute;
+    height: 6px;
+    border-radius: 3px;
+    opacity: 0.7;
+  }
+
+  /* ─── Event diamonds ─── */
+  .diamond {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    transform: rotate(45deg);
+    border-radius: 1.5px;
+  }
+
+  .diamond.major {
+    width: 16px;
+    height: 16px;
+    box-shadow: 0 0 6px rgba(196, 132, 29, 0.25);
+  }
+
+  .diamond.milestone {
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 0 10px rgba(196, 132, 29, 0.35);
+  }
+
+  /* ─── Event labels ─── */
+  .label {
+    position: absolute;
+    font-size: 9px;
+    white-space: nowrap;
+    letter-spacing: 0.02em;
+  }
+
+  .label.muted { color: #5a5548; }
+  .label.normal { color: #8a8070; }
+  .label.accent { color: #c4841d; font-weight: 500; font-size: 9.5px; }
+
+  /* Connector lines from label to diamond */
+  .connector {
+    position: absolute;
+    width: 1px;
+    background: #2a2520;
+  }
+
+  /* ─── Narrative arc (dotted curve) ─── */
+  .arc-path {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  /* ─── Year markers ─── */
+  .year-tick {
+    position: absolute;
+    top: 172px;
+    width: 1px;
+    height: 10px;
+    background: #2a2520;
+  }
+
+  .year-label {
+    position: absolute;
+    top: 186px;
+    font-size: 7.5px;
+    color: #2a2520;
+    transform: translateX(-50%);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── Footer ─── */
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .url {
+    font-size: 13px;
+    font-weight: 400;
+    color: #5a5548;
+    letter-spacing: 0.02em;
+  }
+
+  .url strong {
+    color: #c4841d;
+    font-weight: 500;
+  }
+
+  .stats {
+    font-size: 10px;
+    color: #3a3530;
+    letter-spacing: 0.04em;
+  }
+
+  /* Corner accents */
+  .corner {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-color: rgba(196, 132, 29, 0.12);
+    border-style: solid;
+  }
+  .corner.tl { top: 16px; left: 16px; border-width: 1px 0 0 1px; }
+  .corner.tr { top: 16px; right: 16px; border-width: 1px 1px 0 0; }
+  .corner.bl { bottom: 16px; left: 16px; border-width: 0 0 1px 1px; }
+  .corner.br { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
+</style>
+</head>
+<body>
+<div class="bg-texture"></div>
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<div class="container">
+  <div class="header">
+    <div class="logo-container">
+      <img src="moon-logo.svg" alt="Other Memory">
+    </div>
+    <div class="text-content">
+      <div class="title-row">
+        <div class="title">Other Memory</div>
+        <div class="title-tagline">The Complete Dune Timeline</div>
+      </div>
+      <div class="subtitle">
+        Explore <strong>35,000 years</strong> of the Dune saga in one interactive timeline.
+        Every event, era, and narrative arc across all novels by Frank Herbert and Brian Herbert.
+      </div>
+    </div>
+  </div>
+
+  <div class="timeline-section">
+    <div class="timeline-track">
+
+      <!-- ═══ ERA BACKGROUND BANDS ═══ -->
+      <!-- Time of Titans + Synchronized Empire -->
+      <div class="era-band" style="left: 18px; width: 135px; top: 80px; height: 180px; background: #4a8db5;"></div>
+      <!-- Butlerian Jihad Era -->
+      <div class="era-band" style="left: 153px; width: 65px; top: 80px; height: 180px; background: #b83a3a;"></div>
+      <!-- Corrino Empire -->
+      <div class="era-band" style="left: 218px; width: 245px; top: 80px; height: 180px; background: #c4a435;"></div>
+      <!-- Atreides Empire -->
+      <div class="era-band" style="left: 463px; width: 225px; top: 80px; height: 180px; background: #c4a435; opacity: 0.07;"></div>
+      <!-- God Emperor sub-era -->
+      <div class="era-band" style="left: 530px; width: 148px; top: 100px; height: 140px; background: #c4a435; opacity: 0.12;"></div>
+      <!-- The Scattering -->
+      <div class="era-band" style="left: 688px; width: 175px; top: 80px; height: 180px; background: #c47a35;"></div>
+      <!-- Return -->
+      <div class="era-band" style="left: 863px; width: 80px; top: 80px; height: 180px; background: #c4a435; opacity: 0.07;"></div>
+
+      <!-- ═══ MAIN AXIS ═══ -->
+      <div class="timeline-line"></div>
+
+      <!-- ═══ SPAN BARS (duration events, staggered vertically) ═══ -->
+      <!-- Synchronized Empire span (above axis) -->
+      <div class="span-bar" style="left: 72px; width: 80px; top: 152px; background: #4a8db5;"></div>
+      <!-- Butlerian Jihad span -->
+      <div class="span-bar" style="left: 158px; width: 50px; top: 152px; background: #b83a3a;"></div>
+      <!-- Corrino Empire span (below axis) -->
+      <div class="span-bar" style="left: 228px; width: 230px; top: 180px; background: #c4a435; opacity: 0.5;"></div>
+      <!-- Muad'Dib Jihad span -->
+      <div class="span-bar" style="left: 478px; width: 32px; top: 152px; background: #b83a3a; opacity: 0.6;"></div>
+      <!-- God Emperor reign span (below) -->
+      <div class="span-bar" style="left: 538px; width: 138px; top: 180px; background: #c4a435; opacity: 0.5;"></div>
+      <!-- The Scattering span -->
+      <div class="span-bar" style="left: 693px; width: 162px; top: 152px; background: #c47a35; opacity: 0.5;"></div>
+
+      <!-- ═══ NARRATIVE ARC: Kwisatz Haderach (dotted curve above, -400 to 15264) ═══ -->
+      <svg class="arc-path" viewBox="0 0 1088 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 100 168 C 200 30, 750 20, 944 161" stroke="#c4841d" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.25" fill="none"/>
+        <text x="440" y="38" fill="#c4841d" opacity="0.22" font-size="7" font-family="Inter, sans-serif" letter-spacing="0.1em">KWISATZ HADERACH</text>
+      </svg>
+
+      <!-- ═══ NARRATIVE ARC: Golden Path (dotted curve below, 10193 to 15350) ═══ -->
+      <svg class="arc-path" viewBox="0 0 1088 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 475 172 C 550 300, 800 305, 960 172" stroke="#7b4db5" stroke-width="1.2" stroke-dasharray="4 3" opacity="0.25" fill="none"/>
+        <text x="670" y="298" fill="#7b4db5" opacity="0.22" font-size="7" font-family="Inter, sans-serif" letter-spacing="0.1em">GOLDEN PATH</text>
+      </svg>
+
+      <!-- ═══ DIAMONDS + LABELS (staggered above/below) ═══ -->
+
+      <!-- Row 1 ABOVE: labels at top: 30px, connectors down to diamonds -->
+
+      <!-- Titans Rise (above) -->
+      <div class="diamond" style="left: 30px; top: 164px; background: #4a8db5;"></div>
+      <div class="connector" style="left: 36px; top: 100px; height: 64px;"></div>
+      <div class="label muted" style="left: 24px; top: 86px;">Titans Rise</div>
+
+      <!-- Thinking Machines (below) -->
+      <div class="diamond" style="left: 110px; top: 164px; background: #4a8db5;"></div>
+      <div class="connector" style="left: 116px; top: 176px; height: 42px;"></div>
+      <div class="label muted" style="left: 90px; top: 222px;">Thinking Machines</div>
+
+      <!-- Butlerian Jihad (above, major) -->
+      <div class="diamond major" style="left: 178px; top: 162px; background: #b83a3a;"></div>
+      <div class="connector" style="left: 186px; top: 56px; height: 106px;"></div>
+      <div class="label accent" style="left: 166px; top: 42px;">Butlerian Jihad</div>
+
+      <!-- Battle of Corrin (below) -->
+      <div class="diamond" style="left: 210px; top: 164px; background: #b83a3a;"></div>
+      <div class="connector" style="left: 216px; top: 176px; height: 58px;"></div>
+      <div class="label muted" style="left: 192px; top: 238px;">Battle of Corrin</div>
+
+      <!-- Great Convention (above) -->
+      <div class="diamond" style="left: 235px; top: 164px; background: #c4a435;"></div>
+      <div class="connector" style="left: 241px; top: 112px; height: 52px;"></div>
+      <div class="label normal" style="left: 216px; top: 98px;">Great Convention</div>
+
+      <!-- Spacing Guild Founded (below) -->
+      <div class="diamond" style="left: 268px; top: 164px; background: #c4a435;"></div>
+      <div class="connector" style="left: 274px; top: 176px; height: 28px;"></div>
+      <div class="label muted" style="left: 254px; top: 208px;">Guild Founded</div>
+
+      <!-- Corrino Dynasty (above) -->
+      <div class="diamond" style="left: 340px; top: 164px; background: #c4a435;"></div>
+      <div class="connector" style="left: 346px; top: 126px; height: 38px;"></div>
+      <div class="label normal" style="left: 315px; top: 112px;">Corrino Dynasty</div>
+
+      <!-- Spice Discovered (below) -->
+      <div class="diamond" style="left: 405px; top: 164px; background: #2a9d6e;"></div>
+      <div class="connector" style="left: 411px; top: 176px; height: 44px;"></div>
+      <div class="label normal" style="left: 385px; top: 224px;">Spice Discovered</div>
+
+      <!-- Paul Born (above, small) -->
+      <div class="diamond" style="left: 448px; top: 164px; background: #d4c5a9;"></div>
+      <div class="connector" style="left: 454px; top: 134px; height: 30px;"></div>
+      <div class="label muted" style="left: 437px; top: 120px;">Paul Born</div>
+
+      <!-- Paul's Ascension (above, milestone) -->
+      <div class="diamond milestone" style="left: 470px; top: 161px; background: #c4841d;"></div>
+      <div class="connector" style="left: 479px; top: 50px; height: 111px;"></div>
+      <div class="label accent" style="left: 455px; top: 36px;">Paul's Ascension</div>
+
+      <!-- Muad'Dib Jihad (below) -->
+      <div class="diamond" style="left: 498px; top: 164px; background: #b83a3a;"></div>
+      <div class="connector" style="left: 504px; top: 176px; height: 30px;"></div>
+      <div class="label muted" style="left: 479px; top: 210px;">Muad'Dib Jihad</div>
+
+      <!-- Leto II / God Emperor (above, milestone) -->
+      <div class="diamond milestone" style="left: 542px; top: 161px; background: #7b4db5;"></div>
+      <div class="connector" style="left: 551px; top: 72px; height: 89px;"></div>
+      <div class="label accent" style="left: 533px; top: 56px;">God Emperor</div>
+
+      <!-- Alia's Regency (below) -->
+      <div class="diamond" style="left: 520px; top: 164px; background: #7b4db5;"></div>
+      <div class="connector" style="left: 526px; top: 176px; height: 50px;"></div>
+      <div class="label muted" style="left: 503px; top: 230px;">Alia's Regency</div>
+
+      <!-- Golden Path (below) -->
+      <div class="diamond" style="left: 610px; top: 164px; background: #7b4db5;"></div>
+      <div class="connector" style="left: 616px; top: 176px; height: 28px;"></div>
+      <div class="label normal" style="left: 592px; top: 208px;">The Golden Path</div>
+
+      <!-- Death of Leto II (above) -->
+      <div class="diamond" style="left: 675px; top: 164px; background: #d4c5a9;"></div>
+      <div class="connector" style="left: 681px; top: 118px; height: 46px;"></div>
+      <div class="label normal" style="left: 653px; top: 104px;">Leto II Falls</div>
+
+      <!-- The Scattering (above) -->
+      <div class="diamond major" style="left: 708px; top: 162px; background: #c47a35;"></div>
+      <div class="connector" style="left: 716px; top: 60px; height: 102px;"></div>
+      <div class="label accent" style="left: 693px; top: 44px;">The Scattering</div>
+
+      <!-- Destruction of Rakis (below) -->
+      <div class="diamond major" style="left: 755px; top: 162px; background: #b83a3a;"></div>
+      <div class="connector" style="left: 763px; top: 178px; height: 36px;"></div>
+      <div class="label normal" style="left: 729px; top: 218px;">Rakis Destroyed</div>
+
+      <!-- Honored Matres (below) -->
+      <div class="diamond" style="left: 820px; top: 164px; background: #b83a3a;"></div>
+      <div class="connector" style="left: 826px; top: 176px; height: 52px;"></div>
+      <div class="label normal" style="left: 797px; top: 232px;">Honored Matres</div>
+
+      <!-- Chapterhouse (above) -->
+      <div class="diamond" style="left: 880px; top: 164px; background: #c4a435;"></div>
+      <div class="connector" style="left: 886px; top: 110px; height: 54px;"></div>
+      <div class="label normal" style="left: 863px; top: 96px;">Chapterhouse</div>
+
+      <!-- Kralizec (above, milestone) -->
+      <div class="diamond milestone" style="left: 935px; top: 161px; background: #c4841d;"></div>
+      <div class="connector" style="left: 944px; top: 42px; height: 119px;"></div>
+      <div class="label accent" style="left: 925px; top: 28px;">Kralizec</div>
+
+      <!-- ═══ YEAR MARKERS ═══ -->
+      <div class="year-tick" style="left: 30px;"></div>
+      <div class="year-label" style="left: 30px;">1287 BG</div>
+
+      <div class="year-tick" style="left: 178px;"></div>
+      <div class="year-label" style="left: 178px;">201 BG</div>
+
+      <div class="year-tick" style="left: 340px;"></div>
+      <div class="year-label" style="left: 340px;">0 AG</div>
+
+      <div class="year-tick" style="left: 475px;"></div>
+      <div class="year-label" style="left: 475px;">10191</div>
+
+      <div class="year-tick" style="left: 675px;"></div>
+      <div class="year-label" style="left: 675px;">13728</div>
+
+      <div class="year-tick" style="left: 935px;"></div>
+      <div class="year-label" style="left: 935px;">15264</div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="url"><strong>othermemory</strong>.nihil.codes</div>
+    <div class="stats">22 BOOKS &middot; 12 ERAS &middot; 35,000 YEARS</div>
+  </div>
+</div>
+</body>
+</html>

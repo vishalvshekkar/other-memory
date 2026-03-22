@@ -4,7 +4,7 @@ An interactive, zoomable timeline spanning ~35,000 years of the Dune saga — ev
 event, era, and narrative arc across all novels by Frank Herbert and
 Brian Herbert & Kevin J. Anderson.
 
-**[Live Site →](#)** *(coming soon)*
+**[Live Site → othermemory.nihil.codes](https://othermemory.nihil.codes)**
 
 ---
 

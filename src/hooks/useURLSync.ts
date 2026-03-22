@@ -18,6 +18,7 @@ interface URLSyncCallbacks {
  * Two-way sync between app state and URL.
  * - On mount: reads URL params and applies them.
  * - On state change: debounced update of URL via replaceState.
+ * - URL always reflects current view state so users can share any position.
  */
 export function useURLSync(state: URLSyncState, callbacks: URLSyncCallbacks) {
   const initialized = useRef(false);

@@ -128,20 +128,21 @@ export const timeAxisLayer: RenderLayer = {
         ctx.stroke();
         ctx.setLineDash([]);
 
-        // "Today" label
+        // "TODAY" label above the AG axis
         ctx.font = "bold 9px Inter, system-ui, sans-serif";
         ctx.fillStyle = theme.accentWater;
         ctx.textAlign = "center";
         ctx.textBaseline = "bottom";
-        ctx.fillText("TODAY", todayX, axisY - 4);
+        ctx.fillText("TODAY", todayX, axisY - 6);
 
-        // Year badge
+        // AG year just below the AG axis line
+        const todayBG = Math.abs(todayAG);
         ctx.font = "8px Inter, system-ui, sans-serif";
         ctx.fillStyle = "rgba(26, 107, 138, 0.7)";
         ctx.textBaseline = "top";
-        ctx.fillText(`${currentCEYear} CE`, todayX, ceAxisY + 6);
+        ctx.fillText(`${todayBG.toLocaleString()} BG`, todayX, axisY + 8);
 
-        // Small diamond marker at the axis intersection
+        // Small diamond marker on the CE axis line
         ctx.fillStyle = theme.accentWater;
         ctx.beginPath();
         ctx.moveTo(todayX, ceAxisY - 3);
@@ -150,6 +151,12 @@ export const timeAxisLayer: RenderLayer = {
         ctx.lineTo(todayX - 3, ceAxisY);
         ctx.closePath();
         ctx.fill();
+
+        // CE year below the diamond, with spacing
+        ctx.font = "8px Inter, system-ui, sans-serif";
+        ctx.fillStyle = "rgba(26, 107, 138, 0.7)";
+        ctx.textBaseline = "top";
+        ctx.fillText(`${currentCEYear} CE`, todayX, ceAxisY + 8);
       }
     }
   },

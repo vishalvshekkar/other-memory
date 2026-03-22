@@ -99,7 +99,9 @@ export function TimelineCanvas({
       ceAnchorEncyclopedia,
       showMediaBands,
       mediaEntries: data.media,
-      bottomAreaHeight: 30 + (showCEAxis ? 32 : 0),
+      bottomAreaHeight: 30
+        + (showCEAxis ? 32 : 0)
+        + (showMediaBands ? 10 + data.media.length * 16 + 22 : 0),
     };
 
     renderTimeline(rc);

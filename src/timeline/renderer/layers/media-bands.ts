@@ -1,8 +1,8 @@
 /**
  * Media bands layer — renders colored horizontal bands for movies and TV shows.
- * Positioned at the TOP of the canvas, just below the header area.
- * Each band spans the AG date range that the adaptation covers.
- * Bands are strictly clipped to their AG range — if out of view, they disappear.
+ * Positioned in a dedicated zone BELOW the book events/arcs area and ABOVE
+ * the density heatmap and time axis. Visually separated from book content.
+ * Bands are strictly clipped to their AG date range.
  */
 
 import type { RenderLayer, RenderContext, HitBox } from "../types";
@@ -13,15 +13,15 @@ export let mediaHitBoxes: HitBox[] = [];
 const BAND_HEIGHT = 14;
 const BAND_GAP = 2;
 const BAND_RADIUS = 2;
-const TOP_OFFSET = 4; // gap below the top of the canvas
-const LABEL_HEIGHT = 12; // "SCREEN ADAPTATIONS" label
+const SECTION_LABEL_HEIGHT = 14;
+const SECTION_GAP = 8; // space above the section separator
 
 export const mediaBandsLayer: RenderLayer = {
   id: "media-bands",
 
   render(rc: RenderContext) {
     const { ctx, camera, viewport, showMediaBands, mediaEntries } = rc;
-    const { width } = viewport;
+    const { width, height } = viewport;
 
     if (!showMediaBands || mediaEntries.length === 0) {
       mediaHitBoxes = [];
@@ -30,12 +30,26 @@ export const mediaBandsLayer: RenderLayer = {
 
     const hitBoxes: HitBox[] = [];
 
+    // Position: above the bottom area (heatmap + axis + CE), below book content
+    const totalBandsHeight = mediaEntries.length * (BAND_HEIGHT + BAND_GAP);
+    const sectionTop = height - rc.bottomAreaHeight - 10 - totalBandsHeight - SECTION_LABEL_HEIGHT - SECTION_GAP;
+
+    // Separator line
+    ctx.strokeStyle = "rgba(255, 255, 255, 0.04)";
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, sectionTop);
+    ctx.lineTo(width, sectionTop);
+    ctx.stroke();
+
     // Section label
     ctx.font = "7px Inter, system-ui, sans-serif";
-    ctx.fillStyle = "rgba(138, 128, 112, 0.4)";
+    ctx.fillStyle = "rgba(138, 128, 112, 0.35)";
     ctx.textAlign = "left";
     ctx.textBaseline = "top";
-    ctx.fillText("SCREEN ADAPTATIONS", 4, TOP_OFFSET);
+    ctx.fillText("SCREEN ADAPTATIONS", 4, sectionTop + 4);
+
+    const bandsStartY = sectionTop + SECTION_LABEL_HEIGHT + 2;
 
     // Sort media by timeline_start for consistent ordering
     const sorted = [...mediaEntries].sort((a, b) => a.timeline_start - b.timeline_start);
@@ -55,14 +69,13 @@ export const mediaBandsLayer: RenderLayer = {
       const bandRight = Math.min(width, rightEdge);
       let bandW = bandRight - bandX;
 
-      // For point-like entries (film covering a single year), use a small
-      // but proportional width — only if the point is actually on screen
+      // For point-like entries (film at a single year), use a small width
       if (bandW < 3) bandW = 3;
 
-      const y = TOP_OFFSET + LABEL_HEIGHT + i * (BAND_HEIGHT + BAND_GAP);
+      const y = bandsStartY + i * (BAND_HEIGHT + BAND_GAP);
 
       // Draw band
-      ctx.fillStyle = hexToRgba(media.color, 0.5);
+      ctx.fillStyle = hexToRgba(media.color, 0.45);
       ctx.beginPath();
       roundRect(ctx, bandX, y, bandW, BAND_HEIGHT, BAND_RADIUS);
       ctx.fill();
@@ -73,31 +86,18 @@ export const mediaBandsLayer: RenderLayer = {
         ctx.fillRect(leftEdge, y, 2, BAND_HEIGHT);
       }
 
-      // Visual distinction: film gets sprocket-hole dots, TV gets dashed top border
-      if (media.type === "film") {
-        // Sprocket holes along top edge
-        ctx.fillStyle = hexToRgba("#0a0a0f", 0.5);
-        const spacing = 8;
-        for (let sx = bandX + 4; sx < bandX + bandW - 2; sx += spacing) {
-          ctx.fillRect(sx, y + 1, 2, 2);
-          ctx.fillRect(sx, y + BAND_HEIGHT - 3, 2, 2);
-        }
-      } else {
-        // TV: thin dashed top line
-        ctx.strokeStyle = hexToRgba(media.color, 0.8);
-        ctx.lineWidth = 0.5;
-        ctx.setLineDash([2, 2]);
-        ctx.beginPath();
-        ctx.moveTo(bandX, y);
-        ctx.lineTo(bandX + bandW, y);
-        ctx.stroke();
-        ctx.setLineDash([]);
+      // Sprocket holes for both films and TV (unified visual language)
+      ctx.fillStyle = hexToRgba("#0a0a0f", 0.4);
+      const spacing = 8;
+      for (let sx = bandX + 4; sx < bandX + bandW - 2; sx += spacing) {
+        ctx.fillRect(sx, y + 1, 2, 2);
+        ctx.fillRect(sx, y + BAND_HEIGHT - 3, 2, 2);
       }
 
-      // Label (only if band is wide enough to show text)
+      // Label
       if (bandW > 40) {
         ctx.font = "9px Inter, system-ui, sans-serif";
-        ctx.fillStyle = "rgba(232, 224, 208, 0.85)";
+        ctx.fillStyle = "rgba(232, 224, 208, 0.8)";
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         const label = bandW > 140
@@ -106,7 +106,7 @@ export const mediaBandsLayer: RenderLayer = {
         ctx.fillText(label, bandX + 6, y + BAND_HEIGHT / 2, bandW - 10);
       }
 
-      // Type badge at right (only if plenty of space)
+      // Type badge at right
       if (bandW > 100) {
         ctx.font = "7px Inter, system-ui, sans-serif";
         ctx.fillStyle = hexToRgba(media.color, 0.5);

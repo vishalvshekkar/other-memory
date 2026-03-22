@@ -30,6 +30,8 @@ where Frank Herbert placed his saga in humanity's deep future.
 - **Search** — find events, characters, factions instantly
 - **Narrative arcs** — visual threads connecting events like The Golden Path
   and the Kwisatz Haderach breeding program
+- **Movies & TV shows** — 7 screen adaptations displayed as media bands, from
+  Lynch's 1984 film through Dune: Prophecy, showing which eras each covers
 - **Density heatmap** — see where events cluster, even when fully zoomed out
 - **Detail panel** — click any event for full description, book references,
   characters, factions, and related events with a zoom-to-event button
@@ -115,6 +117,7 @@ npm run validate   # Check your changes before submitting
 - [How to add events](docs/adding-events.md)
 - [How to add eras](docs/adding-eras.md)
 - [How to add narrative arcs](docs/adding-arcs.md)
+- [How to add movies & TV shows](docs/adding-media.md)
 - [Data schema reference](docs/data-schema.md)
 - [Calendar system explained](docs/calendar-system.md)
 - [Full contribution workflow](docs/contribution-workflow.md)
@@ -136,6 +139,7 @@ npm run validate   # Check your changes before submitting
 │   │   ├── god-emperor.yaml
 │   │   ├── the-scattering.yaml
 │   │   └── return-and-kralizec.yaml
+│   ├── media.yaml           # 7 screen adaptation entries (movies & TV shows)
 │   └── arcs/                # Narrative arc definitions
 │       ├── golden-path.yaml
 │       └── kwisatz-haderach.yaml

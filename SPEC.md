@@ -504,7 +504,51 @@ This enables:
 
 ---
 
-## 13. Future Considerations (Out of Scope for V1)
+## 13. Screen Adaptations (Media Bands)
+
+Movies, TV series, and TV miniseries are displayed on the timeline as **media bands** — colored
+horizontal bars that show which portion of the Dune chronology each screen adaptation covers.
+
+### 13.1 Data Source
+
+Media entries are stored in `data/media.yaml`. Each entry has a `timeline_start` and
+`timeline_end` (AG years) representing the in-universe time span the adaptation depicts,
+plus metadata like `release_year`, `director`/`creator`, `network`, source material (`adapts`),
+and a hex `color`. The type field is one of `film`, `tv-series`, or `tv-miniseries`. See
+`src/types/index.ts` for the `MediaEntry` TypeScript interface.
+
+### 13.2 Visual Treatment
+
+- **Position:** Media bands render below the book-sourced events and above the time axis, in a
+  dedicated region that does not overlap with event markers or era bands.
+- **Appearance:** Each band is a colored horizontal bar spanning the adaptation's timeline
+  coverage. A sprocket-hole film-strip visual along the edges distinguishes media bands from
+  book-sourced era bands.
+- **Labels:** The adaptation title and release year are shown inside or alongside the band when
+  space permits.
+
+### 13.3 Interaction
+
+- **Toggle:** A "Media" button in the header toggles media band visibility on and off.
+- **Click:** Clicking a media band opens a detail pop-up showing the title, type, director or
+  creator, release year, network, source material, timeline coverage, and description.
+- **No filtering by media:** Media bands are display-only overlays. They do not participate in
+  book filters, category filters, or significance filtering.
+
+### 13.4 Current Entries
+
+As of the initial release, 7 screen adaptations are included:
+- Dune (David Lynch, 1984)
+- Dune: Part One (Denis Villeneuve, 2021)
+- Dune: Part Two (Denis Villeneuve, 2024)
+- Dune: Part Three / Messiah (Denis Villeneuve, 2026)
+- Frank Herbert's Dune (Sci Fi Channel miniseries, 2000)
+- Frank Herbert's Children of Dune (Sci Fi Channel miniseries, 2003)
+- Dune: Prophecy (HBO series, 2024--)
+
+---
+
+## 14. Future Considerations (Out of Scope for V1)
 
 These are NOT being built now but the architecture should not preclude them:
 

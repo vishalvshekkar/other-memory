@@ -366,3 +366,9 @@ Once your event is ready and validated:
 2. Open a pull request.
 
 See [Contribution Workflow](contribution-workflow.md) for the full process.
+
+---
+
+## A Note on Screen Adaptations
+
+Movies and TV shows (screen adaptations) are tracked separately from book-sourced events. They live in their own data file at `data/media.yaml` and follow a different schema. If you want to add or update a film or TV show entry, see [Adding Media](adding-media.md) for the step-by-step guide, or consult the [Data Schema Reference](data-schema.md#media-schema) for the full field reference.

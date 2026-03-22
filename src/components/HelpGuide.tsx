@@ -56,6 +56,44 @@ function DashedArc({ color }: { color: string }) {
   );
 }
 
+function MediaBand({ color }: { color: string }) {
+  const sprocketSize = 3;
+  const sprocketGap = 5;
+  const sprockets = Array.from({ length: 5 }, (_, i) => i);
+  return (
+    <svg width={64} height={20} className="inline-block shrink-0">
+      {/* Band body */}
+      <rect x={0} y={2} width={64} height={16} rx={2} fill={color} opacity={0.85} />
+      {/* Top sprocket holes */}
+      {sprockets.map((i) => (
+        <rect
+          key={`t${i}`}
+          x={4 + i * (sprocketSize + sprocketGap)}
+          y={3}
+          width={sprocketSize}
+          height={sprocketSize}
+          rx={0.5}
+          fill="#0a0a0f"
+          opacity={0.5}
+        />
+      ))}
+      {/* Bottom sprocket holes */}
+      {sprockets.map((i) => (
+        <rect
+          key={`b${i}`}
+          x={4 + i * (sprocketSize + sprocketGap)}
+          y={14}
+          width={sprocketSize}
+          height={sprocketSize}
+          rx={0.5}
+          fill="#0a0a0f"
+          opacity={0.5}
+        />
+      ))}
+    </svg>
+  );
+}
+
 function EraStripe() {
   return (
     <div className="inline-block w-16 h-5 shrink-0 relative rounded-sm overflow-hidden">
@@ -185,6 +223,39 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
             see where the action concentrates.
           </LegendRow>
 
+        </Section>
+
+        {/* ── Section: Movies & TV Shows ── */}
+        <Section title="Movies & TV Shows">
+          <p className="text-sm text-[#8a8070] mb-3">
+            Other Memory includes 7 screen adaptations — films, TV series, and miniseries —
+            displayed as media bands on the timeline. These show which portions of the Dune
+            chronology each adaptation covers.
+          </p>
+
+          <LegendRow icon={<MediaBand color="#c4841d" />} label="Media Band (Film Strip)">
+            A colored horizontal bar with sprocket-hole edges representing a screen
+            adaptation. The band spans the in-universe years the film or show covers.
+            Each adaptation has a distinct color. Media bands appear below the book
+            events and above the time axis, visually separated from book-sourced content.
+          </LegendRow>
+
+          <div className="space-y-3 text-sm text-[#c0b8a8] leading-relaxed">
+            <p>
+              <strong>Toggle visibility:</strong> Click the <strong>Media</strong> button
+              in the header toolbar to show or hide all media bands.
+            </p>
+            <p>
+              <strong>View details:</strong> Click any media band to see the full details —
+              title, director or creator, release year, network, source material, timeline
+              coverage, and a description of the adaptation.
+            </p>
+            <p>
+              Media bands are visually separated from book-sourced events to make clear
+              that these represent real-world screen adaptations, not in-universe historical
+              records from the novels.
+            </p>
+          </div>
         </Section>
 
         {/* ── Section: Category Colors ── */}

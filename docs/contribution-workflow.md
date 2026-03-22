@@ -98,6 +98,7 @@ Most contributions involve editing files in the `data/` directory:
 | Add a new event | `data/events/<era-file>.yaml` | [Adding Events](adding-events.md) |
 | Add or modify an era | `data/eras.yaml` | [Adding Eras](adding-eras.md) |
 | Add a narrative arc | `data/arcs/<arc-name>.yaml` | [Adding Arcs](adding-arcs.md) |
+| Add a screen adaptation | `data/media.yaml` | [Adding Media](adding-media.md) |
 
 Open the appropriate file in any text editor (VS Code, Sublime Text, or even Notepad) and make your changes.
 

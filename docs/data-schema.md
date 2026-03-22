@@ -343,6 +343,61 @@ See `data/books.yaml` for the complete list of all novels across every series.
 
 ---
 
+## Media Schema
+
+Screen adaptations (movies, TV series, and TV miniseries) are stored in `data/media.yaml` with a separate schema from timeline events. Each entry represents a film or show that adapted part of the Dune saga.
+
+### MediaEntry Object
+
+```yaml
+- id: dune-villeneuve-2021
+  title: "Dune: Part One"
+  type: film
+  release_year: 2021
+  director: "Denis Villeneuve"
+  timeline_start: 10190
+  timeline_end: 10191
+  adapts: "Dune (1965) — first half"
+  color: "#c4841d"
+  description: "Denis Villeneuve's critically acclaimed adaptation covering the first half of Frank Herbert's Dune."
+```
+
+### MediaEntry Field Reference
+
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `id` | string | **Yes** | Unique kebab-case identifier (e.g., `dune-villeneuve-2021`). |
+| `title` | string | **Yes** | Display title of the film or show. |
+| `type` | string | **Yes** | One of: `film`, `tv-series`, `tv-miniseries`. |
+| `release_year` | number | **Yes** | Year the film or show first released/premiered. |
+| `end_year` | number | No | Final year for ongoing or multi-season TV series. Omit for films and completed miniseries. |
+| `director` | string | No | Director name. Typically used for films and miniseries. |
+| `creator` | string | No | Creator/showrunner name. Typically used for TV series. |
+| `network` | string | No | Network or streaming platform. Typically used for TV shows (e.g., `"HBO / Max"`). |
+| `timeline_start` | number (AG year) | **Yes** | Earliest AG year covered by the adaptation's story. |
+| `timeline_end` | number (AG year) | **Yes** | Latest AG year covered by the adaptation's story. |
+| `adapts` | string | **Yes** | Source material the adaptation is based on (e.g., `"Dune (1965)"` or `"Dune Messiah (1969) + Children of Dune (1976)"`). |
+| `color` | string | **Yes** | Hex color for the media band on the timeline. Must match `^#[0-9a-fA-F]{6}$`. |
+| `description` | string | **Yes** | 1-3 sentence summary of the adaptation. |
+
+### MediaEntry Type Values
+
+| Type | When to Use | Example |
+|------|-------------|---------|
+| `film` | A theatrical feature film. | Dune: Part One (2021) |
+| `tv-series` | An ongoing or multi-season television series. Use `end_year` for the final season year if known. | Dune: Prophecy (2024--2026) |
+| `tv-miniseries` | A limited/miniseries with no continuation planned. | Frank Herbert's Dune (2000) |
+
+### TV-Specific Fields
+
+Films typically use `director`. TV shows typically use `creator` and `network`. You may include all fields if appropriate (e.g., a miniseries with both a director and a network).
+
+### How Media Bands Appear on the Timeline
+
+Media entries render as horizontal color bands below the book events and above the time axis. Each band spans from `timeline_start` to `timeline_end`, showing which portion of the Dune chronology the adaptation covers. Bands include a sprocket-hole film-strip visual to distinguish them from book-sourced era bands. They are toggled on/off via the "Media" button in the header and are clickable for details (director, release year, source material).
+
+---
+
 ## ID Naming Conventions
 
 All IDs in the project use **kebab-case**: lowercase letters, digits, and hyphens.

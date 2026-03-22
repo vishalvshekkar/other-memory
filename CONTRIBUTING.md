@@ -21,7 +21,11 @@ and nesting.
 See [docs/adding-arcs.md](docs/adding-arcs.md) for how to create story threads
 that connect events across the timeline.
 
-### 5. Discuss Ambiguities
+### 5. Add or Update Screen Adaptations
+See [docs/adding-media.md](docs/adding-media.md) for how to add movies, TV series,
+and TV miniseries entries to `data/media.yaml`.
+
+### 6. Discuss Ambiguities
 The Dune universe has real contradictions between sources. Use
 [GitHub Discussions](https://github.com/vishalvshekkar/other-memory/discussions)
 to debate timeline placement, propose changes, or ask questions before
@@ -30,7 +34,7 @@ submitting a PR. Topics might include:
 - "Should the Butlerian Jihad start at -201 or -200?"
 - "Proposal: add events from the Caladan Trilogy"
 
-### 6. Improve the Site
+### 7. Improve the Site
 For code contributions (UI, renderer, features), check [SPEC.md](SPEC.md) and
 [CLAUDE.md](CLAUDE.md) for architecture context.
 
@@ -123,6 +127,7 @@ Find the right file in `data/events/` and add an entry:
 | [Adding Events](docs/adding-events.md) | Step-by-step with templates and examples |
 | [Adding Eras](docs/adding-eras.md) | Era boundaries, nesting, and when to use eras vs spans |
 | [Adding Arcs](docs/adding-arcs.md) | Narrative threads connecting events |
+| [Adding Media](docs/adding-media.md) | Movies, TV series, and miniseries entries |
 | [Calendar System](docs/calendar-system.md) | AG/BG, dual CE anchors, why they disagree |
 | [Contribution Workflow](docs/contribution-workflow.md) | Fork, branch, validate, PR, review |
 

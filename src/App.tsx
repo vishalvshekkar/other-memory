@@ -7,6 +7,7 @@ import { FilterPanel } from "@/components/FilterPanel";
 import { BookSelector } from "@/components/BookSelector";
 import { SearchOverlay } from "@/components/SearchOverlay";
 import { ShortcutOverlay } from "@/components/ShortcutOverlay";
+import { HelpGuide } from "@/components/HelpGuide";
 import { useCamera } from "@/hooks/useCamera";
 import { useFilters } from "@/hooks/useFilters";
 import { handleKeyDown } from "@/timeline/interaction/keyboard";
@@ -15,7 +16,7 @@ import { useURLSync } from "@/hooks/useURLSync";
 import { formatAGYear } from "@/utils/calendar";
 import { getTierPixelsPerYear } from "@/timeline/zoom";
 
-type PanelId = "filter" | "book" | "search" | "shortcuts" | null;
+type PanelId = "filter" | "book" | "search" | "shortcuts" | "guide" | null;
 
 function TimelineApp() {
   const data = useTimelineData();
@@ -164,6 +165,41 @@ function TimelineApp() {
     [handleNavigateToEvent],
   );
 
+  /** Zoom to an event at a level where it and its neighbors are individually visible */
+  const handleZoomToEvent = useCallback(
+    (eventId: string) => {
+      const event = data.eventsById.get(eventId);
+      if (!event) return;
+
+      // Find nearby events to determine a good zoom level
+      const eventYear = event.date_start;
+      const nearby = data.events.filter(
+        (e) => e.id !== eventId && Math.abs(e.date_start - eventYear) < 500,
+      );
+
+      // Calculate a zoom level where the nearest neighbor is at least 60px away
+      let targetPPY: number;
+      if (nearby.length === 0) {
+        // No neighbors — zoom to tier 5 (years level)
+        targetPPY = getTierPixelsPerYear(5);
+      } else {
+        // Find the closest neighbor
+        const minGap = Math.min(
+          ...nearby.map((e) => Math.max(1, Math.abs(e.date_start - eventYear))),
+        );
+        // We want at least 60px between this event and its closest neighbor
+        targetPPY = Math.min(60 / minGap, getTierPixelsPerYear(5));
+        targetPPY = Math.max(targetPPY, getTierPixelsPerYear(3)); // at least tier 3
+      }
+
+      cameraDispatch({
+        type: "SET",
+        camera: { center: eventYear, pixels_per_year: targetPPY },
+      });
+    },
+    [data.eventsById, data.events, cameraDispatch],
+  );
+
   // ─── Render ───
 
   return (
@@ -229,6 +265,12 @@ function TimelineApp() {
           <span className="w-px h-4 bg-white/[0.06] mx-1" />
 
           <button
+            onClick={() => togglePanel("guide")}
+            className={`px-2 h-7 flex items-center text-[10px] rounded transition-colors ${activePanel === "guide" ? "bg-white/[0.06] text-[#c4841d]" : "text-[#3a3530] hover:text-[#8a8070] hover:bg-white/[0.03]"}`}
+            title="Open user guide">
+            Guide
+          </button>
+          <button
             onClick={() => togglePanel("shortcuts")}
             className="w-7 h-7 flex items-center justify-center text-[#3a3530] hover:text-[#8a8070] transition-colors text-sm rounded hover:bg-white/[0.04]"
             title="Keyboard shortcuts (?)">
@@ -273,6 +315,7 @@ function TimelineApp() {
           data={data}
           onClose={() => setSelectedEventId(null)}
           onNavigate={handleNavigateToEvent}
+          onZoomToEvent={handleZoomToEvent}
         />
       )}
 
@@ -327,6 +370,11 @@ function TimelineApp() {
       {/* Shortcut Overlay */}
       {activePanel === "shortcuts" && (
         <ShortcutOverlay onClose={() => setActivePanel(null)} />
+      )}
+
+      {/* Help Guide */}
+      {activePanel === "guide" && (
+        <HelpGuide onClose={() => setActivePanel(null)} />
       )}
     </div>
   );

@@ -7,6 +7,7 @@ interface DetailPanelProps {
   data: TimelineDataWithMaps;
   onClose: () => void;
   onNavigate: (eventId: string) => void;
+  onZoomToEvent: (eventId: string) => void;
 }
 
 const SIG_LABELS: Record<number, string> = {
@@ -17,7 +18,7 @@ const SIG_LABELS: Record<number, string> = {
   5: "Universe-altering",
 };
 
-export function DetailPanel({ event, data, onClose, onNavigate }: DetailPanelProps) {
+export function DetailPanel({ event, data, onClose, onNavigate, onZoomToEvent }: DetailPanelProps) {
   // Find related events (share tags or factions)
   const related = data.events.filter(
     (e) =>
@@ -37,14 +38,33 @@ export function DetailPanel({ event, data, onClose, onNavigate }: DetailPanelPro
 
   return (
     <div className="fixed right-0 top-0 bottom-0 w-[380px] bg-[#12121a] border-l border-white/[0.08] z-40 overflow-y-auto transition-transform duration-300">
-      {/* Close button */}
-      <button
-        onClick={onClose}
-        className="absolute top-3 right-3 text-[#5a5548] hover:text-[#e8e0d0] transition-colors text-lg w-8 h-8 flex items-center justify-center"
-        aria-label="Close detail panel"
-      >
-        &times;
-      </button>
+      {/* Top buttons */}
+      <div className="absolute top-3 right-3 flex items-center gap-1">
+        {/* Zoom to event button */}
+        <button
+          onClick={() => onZoomToEvent(event.id)}
+          className="text-[#5a5548] hover:text-[#c4841d] transition-colors w-8 h-8 flex items-center justify-center rounded hover:bg-white/[0.04]"
+          aria-label="Zoom to this event on the timeline"
+          title="Zoom to this event"
+        >
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
+            <circle cx="8" cy="8" r="5.5" />
+            <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none" />
+            <line x1="8" y1="0.5" x2="8" y2="3" />
+            <line x1="8" y1="13" x2="8" y2="15.5" />
+            <line x1="0.5" y1="8" x2="3" y2="8" />
+            <line x1="13" y1="8" x2="15.5" y2="8" />
+          </svg>
+        </button>
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="text-[#5a5548] hover:text-[#e8e0d0] transition-colors text-lg w-8 h-8 flex items-center justify-center"
+          aria-label="Close detail panel"
+        >
+          &times;
+        </button>
+      </div>
 
       <div className="p-5 pt-12">
         {/* Event type badge */}

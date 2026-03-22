@@ -6,7 +6,7 @@
   "description": "Interactive timeline of the entire Dune universe",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
     "validate": "tsx scripts/validate.ts",
     "lint": "eslint src/",

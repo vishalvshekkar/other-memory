@@ -1,19 +1,13 @@
 import { createPortal } from "react-dom";
 import type { TimelineEvent } from "@/types";
 import { formatAGYear } from "@/utils/calendar";
+import { contrastTextForCategory } from "@/utils/contrast";
+import { SignalBars } from "./SignalBars";
 
 interface TooltipProps {
   event: TimelineEvent | null;
   position: { x: number; y: number } | null;
 }
-
-const SIG_STARS: Record<number, string> = {
-  1: "\u2605",
-  2: "\u2605\u2605",
-  3: "\u2605\u2605\u2605",
-  4: "\u2605\u2605\u2605\u2605",
-  5: "\u2605\u2605\u2605\u2605\u2605",
-};
 
 export function Tooltip({ event, position }: TooltipProps) {
   if (!event || !position) return null;
@@ -32,9 +26,7 @@ export function Tooltip({ event, position }: TooltipProps) {
           <h3 className="text-sm font-medium text-[#e8e0d0] leading-tight">
             {event.title}
           </h3>
-          <span className="text-[10px] text-[#c4841d] whitespace-nowrap">
-            {SIG_STARS[event.significance]}
-          </span>
+          <SignalBars level={event.significance} />
         </div>
         <div className="flex items-center gap-2 mt-1">
           <span className="text-[10px] text-[#8a8070]">
@@ -47,6 +39,7 @@ export function Tooltip({ event, position }: TooltipProps) {
             className="text-[9px] px-1 rounded"
             style={{
               backgroundColor: `var(--color-cat-${event.category})`,
+              color: contrastTextForCategory(event.category),
               opacity: 0.7,
             }}
           >

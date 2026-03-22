@@ -1,5 +1,7 @@
 import type { TimelineEvent, Book } from "@/types";
 import { formatAGYear } from "@/utils/calendar";
+import { contrastTextForCategory } from "@/utils/contrast";
+import { SignalBars } from "./SignalBars";
 import type { TimelineDataWithMaps } from "@/data/loader";
 
 interface DetailPanelProps {
@@ -91,12 +93,16 @@ export function DetailPanel({ event, data, onClose, onNavigate, onZoomToEvent }:
         {/* Meta row */}
         <div className="flex items-center gap-3 mt-3 text-xs">
           <span
-            className="px-2 py-0.5 rounded text-[#e8e0d0]"
-            style={{ backgroundColor: `var(--color-cat-${event.category})` }}
+            className="px-2 py-0.5 rounded"
+            style={{
+              backgroundColor: `var(--color-cat-${event.category})`,
+              color: contrastTextForCategory(event.category),
+            }}
           >
             {event.category}
           </span>
-          <span className="text-[#8a8070]">
+          <span className="flex items-center gap-1.5 text-[#8a8070]">
+            <SignalBars level={event.significance} />
             {SIG_LABELS[event.significance]}
           </span>
         </div>

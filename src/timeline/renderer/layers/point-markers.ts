@@ -12,8 +12,13 @@ import { shouldShowEvent } from "../../zoom";
 /** Exported hit boxes for click/hover detection */
 export let pointHitBoxes: HitBox[] = [];
 
+/** Exported Y positions per event so the labels layer can align */
+export let pointYPositions: Map<string, number> = new Map();
+
 /** Vertical center line for point events */
 const POINT_Y_CENTER = 250;
+const MIN_SPACING = 24; // minimum horizontal px before markers stack
+const LANE_OFFSET = 26; // vertical px between stacked lanes
 
 /** Size range based on significance */
 const SIG_RADIUS: Record<number, number> = {
@@ -31,6 +36,7 @@ export const pointMarkersLayer: RenderLayer = {
     const { ctx, camera, viewport, data, theme, contextualEventIds, selectedEventId, hoveredEventId } = rc;
     const { width } = viewport;
     const hitBoxes: HitBox[] = [];
+    const yPositions = new Map<string, number>();
 
     // Filter to visible point and milestone events
     const points = data.events.filter(
@@ -39,20 +45,38 @@ export const pointMarkersLayer: RenderLayer = {
         shouldShowEvent(e, camera.pixels_per_year),
     );
 
-    for (const event of points) {
-      const x = yearToPixel(event.date_start, camera, width);
+    // Pre-calculate pixel X and sort for sweep-line lane assignment
+    const positioned = points.map((event) => ({
+      event,
+      x: yearToPixel(event.date_start, camera, width),
+    }));
+    positioned.sort((a, b) => a.x - b.x);
 
+    // Assign vertical lanes so co-located markers stack instead of overlapping
+    const laneEnds: number[] = []; // rightmost occupied X per lane
+
+    for (const { event, x } of positioned) {
       // Cull
       if (x < -20 || x > width + 20) continue;
 
       const radius = SIG_RADIUS[event.significance] ?? 5;
+
+      // Find first lane with enough horizontal clearance
+      let lane = 0;
+      while (lane < laneEnds.length && x < laneEnds[lane] + MIN_SPACING) {
+        lane++;
+      }
+      while (laneEnds.length <= lane) laneEnds.push(-Infinity);
+      laneEnds[lane] = x + radius;
+
       const isContextual = contextualEventIds.has(event.id);
       const isSelected = event.id === selectedEventId;
       const isHovered = event.id === hoveredEventId;
       const alpha = isContextual ? 0.3 : 1.0;
       const color = event.color ?? theme.categories[event.category] ?? theme.accentSpice;
 
-      const y = POINT_Y_CENTER;
+      const y = POINT_Y_CENTER + lane * LANE_OFFSET;
+      yPositions.set(event.id, y);
 
       if (event.type === "milestone") {
         drawMilestone(ctx, x, y, radius, color, alpha, isSelected, isHovered);
@@ -71,6 +95,7 @@ export const pointMarkersLayer: RenderLayer = {
     }
 
     pointHitBoxes = hitBoxes;
+    pointYPositions = yPositions;
   },
 };
 

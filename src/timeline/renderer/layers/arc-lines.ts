@@ -81,8 +81,8 @@ export const arcLinesLayer: RenderLayer = {
           ctx.font = "9px Inter, system-ui, sans-serif";
           ctx.fillStyle = hexToRgba(color, 0.4);
           ctx.textAlign = "center";
-          ctx.textBaseline = "bottom";
-          ctx.fillText(arc.title, midX, ARC_Y - ARC_CURVE_HEIGHT - 4);
+          ctx.textBaseline = "top";
+          ctx.fillText(arc.title, midX, ARC_Y + 6);
         }
       }
     }

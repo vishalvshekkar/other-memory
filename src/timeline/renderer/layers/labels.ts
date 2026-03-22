@@ -10,6 +10,7 @@ import type { RenderLayer, RenderContext } from "../types";
 import type { TimelineEvent } from "@/types";
 import { yearToPixel } from "../../camera";
 import { getMinSignificance, shouldShowEvent } from "../../zoom";
+import { pointYPositions } from "./point-markers";
 
 /** Bounding box for label collision detection */
 interface LabelBox {
@@ -19,7 +20,6 @@ interface LabelBox {
   height: number;
 }
 
-const LABEL_Y_BASE = 270; // below point markers
 const LABEL_LINE_HEIGHT = 16;
 const LABEL_PADDING = 8;
 
@@ -62,9 +62,10 @@ export const labelsLayer: RenderLayer = {
       const labelWidth = metrics.width;
       const labelHeight = LABEL_LINE_HEIGHT;
 
-      // Position label centered below the marker
+      // Position label centered below the marker (follows stacked marker Y)
+      const markerY = pointYPositions.get(event.id) ?? 250;
       const labelX = x - labelWidth / 2;
-      const labelY = LABEL_Y_BASE + (event.significance >= 4 ? 0 : LABEL_LINE_HEIGHT);
+      const labelY = markerY + 20 + (event.significance >= 4 ? 0 : LABEL_LINE_HEIGHT);
 
       const box: LabelBox = {
         x: labelX - LABEL_PADDING / 2,

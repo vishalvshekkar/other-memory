@@ -88,7 +88,7 @@ export const spanBarsLayer: RenderLayer = {
         ctx.font = "11px Inter, system-ui, sans-serif";
         ctx.fillStyle = isContextual
           ? `rgba(232, 224, 208, 0.3)`
-          : `rgba(232, 224, 208, 0.9)`;
+          : contrastTextRgba(color, 0.9);
         ctx.textAlign = "left";
         ctx.textBaseline = "middle";
         ctx.fillText(span.title, barX + 6, y + BAR_HEIGHT / 2, barW - 12);
@@ -106,6 +106,20 @@ function hexToRgba(hex: string, alpha: number): string {
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+/** Choose dark or light text for readable contrast against the bar color */
+function contrastTextRgba(bgHex: string, alpha: number): string {
+  const r = parseInt(bgHex.slice(1, 3), 16) / 255;
+  const g = parseInt(bgHex.slice(3, 5), 16) / 255;
+  const b = parseInt(bgHex.slice(5, 7), 16) / 255;
+  const linearize = (c: number) =>
+    c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  const luminance =
+    0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b);
+  return luminance > 0.4
+    ? `rgba(20, 18, 15, ${alpha})`
+    : `rgba(232, 224, 208, ${alpha})`;
 }
 
 function roundRect(

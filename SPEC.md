@@ -42,7 +42,7 @@ The mapping of AG 0 to a Common Era year is stored in a config file and is adjus
 ```yaml
 # data/config.yaml
 calendar:
-  ag_zero_ce_year: 11200  # AG 0 = 11,200 CE (approximate)
+  ag_zero_ce_year: 13160  # AG 0 = 13,160 CE (Expanded Dune canon)
   display_calendars:
     - id: ag
       label: "AG (After Guild)"
@@ -52,13 +52,16 @@ calendar:
       primary: false
 ```
 
+This is derived from: 11,200 BG = 1960 CE (beginning of space travel), so AG 0 = 13,160 CE.
+
 This means:
-- Dune (10,191 AG) ≈ 21,391 CE
-- Butlerian Jihad (-200 AG) ≈ 11,000 CE
+- Dune (10,191 AG) ≈ 23,351 CE
+- Butlerian Jihad (-200 AG) ≈ 12,960 CE
+- Today (2026 CE) ≈ 11,134 BG
 
 The UI shows the primary calendar (AG) by default with a toggle to overlay CE years.
-The exact CE mapping is debatable in Dune scholarship — making it configurable avoids
-hardcoding a contested value.
+The CE mapping follows the Expanded Dune canon (Brian Herbert/KJA). The Dune Encyclopedia
+uses a different anchor (16,200 BG = 0 CE) — the value is configurable for either system.
 
 ### 2.3 Date Precision
 

@@ -1,5 +1,5 @@
 /**
- * HelpGuide — a full visual manual for the Dune Timeline.
+ * HelpGuide — a full visual manual for the Other Memory.
  * Opens as a full-screen overlay with detailed usage instructions,
  * visual legends, and information about the dual calendar systems.
  */
@@ -125,7 +125,7 @@ export function HelpGuide({ onClose }: HelpGuideProps) {
 
         {/* Title */}
         <h1 className="font-['Cinzel'] text-2xl tracking-[0.15em] text-[#c4841d] uppercase text-center">
-          Dune Timeline
+          Other Memory
         </h1>
         <p className="text-center text-sm text-[#8a8070] mt-2">
           An interactive guide to ~35,000 years of the Dune universe

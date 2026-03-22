@@ -1,9 +1,13 @@
-# Dune Timeline — Project Guide
+# Other Memory — Project Guide
 
 ## What This Is
 
-An interactive static website that visualizes the entire Dune universe chronology across
-all novels. Built with Vite + React + TypeScript + Canvas. See SPEC.md for full details.
+**Other Memory** is an interactive static website that visualizes the complete
+Dune universe chronology (~35,000 years) across all novels. Built with
+Vite + React 19 + TypeScript + Canvas. See SPEC.md for the full specification.
+
+Named after the Bene Gesserit ability to access ancestral memories spanning
+millennia — which is exactly what this timeline lets fans do.
 
 ## Commands
 
@@ -18,52 +22,78 @@ all novels. Built with Vite + React + TypeScript + Canvas. See SPEC.md for full 
 
 ### Rendering Pipeline
 
-The timeline uses an HTML Canvas renderer with layered drawing (see SPEC.md §9.2).
-React handles UI chrome (panels, filters, controls). Canvas handles the timeline itself.
+The timeline uses an HTML Canvas renderer with 8 layered drawing passes:
+1. Era background bands
+2. Density heatmap
+3. Span bars (duration events)
+4. Point/milestone markers
+5. Arc connection lines
+6. Labels
+7. Time axis (AG + optional dual CE rows)
+8. Hover/selection overlay
 
-Key renderer files:
-- `src/timeline/renderer.ts` — Main render loop, layer orchestration
-- `src/timeline/camera.ts` — Zoom/pan state (center year + pixels-per-year)
-- `src/timeline/layers/` — Individual render layers (eras, events, labels, etc.)
-- `src/timeline/spatial.ts` — Interval tree + quadtree for hit detection
-- `src/timeline/cluster.ts` — Event clustering logic
+React handles UI chrome (panels, filters, controls). Canvas handles the
+timeline itself. **Canvas code must not import React** — communicate via
+shared state passed as function arguments.
 
 ### Data Flow
 
 ```
-data/*.yaml → build-time validation → JSON bundle → React context → Canvas renderer
+data/*.yaml → build-time YAML plugin → JSON → React context → Canvas renderer
 ```
 
-YAML files in `data/` are the source of truth. At build time, they're validated against
-JSON Schema and bundled into a single JSON import. The React app loads this statically.
+YAML files in `data/` are the source of truth. Vite's custom YAML plugin
+transforms them into JSON at build time. The React app loads this statically.
 
-### Calendar
+### Calendar System
 
-All dates are stored as AG (After Guild) year numbers. Negative = BG (Before Guild).
-The CE (Common Era) conversion is: `ce_year = ag_year + config.ag_zero_ce_year`.
-Never store CE dates in data files — always AG.
+All dates are stored as AG (After Guild) year numbers. Negative = BG.
+
+Two CE (Common Era) anchors exist:
+- **Expanded Dune**: `CE = AG + 13,160` (11,200 BG = 1960 CE)
+- **Dune Encyclopedia**: `CE = AG + 16,200` (16,200 BG = 0 CE)
+
+Both are shown simultaneously when the CE toggle is enabled. Never store CE
+dates in data files — always AG.
 
 ## Data Files
 
-- `data/config.yaml` — Calendar mapping, display settings
-- `data/books.yaml` — Book definitions (one entry per book)
-- `data/eras.yaml` — Era/epoch definitions (background timeline bands)
-- `data/categories.yaml` — Category definitions with color mappings
-- `data/factions.yaml` — Faction definitions
-- `data/events/*.yaml` — Timeline events grouped by narrative period
-- `data/arcs/*.yaml` — Narrative arc definitions
+- `data/config.yaml` — Calendar anchors (dual CE system), display settings
+- `data/books.yaml` — 22 book definitions
+- `data/eras.yaml` — 12 era/epoch definitions (background timeline bands)
+- `data/categories.yaml` — 7 category definitions with color mappings
+- `data/factions.yaml` — 12 faction definitions
+- `data/events/*.yaml` — Timeline events grouped by narrative period (95 events)
+- `data/arcs/*.yaml` — 2 narrative arc definitions
+- `data/_schema.json` — JSON Schema for build-time validation
 
 ## Conventions
 
 - Event IDs are kebab-case slugs: `battle-of-corrin`, `paul-atreides-born`
 - Book IDs follow: `{slug}-{year}` pattern: `dune-1965`, `dune-messiah-1969`
-- All dates in data files are AG years (integers). Use negative for BG.
+- All dates in data files are AG years (integers). Negative for BG.
 - Significance is 1-5: 1=minor, 3=notable, 5=universe-altering
 - YAML files must pass `npm run validate` before commit
-- TypeScript strict mode is on — no `any` types
-- Canvas rendering code should not import React; communicate via shared state
+- TypeScript strict mode — no `any` types
+- Canvas rendering code must not import React
 
-## Contributing Data
+## Key Files
 
-See CONTRIBUTING.md for guidelines on adding timeline events.
-Run `npm run validate` before submitting. CI will also validate.
+| File | Purpose |
+|------|---------|
+| `src/timeline/camera.ts` | Core coordinate math (yearToPixel, zoom, pan) |
+| `src/timeline/renderer/index.ts` | 8-layer render orchestrator |
+| `src/data/loader.ts` | YAML data loading + merge into TimelineData |
+| `src/components/TimelineCanvas.tsx` | Bridge between React and Canvas |
+| `src/App.tsx` | Root component with all state management |
+| `src/types/index.ts` | All TypeScript type definitions |
+
+## Documentation
+
+See `docs/` for detailed guides:
+- [docs/data-schema.md](docs/data-schema.md) — Complete data schema reference
+- [docs/adding-events.md](docs/adding-events.md) — How to add events
+- [docs/adding-eras.md](docs/adding-eras.md) — How to add eras
+- [docs/adding-arcs.md](docs/adding-arcs.md) — How to add narrative arcs
+- [docs/calendar-system.md](docs/calendar-system.md) — The dual calendar explained
+- [docs/contribution-workflow.md](docs/contribution-workflow.md) — Fork/PR workflow

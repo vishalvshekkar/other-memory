@@ -43,7 +43,7 @@ A "fork" is your own copy of the project on GitHub.
 
 1. Go to the Other Memory repository on GitHub.
 2. Click the **Fork** button in the upper right corner.
-3. GitHub will create a copy under your account (e.g., `github.com/your-username/dune-timeline`).
+3. GitHub will create a copy under your account (e.g., `github.com/your-username/other-memory`).
 
 You only need to do this once.
 
@@ -55,8 +55,8 @@ You only need to do this once.
 
 ```bash
 # Replace "your-username" with your GitHub username
-git clone https://github.com/your-username/dune-timeline.git
-cd dune-timeline
+git clone https://github.com/your-username/other-memory.git
+cd other-memory
 ```
 
 Then install the project dependencies (needed for validation):
@@ -307,7 +307,7 @@ We want contributions from new Dune readers and longtime fans alike. If someone 
 | Step | Command / Action |
 |------|-----------------|
 | Fork | Click "Fork" on GitHub |
-| Clone | `git clone https://github.com/your-username/dune-timeline.git` |
+| Clone | `git clone https://github.com/your-username/other-memory.git` |
 | Branch | `git checkout -b add/your-event-name` |
 | Edit | Modify YAML files in `data/` |
 | Validate | `npm run validate` |

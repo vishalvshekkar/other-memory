@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Timeline Discussion
+    url: https://github.com/vishalvshekkar/other-memory/discussions
+    about: "Debate timeline placement, propose changes, or ask questions before opening an issue"

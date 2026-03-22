@@ -214,7 +214,7 @@ function TimelineApp() {
         <div className="ml-auto flex items-center gap-1">
           {/* GitHub link */}
           <a
-            href="https://github.com/visioninhope/dune-timeline"
+            href="https://github.com/vishalvshekkar/other-memory"
             target="_blank"
             rel="noopener noreferrer"
             className="w-7 h-7 flex items-center justify-center text-[#3a3530] hover:text-[#8a8070] transition-colors rounded hover:bg-white/[0.03]"

@@ -1,0 +1,62 @@
+name: "Add Event"
+description: "Suggest a new event to add to the timeline"
+title: "[Event]: "
+labels: ["event", "content"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Event title
+      placeholder: "e.g., Battle of Arrakeen"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: Date (AG year)
+      description: "Use negative for BG. e.g., 10191 or -88"
+      placeholder: "10191"
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Event type
+      options:
+        - point (a discrete moment)
+        - span (lasted a duration)
+        - milestone (pivotal moment)
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: "1-3 sentences describing what happened"
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source
+      description: "Which book(s) reference this event?"
+      placeholder: "e.g., Dune (1965), Chapter 22"
+    validations:
+      required: true
+  - type: dropdown
+    id: significance
+    attributes:
+      label: Significance (1-5)
+      options:
+        - "1 - Minor detail"
+        - "2 - Notable"
+        - "3 - Significant"
+        - "4 - Major turning point"
+        - "5 - Universe-altering"
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: "Characters involved, factions, any date ambiguity notes"

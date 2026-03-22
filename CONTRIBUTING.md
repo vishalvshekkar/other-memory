@@ -23,7 +23,7 @@ that connect events across the timeline.
 
 ### 5. Discuss Ambiguities
 The Dune universe has real contradictions between sources. Use
-[GitHub Discussions](https://github.com/visioninhope/dune-timeline/discussions)
+[GitHub Discussions](https://github.com/vishalvshekkar/other-memory/discussions)
 to debate timeline placement, propose changes, or ask questions before
 submitting a PR. Topics might include:
 - "What year does Paul actually walk into the desert?"
@@ -156,5 +156,5 @@ The validator checks:
 
 ## Questions?
 
-Open a [GitHub Discussion](https://github.com/visioninhope/dune-timeline/discussions)
+Open a [GitHub Discussion](https://github.com/vishalvshekkar/other-memory/discussions)
 or an issue. We're happy to help.

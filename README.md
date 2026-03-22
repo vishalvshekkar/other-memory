@@ -54,7 +54,7 @@ you have evidence for a different reading, we want to hear it.
 more across the novels. Every contribution helps.
 
 **Want to debate timeline placement?** Open a
-[GitHub Discussion](https://github.com/visioninhope/dune-timeline/discussions)
+[GitHub Discussion](https://github.com/vishalvshekkar/other-memory/discussions)
 to talk about ambiguities, interpretations, or proposals before submitting a PR.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines, or dive into the
@@ -77,7 +77,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines, or dive into the
 ## Quick Start
 
 ```bash
-git clone https://github.com/visioninhope/dune-timeline.git
+git clone https://github.com/vishalvshekkar/other-memory.git
 cd dune-timeline
 npm install
 npm run dev

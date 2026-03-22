@@ -1,0 +1,38 @@
+name: "Date Correction"
+description: "Report an incorrect or debatable date on the timeline"
+title: "[Date]: "
+labels: ["date-correction", "content"]
+body:
+  - type: input
+    id: event
+    attributes:
+      label: Event name or ID
+      placeholder: "e.g., paul-walks-into-desert"
+    validations:
+      required: true
+  - type: input
+    id: current-date
+    attributes:
+      label: Current date in our timeline
+      placeholder: "e.g., 10209 AG"
+    validations:
+      required: true
+  - type: input
+    id: proposed-date
+    attributes:
+      label: Proposed correct date
+      placeholder: "e.g., 10210 AG"
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: "Book reference, wiki link, or reasoning for the correction"
+    validations:
+      required: true
+  - type: textarea
+    id: ambiguity
+    attributes:
+      label: Is this date ambiguous across sources?
+      description: "If multiple sources give different dates, list them all"

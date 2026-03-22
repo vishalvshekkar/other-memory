@@ -1,0 +1,28 @@
+name: "Bug Report"
+description: "Something isn't working correctly on the site"
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: "Describe what went wrong"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: "e.g., Chrome 120 on macOS"
+  - type: textarea
+    id: screenshot
+    attributes:
+      label: Screenshot
+      description: "Drag and drop a screenshot if helpful"

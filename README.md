@@ -1,5 +1,7 @@
 # Other Memory — The Complete Dune Timeline
 
+[![Other Memory — The Complete Dune Timeline](public/og-image.png)](https://othermemory.nihil.codes)
+
 An interactive, zoomable timeline spanning ~35,000 years of the Dune saga — every
 event, era, and narrative arc across all novels by Frank Herbert and
 Brian Herbert & Kevin J. Anderson.
